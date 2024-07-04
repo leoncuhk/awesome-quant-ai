@@ -2,6 +2,8 @@
 
 A curated list of awesome resources for quantitative investment and trading strategies focusing on artificial intelligence and machine learning applications in finance.
 
+
+
 ## Contents
 - [Introduction](#introduction)
 - [How to Contribute](#how-to-contribute)
@@ -13,15 +15,32 @@ A curated list of awesome resources for quantitative investment and trading stra
   - [Artificial Intelligence](#artificial-intelligence)
 - [Tools and Platforms](#tools-and-platforms)
 - [Learning Resources](#learning-resources)
-- [Research Papers](#research-papers)
 - [Books](#books)
+  - [Trading Systems and Quantitative Methods](#trading-systems-and-quantitative-methods)
+  - [Behavioral and Historical Perspectives](#behavioral-and-historical-perspectives)
+  - [Statistical and Econometric Analysis](#statistical-and-econometric-analysis)
+  - [Mathematical Optimization and Stochastic Calculus](#mathematical-optimization-and-stochastic-calculus)
+  - [Portfolio Management and Financial Instruments](#portfolio-management-and-financial-instruments)
+  - [Volatility Analysis and Options Trading](#volatility-analysis-and-options-trading)
+  - [Python and Programming](#python-and-programming)
+- [Research Papers](#research-papers)
 - [Community and Conferences](#community-and-conferences)
+
+
 
 ## Introduction
 Quantitative investing uses mathematical models and algorithms to determine investment opportunities. This repository aims to provide a comprehensive resource for those interested in the intersection of AI, machine learning, and quantitative finance.
 
+
+
 ## How to Contribute
 Contributions are welcome! Please read the contribution guidelines first.
+
+1. **Request Access**: If you would like to contribute directly, please send an email to leoncuhk@gmail.com to request access. Provide your GitHub username and a brief description of what you would like to contribute. 
+2. **Get Added as a Collaborator**: Once your request is reviewed and approved, you will be added as a collaborator to the repository. 
+3. **Clone the Repository and Make Your Changes** 
+
+
 
 ## Quantitative Trading Strategies
 ### Statistical Arbitrage
@@ -39,23 +58,27 @@ Deploying algorithms to analyze vast datasets and enhance the accuracy and effic
 ### Artificial Intelligence
 Utilizing AI to simulate human decision-making processes and improve investment strategies.
 
+
+
 ## Tools and Platforms
 List of software tools and platforms used in quantitative finance.
 
+
+
 ## Learning Resources
+
 Online courses, tutorials, and workshops focused on quantitative investing and machine learning in finance.
 
-## Research Papers
-Seminal and recent research that advances the field of quantitative finance.
+
 
 ## Books
 
-Essential reading for practitioners and academics interested in quantitative methods and AI in finance.
 This section curates significant books in the realms of quantitative finance, algorithmic trading, and market data analysis. Each book listed has proven to be invaluable for learning and applying quantitative techniques in the financial markets.
 
 ### Trading Systems and Quantitative Methods
-- [Quantitative Trading](https://amzn.to/3E9DaQY) by Ernie Chan - A great introduction to quantitative trading for retail traders.
-- [Algorithmic Trading](https://amzn.to/3AAmz6H) by Ernie Chan - Advanced strategies for developing and testing algorithmic trading systems.
+- [Quantitative Trading: How to Build Your Own Algorithmic Trading Business](https://amzn.to/3E9DaQY) by Ernest Chan - A great introduction to quantitative trading for retail traders.
+- [Algorithmic Trading: Winning Strategies and Their Rationale](https://amzn.to/3AAmz6H) by Ernest Chan - Advanced strategies for developing and testing algorithmic trading systems.
+- [Machine Trading: Deploying Computer Algorithms to Conquer the Markets](https://www.amazon.com/Machine-Trading-Deploying-Computer-Algorithms/dp/1119219604/) by Ernest Chan - Introduction to strategies in factor models, AI, options, time series analysis, and intraday trading.
 - [Mechanical Trading Systems](https://amzn.to/3ETO8KP) by Richard Weissman - Discusses momentum and mean reversion strategies across different time frames.
 - [Following the Trend](https://amzn.to/3tSVBDA) by Andreas Clenow - Insightful read on trend following, a popular quantitative trading strategy.
 - [Trade Your Way to Financial Freedom](https://amzn.to/48JJg6M) by Van Tharp - Structured approaches to developing personal trading systems.
@@ -64,6 +87,7 @@ This section curates significant books in the realms of quantitative finance, al
 - [Applied Quantitative Methods for Trading and Investment](https://amzn.to/497TJJN) by Christian Dunis et al. - Practical applications of quantitative techniques in trading.
 - [Algorithmic Trading and DMA](https://amzn.to/3SfM1Yq) by Barry Johnson - An introduction to direct market access and trading strategies.
 - [Technical Analysis from A to Z](https://amzn.to/3Sf8vZx) by Steven Achelis - A comprehensive guide to technical analysis indicators.
+- [Finding Alphas: A Quantitative Approach to Building Trading Strategies](https://www.amazon.com/Finding-Alphas-Quantitative-Approach-Strategies/dp/1119571219/) by Igor Tulchinsky - Discusses the process of finding trading strategies (alphas).
 
 ### Behavioral and Historical Perspectives
 - [Reminiscences of a Stock Operator](https://amzn.to/3TWBZwC) by Edwin Lefèvre - Classic insights into the life and trading psychology of Jesse Livermore.
@@ -74,6 +98,8 @@ This section curates significant books in the realms of quantitative finance, al
 
 ### Statistical and Econometric Analysis
 - [Machine Learning for Algorithmic Trading](https://amzn.to/3vEZnUX) by Stefan Jansen - Techniques for developing automated trading strategies using machine learning.
+- [Advances in Financial Machine Learning](https://www.amazon.com/Advances-Financial-Machine-Learning-Marcos/dp/1119482089/) by Marcos Lopez de Prado - Discusses the challenges and opportunities of applying ML/AI in trading.
+- [Machine Learning for Asset Managers](https://www.amazon.com/Machine-Learning-Managers-Elements-Quantitative/dp/1108792898/) by Marcos Lopez de Prado - Focuses on portfolio construction, feature selection, and identifying overfit models.
 - [Time Series Analysis](https://amzn.to/3Scqe3M) by James Hamilton - Statistical methods for analyzing time series data in economics and finance.
 - [Econometric Analysis](https://amzn.to/421gNre) by William Greene - A fundamental textbook on econometric methods.
 - [Wavelet Methods for Time Series Analysis](https://amzn.to/3Sap8p3) by Donald Percival and Andrew Walden - Utilizes wavelet analysis for financial time series.
@@ -82,21 +108,45 @@ This section curates significant books in the realms of quantitative finance, al
 ### Mathematical Optimization and Stochastic Calculus
 - [Convex Optimization](https://amzn.to/47wyXC0) by Stephen Boyd and Lieven Vandenberghe - A detailed guide on convex optimization techniques used in finance.
 - [Financial Calculus](https://amzn.to/47z9yYB) by Martin Baxter and Andrew Rennie - An introduction to derivatives pricing using stochastic calculus.
+- [Stochastic Calculus for Finance I](https://amzn.to/4aVQmHx) by Steven Shreve - Introduction to stochastic calculus for financial modeling.
+- [Stochastic Calculus for Finance II](https://amzn.to/48x9gTw) by Steven Shreve - Advanced concepts in stochastic calculus for complex financial models.
 
 ### Portfolio Management and Financial Instruments
 - [Modern Portfolio Theory and Investment Analysis](https://amzn.to/3RSjuGY) by Elton et al. - An in-depth look at Modern Portfolio Theory and its practical applications.
+- [Options, Futures, and Other Derivatives](https://amzn.to/3NXvkON) by John Hull - Essential reading on derivatives trading.
 
 ### Volatility Analysis and Options Trading
 - [Volatility and Correlation](https://amzn.to/3HdkMY7) by Riccardo Rebonato - Discusses volatility and correlation in financial markets and their use in risk management.
 - [Options as a Strategic Investment](https://amzn.to/3RSHiu3) by Lawrence McMillan - A comprehensive analysis of options strategies for various market conditions.
+- [Volatility Trading](https://amzn.to/48JPfZo) by Euan Sinclair - Practical strategies for trading volatility.
+- [The Volatility Surface](https://amzn.to/48JPLqi) by Jim Gatheral - Properties of the volatility surface and its implications for pricing derivatives.
 
 ### Python and Programming
-- [Python for Data Analysis](https://amzn.to/3ERSi5D) by Wes McKinney - Essential for understanding how to use Pandas for financial data analysis.
-- [Python for Finance](https://amzn.to/3OoVd9f) by Yves Hilpisch - Covers topics crucial for quantitative analysts in finance.
+- [Python Crash Course](https://amzn.to/3ViXKnz) by Eric Matthes - A comprehensive introduction to Python programming.
+- [Automate the Boring Stuff with Python](https://amzn.to/3VeT4z4) by Al Sweigart - Practical Python projects, including financial applications.
+- [Python for Data Analysis](https://amzn.to/3ERSi5D) by Wes McKinney - Intermediate usage of Pandas for financial data analysis.
+- [Python for Finance](https://amzn.to/3OoVd9f) by Yves Hilpisch - Essential techniques for algorithmic trading and derivatives pricing.
+- [Python for Algorithmic Trading: From Idea to Cloud Deployment](https://www.amazon.com/Python-Algorithmic-Trading-Cloud-Deployment/dp/149205335X/) by Yves Hilpisch - Comprehensive guide on implementing trading strategies in Python, from data handling to cloud deployment.
+
+
+
+## Research Papers 
+
+Seminal and recent research that advances the field of quantitative finance.
+
+
+
+## Community and Conferences
+
+Information on communities, meetups, and conferences dedicated to quantitative finance.
 
 Feel free to explore these resources to deepen your understanding of quantitative finance and improve your trading strategies.
 
 
-## Community and Conferences
-Information on communities, meetups, and conferences dedicated to quantitative finance.
 
+## Reference
+
+- 46 awesome books for quant finance, algo trading, and market data analysis
+  https://www.pyquantnews.com/the-pyquant-newsletter/46-books-quant-finance-algo-trading-market-data
+- 10 awesome books for Quantitative Trading
+  https://medium.com/@mlblogging.k/10-awesome-books-for-quantitative-trading-fc0d6aa7e6d8
