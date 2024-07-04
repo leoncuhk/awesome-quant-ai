@@ -122,11 +122,9 @@ This section curates significant books in the realms of quantitative finance, al
 - [The Volatility Surface](https://amzn.to/48JPLqi) by Jim Gatheral - Properties of the volatility surface and its implications for pricing derivatives.
 
 ### Python and Programming
-- [Python Crash Course](https://amzn.to/3ViXKnz) by Eric Matthes - A comprehensive introduction to Python programming.
-- [Automate the Boring Stuff with Python](https://amzn.to/3VeT4z4) by Al Sweigart - Practical Python projects, including financial applications.
-- [Python for Data Analysis](https://amzn.to/3ERSi5D) by Wes McKinney - Intermediate usage of Pandas for financial data analysis.
-- [Python for Finance](https://amzn.to/3OoVd9f) by Yves Hilpisch - Essential techniques for algorithmic trading and derivatives pricing.
+- [Python for Finance](https://amzn.to/3ERSi5D) by Yves Hilpisch - Essential techniques for algorithmic trading and derivatives pricing.
 - [Python for Algorithmic Trading: From Idea to Cloud Deployment](https://www.amazon.com/Python-Algorithmic-Trading-Cloud-Deployment/dp/149205335X/) by Yves Hilpisch - Comprehensive guide on implementing trading strategies in Python, from data handling to cloud deployment.
+- [Python for Finance Cookbook - Second Edition](https://a.co/d/08GbZnXP) by Eryk Lewinson - Over 80 powerful recipes for effective financial data analysis, using modern Python libraries such as pandas, NumPy, and scikit-learn.
 
 
 
