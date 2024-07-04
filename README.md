@@ -8,23 +8,12 @@ A curated list of awesome resources for quantitative investment and trading stra
 - [Introduction](#introduction)
 - [How to Contribute](#how-to-contribute)
 - [Quantitative Trading Strategies](#quantitative-trading-strategies)
-  - [Statistical Arbitrage](#statistical-arbitrage)
-  - [Factor Investing](#factor-investing)
-  - [Risk Parity](#risk-parity)
-  - [Machine Learning](#machine-learning)
-  - [Artificial Intelligence](#artificial-intelligence)
 - [Tools and Platforms](#tools-and-platforms)
 - [Learning Resources](#learning-resources)
 - [Books](#books)
-  - [Trading Systems and Quantitative Methods](#trading-systems-and-quantitative-methods)
-  - [Behavioral and Historical Perspectives](#behavioral-and-historical-perspectives)
-  - [Statistical and Econometric Analysis](#statistical-and-econometric-analysis)
-  - [Mathematical Optimization and Stochastic Calculus](#mathematical-optimization-and-stochastic-calculus)
-  - [Portfolio Management and Financial Instruments](#portfolio-management-and-financial-instruments)
-  - [Volatility Analysis and Options Trading](#volatility-analysis-and-options-trading)
-  - [Python and Programming](#python-and-programming)
 - [Research Papers](#research-papers)
 - [Community and Conferences](#community-and-conferences)
+- [Reference](#Reference)
 
 
 
@@ -43,20 +32,75 @@ Contributions are welcome! Please read the contribution guidelines first.
 
 
 ## Quantitative Trading Strategies
-### Statistical Arbitrage
-Exploiting pricing inefficiencies among related financial instruments using advanced statistical models.
 
-### Factor Investing
-Investing in securities that exhibit characteristics associated with higher returns, such as value, momentum, or size.
+### 1. Statistical Arbitrage
+- Exploiting pricing inefficiencies among related financial instruments using advanced statistical models.
+- **Sub-strategies**:
+  * **Mean Reversion**: Assuming asset prices will revert to their historical average.
+  * **Pairs Trading**: Taking long and short positions in correlated securities.
+  * **Cointegration Analysis**: Exploiting long-term price relationships.
 
-### Risk Parity
-Allocating capital based on risk, balancing the contributions of different assets to overall portfolio volatility.
+### 2. Factor Investing
+- Investing in securities that exhibit characteristics associated with higher returns, such as value, momentum, or size.
+- **Factors**:
+  * **Value**: Selecting undervalued stocks.
+  * **Momentum**: Buying recent winners and selling losers.
+  * **Size**: Investing in small-cap stocks.
+  * **Quality**: Selecting stocks based on financial health indicators.
+  * **Low Volatility**: Investing in stocks with lower price fluctuations.
 
-### Machine Learning
-Deploying algorithms to analyze vast datasets and enhance the accuracy and efficiency of financial models.
+### 3. High-Frequency Trading (HFT)
+- Rapid trading using powerful computers and algorithms.
+- **Approaches**:
+  * **Market Making**: Providing liquidity by simultaneously placing buy and sell orders.
+  * **Latency Arbitrage**: Exploiting tiny price discrepancies.
+  * **Order Flow Prediction**: Anticipating and acting on order flow patterns.
 
-### Artificial Intelligence
-Utilizing AI to simulate human decision-making processes and improve investment strategies.
+### 4. Trend Following
+- Trading based on the continuation of price trends.
+- **Methods**:
+  * **Moving Averages**: Using price averages to identify trends.
+  * **Breakout Trading**: Entering positions when prices move beyond support/resistance levels.
+  * **Momentum Indicators**: Using technical indicators to measure price velocity.
+
+### 5. Volatility Trading
+- Strategies focused on market volatility rather than directional moves.
+- **Methods**:
+  * **Options Pricing**: Using volatility models for options valuation.
+  * **Volatility Arbitrage**: Exploiting differences between implied and realized volatility.
+
+### 6. Risk Parity
+- Allocating capital based on risk, balancing the contributions of different assets to overall portfolio volatility.
+- **Implementation**:
+  * **Balancing Risk Contributions**: Across different asset classes.
+  * **Leveraging Lower-Risk Assets**: To achieve the desired risk/return profile.
+
+### 7. Quantitative Macro Strategies
+- Trading based on macroeconomic factors and global market trends.
+- **Approaches**:
+  * **Global Macro**: Trading based on broad economic trends.
+  * **Asset Allocation**: Dynamically adjusting portfolio composition based on market conditions.
+
+### 8. Event-Driven Strategies
+- Trading based on specific events or news.
+- **Examples**:
+  * **Merger Arbitrage**: Trading around M&A activities.
+  * **Earnings Announcements**: Trading based on financial report releases.
+  * **Economic Data Releases**: Trading on macroeconomic news.
+
+### 9. Machine Learning and AI Strategies
+- Utilizing AI to improve human decision-making processes and improve investment strategies. Deploying algorithms to analyze vast datasets and enhance the accuracy and efficiency of financial models.
+- **Techniques**:
+  * **Supervised Learning**: Predicting outcomes using labeled data.
+  * **Unsupervised Learning**: Discovering hidden patterns in data.
+  * **Reinforcement Learning**: Learning optimal strategies through environment interaction.
+  * **Natural Language Processing (NLP)**: Analyzing text data for trading signals.
+
+### 10. Multi-Strategy Approach
+- Combining multiple strategies to diversify and enhance performance.
+- **Examples**:
+  * **Multi-Factor Models**: Integrating multiple factors in a single strategy.
+  * **Strategy Allocation**: Dynamically allocating capital across various quantitative strategies.
 
 
 
@@ -68,6 +112,11 @@ List of software tools and platforms used in quantitative finance.
 ## Learning Resources
 
 Online courses, tutorials, and workshops focused on quantitative investing and machine learning in finance.
+
+- Algorithmic Trading & Quantitative Analysis Using Python https://www.udemy.com/course/algorithmic-trading-quantitative-analysis-using-python/
+- Quantitative Trading Strategies https://finmath.uchicago.edu/curriculum/degree-concentrations/trading/finm-33150/
+- Oxford Algorithmic Trading Programme https://www.sbs.ox.ac.uk/programmes/executive-education/online-programmes/oxford-algorithmic-trading-programme
+- https://orfe.princeton.edu/research/financial-mathematics
 
 
 
@@ -126,11 +175,17 @@ This section curates significant books in the realms of quantitative finance, al
 - [Python for Algorithmic Trading: From Idea to Cloud Deployment](https://www.amazon.com/Python-Algorithmic-Trading-Cloud-Deployment/dp/149205335X/) by Yves Hilpisch - Comprehensive guide on implementing trading strategies in Python, from data handling to cloud deployment.
 - [Python for Finance Cookbook - Second Edition](https://a.co/d/08GbZnXP) by Eryk Lewinson - Over 80 powerful recipes for effective financial data analysis, using modern Python libraries such as pandas, NumPy, and scikit-learn.
 
+### Biographies
+
+- [The Man Who Solved the Market: How Jim Simons Launched the Quant Revolution](https://a.co/d/00VsEzC2) by Gregory Zuckerman - The unbelievable story of Jim Simons, a secretive mathematician who pioneered the era of algorithmic trading and made $23 billion doing it, whose Renaissance’s Medallion fund has generated average annual returns of 66 percent since 1988.
+- [Poor Charlie’s Almanack: The Essential Wit and Wisdom of Charles T. Munger](https://a.co/d/0byTXb7A) by Charles T. Munger, Peter D. Kaufman (Editor), Warren Buffett (Foreword), John Collison (Foreword) - This book offers lessons in investment strategy, philanthropy, and living a rational and ethical life. 
+
 
 
 ## Research Papers 
 
 Seminal and recent research that advances the field of quantitative finance.
+
 
 
 
