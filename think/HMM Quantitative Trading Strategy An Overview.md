@@ -1,5 +1,9 @@
 # HMM Quantitative Trading Strategy: An Overview
 
+## Comprehensive Strategy Framework
+
+Jim Simons and his team at Renaissance Technologies likely use a comprehensive quantitative trading strategy that integrates multiple sophisticated models and techniques. This strategy can be broken down into several interrelated components:
+
 ## 1. Hidden Markov Model (HMM) for Regime Detection
 
 **Objective**: Use HMM to identify different market regimes, such as bull markets, bear markets, or sideways markets.
@@ -8,7 +12,7 @@
 1. **Data Preprocessing**: Collect and preprocess various financial data, including prices, volumes, macroeconomic indicators, etc.
 2. **Training HMM Model**:
    - Use historical data to train the HMM model, defining multiple hidden states (e.g., bull market, bear market, sideways market).
-   - Calculate the state transition probability matrix $$A$$ and the observation probability matrix $$B$$.
+   - Calculate the state transition probability matrix $A$ and the observation probability matrix $B$.
      $$
      A = \{a_{ij}\} = P(S_{t+1} = j \mid S_t = i)
      $$
