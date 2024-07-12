@@ -31,7 +31,7 @@ Contributions are welcome! Please read the contribution guidelines first.
 1. **Request Access**: If you would like to contribute directly, please send an email to leoncuhk@gmail.com to request access. Provide your GitHub username and a brief description of what you would like to contribute. 
 2. **Get Added as a Collaborator**: Once your request is reviewed and approved, you will be added as a collaborator to the repository. 
 3. **Clone the Repository and Make Your Changes** 
-   
+  
    
 
 ## Quantitative Trading Strategies
@@ -121,6 +121,9 @@ Contributions are welcome! Please read the contribution guidelines first.
 
 List of software tools and platforms used in quantitative finance.
 
+- pybroker: focus on strategies that use machine learning https://github.com/edtechre/pybroker
+
+
 
 
 ## Learning Resources
@@ -201,7 +204,26 @@ This section curates significant books in the realms of quantitative finance, al
 - [The Man Who Solved the Market: How Jim Simons Launched the Quant Revolution](https://a.co/d/00VsEzC2) by Gregory Zuckerman - The unbelievable story of Jim Simons, a secretive mathematician who pioneered the era of algorithmic trading and made $23 billion doing it, whose Renaissance’s Medallion fund has generated average annual returns of 66 percent since 1988.
 - [Poor Charlie’s Almanack: The Essential Wit and Wisdom of Charles T. Munger](https://a.co/d/0byTXb7A) by Charles T. Munger, Peter D. Kaufman (Editor), Warren Buffett (Foreword), John Collison (Foreword) - This book offers lessons in investment strategy, philanthropy, and living a rational and ethical life. 
   
-  
+
+
+
+- Ernest P. Chan - "Quantitative trading: how to build your own algorithmic trading business" 
+- Keith Fitschen - "Building Reliable Trading Systems: ..." - 
+- Eugene A. Durenard - "Professional Automated Trading: Theory and Practice" - 
+- Steven L. Brunton, J. Nathan Kutz - "Data-Driven Science and Engineering: Machine Learning, Dynamical Systems, and Control" - 
+- Marcos Lopez de Prado - "Advances in Financial Machine Learning" -
+- Tony Guida - "Big Data and Machine Learning in Quantitative Investment" - 
+- Irene Aldridge, Marco Avellaneda - "Big Data Science in Finance" - 
+- Agostino Capponi, Charles-Albert Lehalle - Machine Learning and Data Sciences for Financial Markets: A Guide to Contemporary Practices” - 
+- Matthew F. Dixon, Igor Halperin, Paul Bilokon - "Machine Learning in Finance From Theory to Practice" - 
+- Stefan Jansen - "Machine Learning for Algorithmic Trading: ..." - 
+- László Györfi, György Ottucsák, Harro Walk - "Machine Learning For Financial Engineering" 
+- Riccardo Rebonato, Alexander Denev - "Portfolio Management under Stress: ..." 
+- Charles K. Chui, Guanrong Chen - "Kalman Filtering: with Real-Time Applications"
+
+
+
+
 
 ## Research Papers
 

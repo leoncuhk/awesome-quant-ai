@@ -1,5 +1,11 @@
 # HMM Quantitative Trading Strategy: An Overview
 
+detecting hidden patterns
+
+identifying comparable trading situations
+
+
+
 ## Comprehensive Strategy Framework
 
 Jim Simons and his team at Renaissance Technologies likely use a comprehensive quantitative trading strategy that integrates multiple sophisticated models and techniques. This strategy can be broken down into several interrelated components:
