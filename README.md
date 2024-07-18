@@ -135,7 +135,6 @@ Online courses, tutorials, and workshops focused on quantitative investing and m
 - Oxford Algorithmic Trading Programme https://www.sbs.ox.ac.uk/programmes/executive-education/online-programmes/oxford-algorithmic-trading-programme
 - https://orfe.princeton.edu/research/financial-mathematics
   
-  
 
 ## Books
 
@@ -149,12 +148,16 @@ This section curates significant books in the realms of quantitative finance, al
 - [Mechanical Trading Systems](https://amzn.to/3ETO8KP) by Richard Weissman - Discusses momentum and mean reversion strategies across different time frames.
 - [Following the Trend](https://amzn.to/3tSVBDA) by Andreas Clenow - Insightful read on trend following, a popular quantitative trading strategy.
 - [Trade Your Way to Financial Freedom](https://amzn.to/48JJg6M) by Van Tharp - Structured approaches to developing personal trading systems.
-- [Mathematics of Money Management](https://amzn.to/3vusj1X) by Ralph Vince - Techniques on risk management and optimal portfolio configuration.
+- [The Mathematics of Money Management](https://amzn.to/3vusj1X) by Ralph Vince - Techniques on risk management and optimal portfolio configuration.
 - [Intermarket Trading Strategies](https://amzn.to/48R3Mmm) by Markos Katsanos - Explores global market relationships for strategy development.
 - [Applied Quantitative Methods for Trading and Investment](https://amzn.to/497TJJN) by Christian Dunis et al. - Practical applications of quantitative techniques in trading.
 - [Algorithmic Trading and DMA](https://amzn.to/3SfM1Yq) by Barry Johnson - An introduction to direct market access and trading strategies.
 - [Technical Analysis from A to Z](https://amzn.to/3Sf8vZx) by Steven Achelis - A comprehensive guide to technical analysis indicators.
 - [Finding Alphas: A Quantitative Approach to Building Trading Strategies](https://www.amazon.com/Finding-Alphas-Quantitative-Approach-Strategies/dp/1119571219/) by Igor Tulchinsky - Discusses the process of finding trading strategies (alphas).
+- [Algorithmic and High-Frequency Trading](https://a.co/d/0fDaYzL) by Álvaro Cartea, Sebastian Jaimungal, and José Penalva - Provides an in-depth understanding of high-frequency trading strategies.
+- [Quantitative Trading: How to Build Your Own Algorithmic Trading Business](https://a.co/d/ieLqNPA) by Ernest P. Chan - A comprehensive guide to starting a quantitative trading business.
+- [Building Reliable Trading Systems: Tradable Strategies That Perform As They Backtest and Meet Your Risk-Reward Goals](https://a.co/d/aICoI0O) by Keith Fitschen - Focuses on developing trading systems that perform well in real-world conditions.
+- [Professional Automated Trading: Theory and Practice](https://a.co/d/hZQvWw8) by Eugene A. Durenard - A practical guide to automated trading systems.
 
 ### Behavioral and Historical Perspectives
 
@@ -163,6 +166,8 @@ This section curates significant books in the realms of quantitative finance, al
 - [Predictably Irrational](https://amzn.to/3vojdDR) by Dan Ariely - A look at the forces that affect our decision-making processes.
 - [Behavioral Investing](https://amzn.to/48QA2Ws) by James Montier - Strategies to overcome psychological barriers to successful investing.
 - [The Laws of Trading](https://amzn.to/41Svo82) by Agustin Lebron - Decision-making strategies from a professional trader's perspective.
+- [Thinking, Fast and Slow](https://a.co/d/fWGSCVt) by Daniel Kahneman - A classic on human decision-making and cognitive biases, crucial for understanding market behavior.
+- [The Undoing Project](https://a.co/d/3ykJOZ4) by Michael Lewis - Chronicles the collaboration between Daniel Kahneman and Amos Tversky and their contributions to behavioral economics.
 
 ### Statistical and Econometric Analysis
 
@@ -173,6 +178,13 @@ This section curates significant books in the realms of quantitative finance, al
 - [Econometric Analysis](https://amzn.to/421gNre) by William Greene - A fundamental textbook on econometric methods.
 - [Wavelet Methods for Time Series Analysis](https://amzn.to/3Sap8p3) by Donald Percival and Andrew Walden - Utilizes wavelet analysis for financial time series.
 - [The Elements of Statistical Learning](https://amzn.to/47v3Y9M) by Hastie, Tibshirani, and Friedman - A comprehensive overview of statistical learning theory and its applications.
+- [Applied Econometric Time Series](https://a.co/d/6QezCpN) by Walter Enders - demonstrates modern techniques for developing models capable of forecasting, interpreting, and testing hypotheses concerning economic data.
+- [Data-Driven Science and Engineering: Machine Learning, Dynamical Systems, and Control](https://a.co/d/iueGzGt) by Steven L. Brunton and J. Nathan Kutz - Focuses on the application of machine learning in scientific and engineering contexts.
+- [Big Data and Machine Learning in Quantitative Investment](https://a.co/d/2yYcZlc) by Tony Guida - Explores the role of big data and machine learning in quantitative investment.
+- [Big Data Science in Finance](https://a.co/d/6CSzdng) by Irene Aldridge and Marco Avellaneda - Provides insights into the application of big data science in the financial industry.
+- [Machine Learning and Data Sciences for Financial Markets: A Guide to Contemporary Practices](https://a.co/d/cjyetTU) by Agostino Capponi and Charles-Albert Lehalle - A comprehensive guide to contemporary practices in machine learning and data sciences for financial markets.
+- [Machine Learning in Finance: From Theory to Practice](https://a.co/d/2qmNycY) by Matthew F. Dixon, Igor Halperin, and Paul Bilokon - Covers the theory and practice of applying machine learning in finance.
+- [Machine Learning For Financial Engineering](https://a.co/d/h5HNAJn) by László Györfi, György Ottucsák - Focuses on the application of machine learning techniques in financial engineering.
 
 ### Mathematical Optimization and Stochastic Calculus
 
@@ -180,48 +192,37 @@ This section curates significant books in the realms of quantitative finance, al
 - [Financial Calculus](https://amzn.to/47z9yYB) by Martin Baxter and Andrew Rennie - An introduction to derivatives pricing using stochastic calculus.
 - [Stochastic Calculus for Finance I](https://amzn.to/4aVQmHx) by Steven Shreve - Introduction to stochastic calculus for financial modeling.
 - [Stochastic Calculus for Finance II](https://amzn.to/48x9gTw) by Steven Shreve - Advanced concepts in stochastic calculus for complex financial models.
+- [Optimization Methods in Finance](https://a.co/d/iO2psXG) by Gérard Cornuéjols and Reha Tütüncü - Introduces optimization techniques and their applications in finance.
+- [Kalman Filtering: with Real-Time Applications](https://a.co/d/hxKREtG) by Charles K. Chui and Guanrong Chen - A practical guide to the application of Kalman filtering in real-time systems.
 
 ### Portfolio Management and Financial Instruments
 
 - [Modern Portfolio Theory and Investment Analysis](https://amzn.to/3RSjuGY) by Elton et al. - An in-depth look at Modern Portfolio Theory and its practical applications.
-- [Options, Futures, and Other Derivatives](https://amzn.to/3NXvkON) by John Hull - Essential reading on derivatives trading.
+- [Options, Futures, and Other Derivatives](https://a.co/d/bmyR3xP) by John Hull - Essential reading on derivatives trading.
+- [Asset Management: A Systematic Approach to Factor Investing](https://a.co/d/8OCWkyE) by Andrew Ang - Discusses a systematic approach to factor investing.
+- [Portfolio Management under Stress: A Bayesian-Net Approach to Coherent Asset Allocation](https://a.co/d/4j9jEgE) by Riccardo Rebonato and Alexander Denev - Focuses on portfolio management strategies under stressful market conditions.
+- [Quantitative Equity Portfolio Management](https://a.co/d/9IdfYsu) by Ludwig Chincarini and Daehwan Kim - Advanced techniques focused on quantitative equity portfolio management.
 
 ### Volatility Analysis and Options Trading
 
 - [Volatility and Correlation](https://amzn.to/3HdkMY7) by Riccardo Rebonato - Discusses volatility and correlation in financial markets and their use in risk management.
-- [Options as a Strategic Investment](https://amzn.to/3RSHiu3) by Lawrence McMillan - A comprehensive analysis of options strategies for various market conditions.
+- [Study Guide for Options as a Strategic Investment](https://amzn.to/3RSHiu3) by Lawrence McMillan - A comprehensive analysis of options strategies for various market conditions.
 - [Volatility Trading](https://amzn.to/48JPfZo) by Euan Sinclair - Practical strategies for trading volatility.
 - [The Volatility Surface](https://amzn.to/48JPLqi) by Jim Gatheral - Properties of the volatility surface and its implications for pricing derivatives.
+- [Dynamic Hedging: Managing Vanilla and Exotic Options](https://a.co/d/iIuWobT) by Nassim Nicholas Taleb - Introduces dynamic hedging strategies and their applications in managing standard and exotic options.
 
 ### Python and Programming
 
 - [Python for Finance](https://amzn.to/3ERSi5D) by Yves Hilpisch - Essential techniques for algorithmic trading and derivatives pricing.
 - [Python for Algorithmic Trading: From Idea to Cloud Deployment](https://www.amazon.com/Python-Algorithmic-Trading-Cloud-Deployment/dp/149205335X/) by Yves Hilpisch - Comprehensive guide on implementing trading strategies in Python, from data handling to cloud deployment.
 - [Python for Finance Cookbook - Second Edition](https://a.co/d/08GbZnXP) by Eryk Lewinson - Over 80 powerful recipes for effective financial data analysis, using modern Python libraries such as pandas, NumPy, and scikit-learn.
+- [Python for Data Analysis](https://a.co/d/gGEBzt1) by Wes McKinney - Written by the creator of the Pandas library, this book is essential for financial data analysis.
 
 ### Biographies
 
 - [The Man Who Solved the Market: How Jim Simons Launched the Quant Revolution](https://a.co/d/00VsEzC2) by Gregory Zuckerman - The unbelievable story of Jim Simons, a secretive mathematician who pioneered the era of algorithmic trading and made $23 billion doing it, whose Renaissance’s Medallion fund has generated average annual returns of 66 percent since 1988.
-- [Poor Charlie’s Almanack: The Essential Wit and Wisdom of Charles T. Munger](https://a.co/d/0byTXb7A) by Charles T. Munger, Peter D. Kaufman (Editor), Warren Buffett (Foreword), John Collison (Foreword) - This book offers lessons in investment strategy, philanthropy, and living a rational and ethical life. 
-  
-
-
-
-- Ernest P. Chan - "Quantitative trading: how to build your own algorithmic trading business" 
-- Keith Fitschen - "Building Reliable Trading Systems: ..." - 
-- Eugene A. Durenard - "Professional Automated Trading: Theory and Practice" - 
-- Steven L. Brunton, J. Nathan Kutz - "Data-Driven Science and Engineering: Machine Learning, Dynamical Systems, and Control" - 
-- Marcos Lopez de Prado - "Advances in Financial Machine Learning" -
-- Tony Guida - "Big Data and Machine Learning in Quantitative Investment" - 
-- Irene Aldridge, Marco Avellaneda - "Big Data Science in Finance" - 
-- Agostino Capponi, Charles-Albert Lehalle - Machine Learning and Data Sciences for Financial Markets: A Guide to Contemporary Practices” - 
-- Matthew F. Dixon, Igor Halperin, Paul Bilokon - "Machine Learning in Finance From Theory to Practice" - 
-- Stefan Jansen - "Machine Learning for Algorithmic Trading: ..." - 
-- László Györfi, György Ottucsák, Harro Walk - "Machine Learning For Financial Engineering" 
-- Riccardo Rebonato, Alexander Denev - "Portfolio Management under Stress: ..." 
-- Charles K. Chui, Guanrong Chen - "Kalman Filtering: with Real-Time Applications"
-
-
+- [Poor Charlie’s Almanack: The Essential Wit and Wisdom of Charles T. Munger](https://a.co/d/0byTXb7A) by Charles T. Munger, Peter D. Kaufman (Editor), Warren Buffett (Foreword), John Collison (Foreword) - This book offers lessons in investment strategy, philanthropy, and living a rational and ethical life.
+- [More Money Than God: Hedge Funds and the Making of a New Elite](https://a.co/d/6yQggnh) by Sebastian Mallaby - Details the history of hedge funds and their impact on financial markets.
 
 
 
