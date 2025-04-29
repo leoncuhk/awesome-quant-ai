@@ -86,7 +86,7 @@ A scientifically rational design for a quantitative trading system or strategy s
 
 
 ## Quantitative Trading Strategies
-![quantitative-trading-strategies](./think/quantitative-trading-strategies.png)
+![quantitative-trading-strategy](./think/quantitative-trading-strategy.png)
 
 ### 1. Statistical Arbitrage
 
@@ -223,12 +223,10 @@ List of software tools and platforms used in quantitative finance.
 | **CoinMetrics**       | Crypto-specific metrics                 | On-chain transaction analysis, MEV tracking |
 
 #### 3. **Execution & Deployment**
-| **Platform**          | **Functionality**                       |
-|-----------------------|-----------------------------------------|
-| **Interactive Brokers API** | Low-latency order execution       |
-| **Alpaca**            | Commission-free algorithmic trading    |
-| **AWS SageMaker**     | Cloud-based ML training/deployment     |
-| **Docker/Kubernetes** | Containerization for scalable systems  |
+- **Interactive Brokers API** : Low-latency order execution
+- **Alpaca** : Commission-free algorithmic trading
+- **AWS SageMaker** : Cloud-based ML training/deployment
+- **Docker/Kubernetes** : Containerization for scalable systems
 
 #### 4. **Research Environments**
 - **Jupyter Notebook**: Interactive strategy prototyping.
@@ -267,10 +265,10 @@ This section curates significant books in the realms of quantitative finance, al
 - [Quantitative Trading: How to Build Your Own Algorithmic Trading Business](https://a.co/d/ieLqNPA) by Ernest P. Chan - A comprehensive guide to starting a quantitative trading business.
 - [Building Reliable Trading Systems: Tradable Strategies That Perform As They Backtest and Meet Your Risk-Reward Goals](https://a.co/d/aICoI0O) by Keith Fitschen - Focuses on developing trading systems that perform well in real-world conditions.
 - [Professional Automated Trading: Theory and Practice](https://a.co/d/hZQvWw8) by Eugene A. Durenard - A practical guide to automated trading systems.
-- Lingjie Ma, Quantitative Investing: From Theory to Industry
-- Stefan Jansen, Machine Learning for Algorithmic Trading, 2nd Edition
-- Ernest P. Chan, Machine Trading: Deploying Computer Algorithms to Conquer the Markets
-- Perry J. Kaufman, Trading Systems and Methods, 6th Edition
+- [Quantitative Investing: From Theory to Industry](https://a.co/d/cq0uukj) by Lingjie Ma, 
+- [Machine Learning for Algorithmic Trading, 2nd Edition](https://a.co/d/9ZaA1SI) by Stefan Jansen
+- [Machine Trading: Deploying Computer Algorithms to Conquer the Markets](https://a.co/d/7PO4ZsN) by Ernest P. Chan
+- [Trading Systems and Methods, 6th Edition](https://a.co/d/abDVQCE) by Perry J. Kaufman
 
 ### Behavioral and Historical Perspectives
 
