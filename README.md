@@ -86,7 +86,8 @@ A scientifically rational design for a quantitative trading system or strategy s
 
 
 ## Quantitative Trading Strategies
-![quantitative-trading-strategy](./think/quantitative-trading-strategy.png)
+
+![quantitative-trading-strategies](assets/quantitative-trading-strategies.png)
 
 ### 1. Statistical Arbitrage
 
