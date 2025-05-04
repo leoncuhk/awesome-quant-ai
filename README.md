@@ -202,7 +202,8 @@ Comparing three major approaches to quantitative trading: Quantitative Trading, 
 
 List of software tools and platforms used in quantitative finance.
 
-- pybroker: focus on strategies that use machine learning https://github.com/edtechre/pybroker
+- pytrade: python packages and resources for algo-trading https://github.com/PFund-Software-Ltd/pytrade.org
+- pybroker: focus on strategies backtesting that use machine learning https://github.com/edtechre/pybroker
 
 
 #### 1. **Strategy Development Frameworks**
