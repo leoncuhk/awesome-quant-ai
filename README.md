@@ -29,19 +29,20 @@ Quantitative investing uses mathematical models and algorithms to determine inve
    - **Statistical Arbitrage Limits**: Quantifying theoretical profit bounds under constraints like transaction costs, liquidity gaps, and execution latency.  
    - **Cost Modeling**: Integrating bid-ask spreads, slippage, taxes, and market impact into strategy design.  
 
-2. **AI/ML Technical Fit**:  
-   - **Supervised Learning**: Predicting asset prices/volatility via labeled datasets (e.g., regression, XGBoost).  
-   - **Unsupervised Learning**: Discovering hidden patterns in unstructured data (e.g., clustering assets, anomaly detection).  
-   - **Reinforcement Learning (RL)**: Dynamic portfolio optimization through trial-and-error learning (e.g., DDPG for risk-adjusted allocation).  
-   - **Natural Language Processing (NLP)**: Extracting sentiment signals from news, earnings calls, or social media.  
-   - **Generative Adversarial Networks (GANs)**: Synthesizing realistic financial time series for stress-testing strategies.  
+2. **AI/ML Technical Fit**: 
+   - **Predictive Modeling (Supervised Learning):** Forecasting asset returns, volatility, and risk metrics using labeled data with techniques ranging from linear regression to advanced gradient-boosted trees (XGBoost, LightGBM).
+   - **Pattern Discovery (Unsupervised Learning):** Identifying latent structures in data through asset clustering, dimensionality reduction, and anomaly detection to uncover novel factors or market regimes.
+   - **Sequential Decision-Making (Reinforcement Learning):** Optimizing trading and execution policies through continuous environment interaction, using algorithms like PPO or DDPG to maximize risk-adjusted returns.
+   - **Synthetic Data Generation (Generative Models):** Utilizing GANs, Diffusion Models, and other generative techniques to create realistic market scenarios for robust strategy stress-testing and data augmentation.
+   - **Contextual Reasoning (Large Language & Multimodal Models):** Achieving a deep, semantic understanding of unstructured financial text, audio, and image data to decode complex informational alpha from filings, news, and earnings calls, far surpassing traditional sentiment analysis.
 
 3. **Mathematical Foundations**:  
    - **Stochastic Processes**: Modeling price dynamics with Brownian motion, jump-diffusion, or fractional processes.  
    - **Optimization Theory**: Mean-CVaR frameworks for balancing returns against tail risks.  
    - **Game Theory**: Simulating strategic interactions among market participants (e.g., order-book competition).  
 
-This synthesis defines quant AI as the application of advanced computational methods to systematically extract alpha while rigorously managing risk in complex, adaptive financial systems.
+
+Quant AI is the application of advanced computational methods to systematically extract **alpha** while rigorously managing risk in complex, adaptive financial systems.
 
 
 ## Design Approach

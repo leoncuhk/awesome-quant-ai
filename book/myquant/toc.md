@@ -1,7 +1,128 @@
 # 量化交易策略全景知识库
 
 ```
-量化交易策略知识体系
+量化策略研发框架 v3.0
+ ├── 1. 趋势跟踪策略 (Trend-Following / Momentum Strategies)
+ │   │   // 核心逻辑: 捕捉价格运动的惯性 (Inertia of price movements)
+ │   │
+ │   ├── 1.1 时间序列动量 (Time-Series Momentum)
+ │   │   ├── 1.1.1 移动平均线系统 (Moving Average Systems)
+ │   │   │   ├── 双均线/三均线交叉 (Dual/Triple MA Cross: Golden/Death Cross)
+ │   │   │   ├── 异同移动平均线 (MACD) 及其变种
+ │   │   │   └── 自适应移动平均线 (Adaptive MA: KAMA, FRAMA)
+ │   │   ├── 1.1.2 通道与突破系统 (Channel & Breakout Systems)
+ │   │   │   ├── 唐奇安通道 (Donchian Channels) 与海龟交易系统 (Turtle Trading)
+ │   │   │   ├── 布林带突破 (Bollinger Band Breakouts)
+ │   │   │   ├── ATR通道策略 (ATR Channel Strategy)
+ │   │   │   └── 形态/支撑阻力突破 (Pattern/SR Breakout)
+ │   │   └── 1.1.3 趋势强度与振荡指标 (Trend Strength & Oscillator Indicators)
+ │   │       ├── 平均趋向指数 (ADX)
+ │   │       ├── 抛物线转向指标 (Parabolic SAR)
+ │   │       └── RSI/Stochastic 等振荡指标的趋势用法
+ │   │
+ │   └── 1.2 横截面动量 (Cross-Sectional Momentum)
+ │       ├── 1.2.1 经典相对强度 (Classic Relative Strength)
+ │       │   ├── 资产收益率排序 (Ranking by Return)
+ │       │   └── 风险调整后收益排序 (Ranking by Sharpe/Sortino Ratio)
+ │       ├── 1.2.2 行业/风格/板块轮动 (Sector/Style/Industry Rotation)
+ │       ├── 1.2.3 因子动量 (Factor Momentum) -> (判断价值/质量等因子近期表现)
+ │       └── 1.2.4 残差动量 (Residual Momentum) -> (剔除共同风险后的特质动量)
+ │
+ ├── 2. 均值回归策略 (Mean-Reversion Strategies)
+ │   │   // 核心逻辑: 捕捉价格对均衡值的暂时性偏离与回归 (Reversion to a statistical mean)
+ │   │
+ │   ├── 2.1 统计套利 (Statistical Arbitrage)
+ │   │   ├── 2.1.1 方法论 (Methodologies)
+ │   │   │   ├── 基于距离/相关性 (Distance/Correlation)
+ │   │   │   ├── 协整分析 (Cointegration: Engle-Granger, Johansen)
+ │   │   │   ├── 主成分分析 (PCA)
+ │   │   │   └── 机器学习配对 (ML-based Pairing)
+ │   │   └── 2.1.2 应用场景 (Applications)
+ │   │       ├── 股票配对/篮子套利 (Pairs/Basket Trading)
+ │   │       ├── ETF与成分股套利 (ETF vs Constituents Arbitrage)
+ │   │       ├── 期现套利 (Cash-Futures Arbitrage)
+ │   │       └── 跨期/跨市价差套利 (Calendar/Inter-Exchange Spread)
+ │   │
+ │   ├── 2.2 短期价格反转 (Short-Term Price Reversal)
+ │   │   ├── 2.2.1 振荡指标超调 (Oscillator Overshoot)
+ │   │   │   ├── RSI/Stochastic/Williams %R 超买超卖
+ │   │   │   └── Z-Score/百分位偏离 (Z-Score/Percentile Deviation)
+ │   │   └── 2.2.2 日内/短期模式反转 (Intraday/Short-Term Patterns)
+ │   │       ├── 隔夜跳空缺口回补 (Overnight Gap Filling)
+ │   │       └── 布林带均值回归 (Bollinger Band Mean Reversion)
+ │   │
+ │   └── 2.3 相对价值回归 (Relative Value Convergence)
+ │       ├── 2.3.1 可转债套利 (Convertible Bond Arbitrage)
+ │       ├── 2.3.2 封闭式基金折价套利 (Closed-End Fund Discount)
+ │       └── 2.3.3 资本结构套利 (Capital Structure Arbitrage) -> (普通股 vs 优先股)
+ │
+ ├── 3. 风险溢价策略 (Risk Premia Harvesting)
+ │   │   // 核心逻辑: 系统性地承担特定风险以获取长期补偿 (Systematic risk exposure for compensation)
+ │   │
+ │   ├── 3.1 股权类风险溢价 (Equity Risk Premia / Factor Investing)
+ │   │   ├── 3.1.1 价值溢价 (Value) -> (P/E, P/B, EV/EBITDA, DCF)
+ │   │   ├── 3.1.2 规模溢价 (Size) -> (小市值公司)
+ │   │   ├── 3.1.3 质量溢价 (Quality) -> (高ROE, 低杠杆, 盈利稳定)
+ │   │   ├── 3.1.4 低波动溢价 (Low Volatility) -> (低Beta, 低特质波动率)
+ │   │   └── 3.1.5 动量溢价 (Momentum) -> (价格动量, 盈余动量)
+ │   │
+ │   ├── 3.2 波动率风险溢价 (Volatility Risk Premium)
+ │   │   ├── 3.2.1 隐含 vs 实现波动率 (IV vs RV)
+ │   │   │   ├── 系统性卖出期权 (Systematic Option Selling: Covered Call, Cash-Secured Put)
+ │   │   │   ├── 风险限定的卖方策略 (Defined-Risk Selling: Iron Condor, Butterfly)
+ │   │   │   └── 波动率指数产品交易 (VIX Futures/Options, VXX/UVXY)
+ │   │   └── 3.2.2 波动率结构套利 (Volatility Structure Arbitrage)
+ │   │       ├── 偏斜交易 (Skew Trading)
+ │   │       ├── 期限结构交易 (Term Structure Trading)
+ │   │       └── 跨资产波动率套利 (Cross-Asset Volatility Arbitrage)
+ │   │
+ │   └── 3.3 跨资产风险溢价 (Cross-Asset Risk Premia)
+ │       ├── 3.3.1 套息交易与展期收益 (Carry Trade & Roll Yield) -> (FX, 商品期货)
+ │       ├── 3.3.2 信用风险溢价 (Credit Risk Premium) -> (公司债 vs 国债)
+ │       ├── 3.3.3 流动性风险溢价 (Liquidity Risk Premium) -> (非流动资产折价)
+ │       └── 3.3.4 通胀风险溢价 (Inflation Risk Premium) -> (TIPS vs 名义债券)
+ │
+ ├── 4. 市场微观结构策略 (Market Microstructure Strategies)
+ │   │   // 核心逻辑: 利用交易机制、订单信息和速度优势盈利 (Exploiting market rules, order book information, and speed)
+ │   │
+ │   ├── 4.1 流动性供给 (Liquidity Provision)
+ │   │   └── 做市策略 (Market Making: Passive, Active, Statistical)
+ │   ├── 4.2 订单流预测 (Order Flow Prediction)
+ │   │   └── 订单簿分析 (Order Book Analysis: Imbalance, Toxicity)
+ │   ├── 4.3 流动性侦测 (Liquidity Detection)
+ │   │   └── 隐藏行为分析 (Hidden Action Analysis: Icebergs, Algo Detection, Dark Pools)
+ │   └── 4.4 延迟套利 (Latency Arbitrage)
+ │       └── 跨市场/数据源套利 (Cross-Exchange/Feed Arbitrage)
+ │
+ └── 5. 事件驱动与信息策略 (Event-Driven & Information-Based Strategies)
+     │   // 核心逻辑: 对各类信息的系统化、深度化、快速化反应 (Systematic reaction to information)
+     │
+     ├── 5.1 公司事件 (Corporate Events)
+     │   ├── 5.1.1 并购与重组 (M&A and Restructuring) -> (并购套利, SPAC套利, 破产重组)
+     │   ├── 5.1.2 财报事件 (Earnings Events) -> (发布前后漂移 PEAD, 业绩预告)
+     │   └── 5.1.3 资本运作事件 (Capital Actions) -> (回购, 增发, 分红, 股权激励)
+     │
+     ├── 5.2 监管与制度性事件 (Regulatory & Institutional Events)
+     │   ├── 5.2.1 指数调整套利 (Index Rebalancing)
+     │   └── 5.2.2 监管政策套利 (Regulatory Policy Arbitrage: 停复牌, 规则变动)
+     │
+     ├── 5.3 基本面量化 (Quantitative Fundamental)
+     │   ├── 5.3.1 因子工程 (Factor Engineering) -> (财务比率, 成长性, 盈利能力, ESG因子)
+     │   └── 5.3.2 深度基本面模型 (Deep Fundamental Models) -> (杜邦分析, DCF, Piotroski F-Score)
+     │
+     ├── 5.4 另类数据驱动 (Alternative Data-Driven)
+     │   ├── 5.4.1 文本挖掘 (NLP) -> (新闻情绪, 社交媒体, 研报/年报解析)
+     │   ├── 5.4.2 图像与地理数据 (Image & Geo-Data) -> (卫星图, 物流追踪)
+     │   └── 5.4.3 网络与交易数据 (Web & Transaction) -> (搜索趋势, 信用卡消费, 招聘信息)
+     │
+     └── 5.5 宏观量化 (Global Macro Quant)
+         ├── 5.5.1 经济周期模型 (Business Cycle Models)
+         ├── 5.5.2 货币/财政政策模型 (Monetary/Fiscal Policy Models)
+         └── 5.5.3 地缘政治风险模型 (Geopolitical Risk Models)
+```
+
+```
+量化知识框架
 │
 ├── 【第一层：理论基础】
 │   ├── 金融学理论
@@ -108,505 +229,3 @@
         ├── 量子计算
         └── DeFi量化
 ```
-
-```
-量化交易策略体系
-├── 1. 价格趋势策略 (Price Trend Strategies)
-│   ├── 1.1 时间序列动量
-│   │   ├── 移动平均线策略（SMA, EMA, WMA）
-│   │   ├── 通道突破策略（Donchian, Bollinger Bands）
-│   │   ├── 动量指标策略（RSI, MACD, Stochastic）
-│   │   └── 自适应趋势策略（KAMA, Fractal Adaptive）
-│   │
-│   ├── 1.2 横截面动量
-│   │   ├── 相对强度策略（Relative Strength）
-│   │   ├── 行业动量轮动
-│   │   ├── 因子动量策略
-│   │   └── 风格动量策略
-│   │
-│   ├── 1.3 趋势跟踪
-│   │   ├── CTA策略（管理期货）
-│   │   ├── 双均线系统
-│   │   ├── 海龟交易系统
-│   │   └── ATR通道策略
-│   │
-│   └── 1.4 突破策略
-│       ├── 支撑阻力突破
-│       ├── 波动率突破
-│       ├── 时间窗口突破
-│       └── 形态突破（三角形、旗形等）
-│
-├── 2. 价值回归策略 (Value Convergence Strategies)
-│   ├── 2.1 统计套利
-│   │   ├── 协整套利（Cointegration）
-│   │   ├── 主成分分析套利（PCA）
-│   │   ├── 机器学习配对（ML-based Pairs）
-│   │   └── 多因子中性化套利
-│   │
-│   ├── 2.2 配对交易
-│   │   ├── 行业内配对
-│   │   ├── 跨行业配对
-│   │   ├── ETF配对
-│   │   └── 期现配对
-│   │
-│   ├── 2.3 均值回归
-│   │   ├── Bollinger Bands回归
-│   │   ├── Z-Score策略
-│   │   ├── RSI超买超卖
-│   │   └── 隔夜缺口回补
-│   │
-│   └── 2.4 相对价值
-│       ├── 可转债套利
-│       ├── 封闭式基金套利
-│       ├── 跨市场价差套利
-│       └── 期限结构套利
-│
-├── 3. 结构性套利策略 (Structural Arbitrage Strategies)
-│   ├── 3.1 指数套利
-│   │   ├── 指数期现套利
-│   │   ├── ETF套利（申赎套利）
-│   │   ├── 指数成分股调整套利
-│   │   └── 跨市场指数套利
-│   │
-│   ├── 3.2 并购套利
-│   │   ├── 现金并购套利
-│   │   ├── 换股并购套利
-│   │   ├── 风险套利
-│   │   └── SPAC套利
-│   │
-│   ├── 3.3 资本结构套利
-│   │   ├── 可转债套利
-│   │   ├── 优先股套利
-│   │   ├── 资本重组套利
-│   │   └── 破产重组套利
-│   │
-│   └── 3.4 跨市场套利
-│       ├── 跨交易所套利
-│       ├── 跨币种套利
-│       ├── 跨时区套利
-│       └── 监管套利
-│
-├── 4. 风险溢价收割策略 (Risk Premium Harvesting)
-│   ├── 4.1 股权风险溢价
-│   │   ├── 价值因子（P/E, P/B, EV/EBITDA）
-│   │   ├── 质量因子（ROE, ROA, Accruals）
-│   │   ├── 动量因子（Price, Earnings Momentum）
-│   │   ├── 低波动率因子
-│   │   ├── 规模因子（市值）
-│   │   └── 多因子组合模型
-│   │
-│   ├── 4.2 波动率风险溢价
-│   │   ├── 期权卖出策略
-│   │   │   ├── Covered Call
-│   │   │   ├── Cash-Secured Put
-│   │   │   ├── Iron Condor
-│   │   │   └── Butterfly Spread
-│   │   ├── 波动率套利
-│   │   │   ├── 隐含vs实现波动率
-│   │   │   ├── 期限结构套利
-│   │   │   ├── Skew交易
-│   │   │   └── 相关性交易
-│   │   ├── VIX类产品交易
-│   │   │   ├── VIX期货策略
-│   │   │   ├── VXX/UVXY交易
-│   │   │   └── VIX期权策略
-│   │   └── 跨资产波动率
-│   │       ├── 股债波动率价差
-│   │       ├── 商品波动率交易
-│   │       └── FX波动率交易
-│   │
-│   ├── 4.3 流动性风险溢价
-│   │   ├── 小市值溢价
-│   │   ├── 非流动资产折价
-│   │   ├── 订单流不平衡
-│   │   └── 大宗交易折价
-│   │
-│   └── 4.4 跨资产风险溢价
-│       ├── 风险平价策略 (Risk Parity)
-│       │   ├── 等风险贡献（ERC）
-│       │   ├── 风险预算（Risk Budgeting）
-│       │   ├── 分层风险平价（HRP）
-│       │   └── 动态风险平价
-│       ├── Carry策略（利差交易）
-│       ├── Roll Yield策略
-│       ├── Credit风险溢价
-│       └── Inflation风险溢价
-│
-├── 5. 市场微观结构策略 (Market Microstructure Strategies)
-│   ├── 5.1 做市策略
-│   │   ├── 被动做市（Passive Market Making）
-│   │   ├── 主动做市（Active Market Making）
-│   │   ├── 统计做市（Statistical MM）
-│   │   └── 高频做市（HFT Market Making）
-│   │
-│   ├── 5.2 订单流策略
-│   │   ├── 订单流毒性分析
-│   │   ├── 订单簿不平衡
-│   │   ├── 大单拆分检测
-│   │   └── 订单流预测
-│   │
-│   ├── 5.3 延迟套利
-│   │   ├── 交易所间延迟套利
-│   │   ├── 地理位置套利
-│   │   ├── 技术延迟套利
-│   │   └── Feed延迟套利
-│   │
-│   └── 5.4 流动性侦测
-│       ├── 冰山订单检测
-│       ├── 算法交易侦测
-│       ├── 机构订单跟踪
-│       └── 暗池交易分析
-│
-└── 6. 基本面量化策略 (Fundamental Quantitative Strategies)
-    ├── 6.1 多因子选股
-    │   ├── 财务因子模型（ROE, ROA, FCF）
-    │   ├── 成长因子（Revenue Growth, EPS Growth）
-    │   ├── 估值因子（基本面角度的P/E, P/B）
-    │   ├── 盈利能力因子（毛利率、净利率）
-    │   ├── 分析师预期模型
-    │   ├── 管理层质量模型
-    │   └── ESG因子模型
-    │
-    ├── 6.2 事件驱动
-    │   ├── 财报事件
-    │   │   ├── 盈余公告效应
-    │   │   ├── 业绩预告策略
-    │   │   └── 财报后漂移
-    │   ├── 公司事件
-    │   │   ├── 股权激励
-    │   │   ├── 回购公告
-    │   │   ├── 分红策略
-    │   │   └── 增发配股
-    │   └── 监管事件
-    │       ├── 指数调整
-    │       ├── 停复牌套利
-    │       └── 政策套利
-    │
-    ├── 6.3 另类数据Alpha
-    │   ├── 文本数据
-    │   │   ├── 新闻情感分析
-    │   │   ├── 社交媒体挖掘
-    │   │   ├── 研报文本分析
-    │   │   └── 公告NLP解析
-    │   ├── 卫星数据
-    │   │   ├── 停车场车流
-    │   │   ├── 石油储量监测
-    │   │   └── 农作物预测
-    │   ├── 网络数据
-    │   │   ├── 搜索趋势
-    │   │   ├── 电商数据
-    │   │   ├── App使用数据
-    │   │   └── 招聘信息
-    │   └── IoT数据
-    │       ├── 物流追踪
-    │       ├── 信用卡消费
-    │       └── 移动设备定位
-    │
-    └── 6.4 宏观量化
-        ├── 经济周期模型
-        ├── 货币政策模型
-        ├── 通胀预期模型
-        └── 地缘政治模型
-
-实施维度（横向标签）
-├── A. 持仓周期
-│   ├── 超高频（<1秒）
-│   ├── 高频（1秒-1分钟）
-│   ├── 中频（1分钟-1天）
-│   ├── 日频（1天-1周）
-│   ├── 周频（1周-1月）
-│   └── 低频（>1月）
-│
-├── B. 资产类别
-│   ├── 权益类（股票、ETF）
-│   ├── 固定收益（债券、利率）
-│   ├── 商品（能源、金属、农产品）
-│   ├── 外汇（G10、新兴市场）
-│   ├── 数字资产（加密货币、DeFi）
-│   └── 衍生品（期权、期货、掉期）
-│
-└── C. 技术实现
-    ├── 传统统计方法
-    │   ├── 线性回归
-    │   ├── 时间序列分析
-    │   └── 协整分析
-    ├── 机器学习方法
-    │   ├── 监督学习（RF, XGBoost）
-    │   ├── 无监督学习（聚类、降维）
-    │   └── 集成学习
-    └── 深度学习方法
-        ├── CNN（图表识别）
-        ├── RNN/LSTM（序列预测）
-        ├── Transformer（NLP应用）
-        └── 强化学习（策略优化）
-```
-
-## 一、趋势跟踪策略体系
-### 1.1 移动平均线策略族
-- 简单移动平均线(SMA)策略及其变种
-- 指数移动平均线(EMA)策略及优化
-- 加权移动平均线(WMA)策略
-- 自适应移动平均线(AMA, KAMA)
-- 双移动平均线策略(Golden Cross, Death Cross)
-- 三重移动平均线策略
-- 移动平均线包络策略(MA Envelope)
-- 位移移动平均线策略(DMA)
-
-### 1.2 突破策略族
-- 价格突破策略(Price Breakout)
-- 成交量突破策略(Volume Breakout)
-- 唐奇安通道突破(Donchian Channel Breakout)
-- 布林带突破策略(Bollinger Bands Breakout)
-- 支撑阻力位突破策略
-- 枢轴点突破策略(Pivot Point Breakout)
-- 高低点突破策略(High-Low Breakout)
-- 盒型整理突破策略(Box Breakout)
-
-### 1.3 动量策略族
-- 相对强弱指数(RSI)动量策略
-- 随机指标(Stochastic)动量策略
-- 威廉指标(%R)策略
-- 动量指标(Momentum)策略
-- 变化率指标(ROC)策略
-- 商品通道指数(CCI)策略
-- 终极震荡指标(Ultimate Oscillator)
-- 钱德动量震荡指标(CMO)
-
-### 1.4 趋势强度测量策略
-- 平均方向性指数(ADX)策略
-- 抛物线SAR策略
-- 趋势线策略及自动化实现
-- 线性回归趋势策略
-- 移动平均收敛发散(MACD)策略及变种
-- 价格震荡指数(PPO)策略
-
-## 二、均值回归策略体系
-### 2.1 统计套利策略族
-- 配对交易(Pairs Trading)策略
-- 三元组套利(Triplets Trading)
-- 篮子套利(Basket Trading)
-- ETF套利策略
-- 期现套利策略
-- 跨期套利策略
-- 跨市套利策略
-- 指数套利策略
-
-### 2.2 均值回归指标策略
-- 布林带均值回归策略
-- 相对强弱指数(RSI)超买超卖策略
-- 随机指标超买超卖策略
-- 威廉指标极值策略
-- Z-Score策略
-- 百分位数策略(Percentile Strategy)
-
-### 2.3 协整策略族
-- 两步恩格尔-格兰杰协整
-- 约翰森协整检验策略
-- 误差修正模型(ECM)策略
-- 向量误差修正模型(VECM)策略
-- 门槛协整策略
-- 非线性协整策略
-
-## 三、套利策略体系
-### 3.1 无风险套利策略
-- 期现套利(Cash and Carry Arbitrage)
-- 跨期套利(Calendar Spread Arbitrage)
-- 跨市套利(Cross-Market Arbitrage)
-- 转换套利(Conversion Arbitrage)
-- 反向转换套利(Reversal Arbitrage)
-- 盒式套利(Box Spread)
-- 股息套利策略
-
-### 3.2 统计套利策略
-- 相对价值策略
-- 长短仓策略(Long-Short Equity)
-- 市场中性策略
-- 行业轮动策略
-- 因子暴露套利
-- 波动率套利策略
-
-### 3.3 跨资产套利策略
-- 股债轮动策略
-- 商品-股票套利
-- 外汇套利策略
-- 利率套利策略
-- 可转债套利策略
-- 期权套利策略组合
-
-## 四、高频交易策略体系
-### 4.1 市场微观结构策略
-- 买卖价差策略(Bid-Ask Spread)
-- 订单簿不平衡策略
-- 流动性提供策略(Market Making)
-- 流动性获取策略(Liquidity Taking)
-- 冰山订单检测策略
-- 大单跟踪策略
-
-### 4.2 延迟套利策略
-- 信息传播延迟套利
-- 跨交易所延迟套利
-- 数据源延迟套利
-- 网络延迟套利
-- 地理套利策略
-
-### 4.3 事件驱动高频策略
-- 新闻事件高频策略
-- 财报发布高频策略
-- 央行公告高频策略
-- 经济数据发布策略
-- 期权到期日策略
-
-## 五、机器学习策略体系
-### 5.1 监督学习策略
-- 线性回归预测策略
-- 逻辑回归分类策略
-- 决策树策略
-- 随机森林策略
-- 梯度提升策略(XGBoost, LightGBM)
-- 支持向量机(SVM)策略
-- 神经网络策略
-- 集成学习策略
-
-### 5.2 无监督学习策略
-- K-means聚类策略
-- 层次聚类策略
-- 主成分分析(PCA)策略
-- 独立成分分析(ICA)策略
-- 自组织映射(SOM)策略
-- 异常检测策略
-
-### 5.3 深度学习策略
-- 卷积神经网络(CNN)图表识别策略
-- 长短期记忆网络(LSTM)时序预测策略
-- 门控循环单元(GRU)策略
-- 自编码器(Autoencoder)策略
-- 生成对抗网络(GAN)策略
-- Transformer模型策略
-- 注意力机制策略
-
-### 5.4 强化学习策略
-- Q-Learning策略
-- 深度Q网络(DQN)策略
-- 策略梯度方法
-- Actor-Critic策略
-- PPO策略
-- DDPG策略
-- 多智能体强化学习策略
-
-## 六、基本面量化策略体系
-### 6.1 财务指标策略
-- 价值因子策略(P/E, P/B, P/S等)
-- 成长因子策略(ROE, ROA, 营收增长等)
-- 质量因子策略(财务稳定性指标)
-- 盈利能力因子策略
-- 杠杆因子策略
-- 现金流因子策略
-
-### 6.2 多因子模型策略
-- Fama-French三因子模型
-- Fama-French五因子模型
-- Carhart四因子模型
-- 自定义多因子模型
-- 因子选择和权重优化
-- 因子暴露度控制
-
-### 6.3 另类数据策略
-- 新闻情感分析策略
-- 社交媒体情绪策略
-- 卫星图像数据策略
-- 专利数据策略
-- 供应链数据策略
-- 经济政策不确定性指数策略
-- 搜索热度策略
-- 期权隐含波动率策略
-
-## 七、宏观策略体系
-### 7.1 货币政策策略
-- 利率预期策略
-- 收益率曲线策略
-- 央行政策套利
-- 通胀保护策略
-
-### 7.2 全球宏观策略
-- 汇率策略
-- 大宗商品策略
-- 全球股债轮动
-- 地缘政治策略
-- 主权债务策略
-
-## 八、波动率策略体系
-### 8.1 历史波动率策略
-- 历史波动率均值回归策略
-- 波动率突破策略
-- 波动率聚集效应策略
-- GARCH模型预测策略
-- 已实现波动率策略
-
-### 8.2 隐含波动率策略
-- 波动率偏斜策略
-- 期限结构策略
-- 波动率微笑策略
-- VIX相关策略
-- 波动率套利策略
-
-### 8.3 波动率交易策略
-- 跨式策略(Straddle)
-- 宽跨式策略(Strangle)
-- 蝶式策略(Butterfly)
-- 铁鹰策略(Iron Condor)
-- 日历价差策略
-- 波动率互换策略
-
-## 九、期权策略体系
-### 9.1 方向性期权策略
-- 买入看涨期权策略
-- 买入看跌期权策略
-- 牛市价差策略
-- 熊市价差策略
-- 比率价差策略
-
-### 9.2 中性期权策略
-- Delta中性策略
-- Gamma中性策略
-- Theta策略
-- Vega中性策略
-- 铁鹰式策略
-
-### 9.3 动态对冲策略
-- Delta对冲策略
-- Gamma对冲策略
-- 组合保险策略(CPPI)
-- 动态风险平价策略
-
-## 十、策略组合与风险管理
-### 10.1 多策略组合框架
-- 策略筛选与评估
-- 资产配置与权重优化 (例如均值-方差优化, Black-Litterman)
-- 组合多样化与再平衡
-- 流动性管理
-
-### 10.2 动态风险管理
-- 风险预算与分配
-- 止损策略 (固定止损, 跟踪止损, 时间止损)
-- 头寸规模控制 (Kelly公式, 固定分数法)
-- VaR (Value at Risk) 与 CVaR (Conditional VaR)
-- 压力测试与情景分析
-- 对冲策略 (期权对冲, 期货对冲)
-- 黑天鹅事件应对
-
-## 十一、业绩评估与归因
-### 11.1 策略评估框架
-- 收益率指标 (年化收益, Alpha, Beta)
-- 风险调整后收益指标 (Sharpe比率, Sortino比率, Calmar比率, Treynor比率)
-- 最大回撤 (Max Drawdown)
-- 胜率与盈亏比
-- 信息比率 (Information Ratio)
-- Skewness 与 Kurtosis
-- 交易成本分析
-
-### 11.2 业绩归因分析
-- Brinson模型
-- 因子归因
-- 择时能力与选股能力分析
-- 与基准比较
-- 稳健性分析 (参数敏感性, 过度拟合检验)
