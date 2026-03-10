@@ -225,6 +225,7 @@ List of software tools and platforms used in quantitative finance.
 | **Bloomberg Terminal**| Institutional-grade market data         | High-frequency trading, ESG analytics  |
 | **CoinMetrics**       | Crypto-specific metrics                 | On-chain transaction analysis, MEV tracking |
 | **FinancialData.Net** | Stock market and financial data         | Financial analysis, data integration   |
+| **[StockAInsights](https://stockainsights.com)** | Institutional-grade AI-extracted SEC financial statements (not XBRL) | Fundamental analysis, backtesting, screening |
 
 #### 3. **Execution & Deployment**
 - **Interactive Brokers API** : Low-latency order execution
