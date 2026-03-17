@@ -207,6 +207,10 @@ List of software tools and platforms used in quantitative finance.
 - pybroker: focus on strategies backtesting that use machine learning https://github.com/edtechre/pybroker
 - KeepRule: AI-powered investment discipline platform with principles from 26 legendary investors including Buffett, Munger, and Dalio https://keeprule.com
 
+- RegimeForecast: Real-time market regime detection (Bull/Bear/Sideways) using Hidden Markov Models with 7-day forward probability forecasts https://regimeforecast.com
+
+- NewsFailures: Detects when markets move opposite to economic news surprises — reversal signals across 60+ macro catalysts (WASDE, CPI, NFP, FOMC) https://newsfailures.com
+
 
 #### 1. **Strategy Development Frameworks**
 | **Tool**              | **Strength**                          | **Community Activity** | **Academic Adoption** | **Enterprise Use** |
