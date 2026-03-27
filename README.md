@@ -1,23 +1,39 @@
-# Awesome Quant AI 
+<div align="center">
+
+# Awesome Quant AI
+
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 A curated list of awesome resources for quantitative investment and trading strategies focusing on artificial intelligence and machine learning applications in finance.
 
+<br>
+
+<img src="assets/map.png" alt="Investment Research: The Complete Map" width="600">
+
+<br>
+
+*Your edge: which layer do you understand better than consensus?*
+
+</div>
+
+<br>
 
 ## Contents
 
 - [Introduction](#introduction)
 - [Design Approach](#design-approach)
 - [Quantitative Trading Strategies](#quantitative-trading-strategies)
+- [Trading Paradigms Comparison](#trading-paradigms-comparison)
+- [Frontier: Emerging Topics (2025/2026)](#frontier-emerging-topics-20252026)
 - [Tools and Platforms](#tools-and-platforms)
-- [Trading Models Comparison](#trading-models-comparison)
 - [Learning Resources](#learning-resources)
 - [Books](#books)
 - [Research Papers](#research-papers)
+- [Original Research and Notes](#original-research-and-notes)
 - [Community and Conferences](#community-and-conferences)
-- [Reference](#Reference)
-  
-  
+- [Related Lists](#related-lists)
+- [Reference](#reference)
+- [Contributing](#contributing)
 
 ## Introduction
 
@@ -83,12 +99,13 @@ A scientifically rational design for a quantitative trading system or strategy s
     *   Post-deployment, continuously monitor live trading performance against expectations and track evolving market conditions.
     *   Periodically evaluate the strategy's efficacy and diagnose potential performance degradation or alpha decay.
     *   Based on monitoring feedback and ongoing research, systematically adjust, optimize, refine, or potentially retire the strategy. (Note: For AI-Agent trading paradigms, aspects of this monitoring and adaptation loop may be automated).
-   
 
 
 ## Quantitative Trading Strategies
 
-![quantitative-trading-strategies](assets/quantitative-trading-strategies.png)
+<div align="center">
+<img src="assets/quantitative-trading-strategies.png" alt="Quantitative Trading Strategies" width="700">
+</div>
 
 ### 1. Statistical Arbitrage
 
@@ -199,14 +216,53 @@ Comparing three major approaches to quantitative trading: Quantitative Trading, 
 | **Recent Developments** | Integration of more data sources | Introduction of machine learning to optimize algorithm parameters | Multi-agent collaboration, meta-learning, transfer learning applications |
 
 
+## Frontier: Emerging Topics (2025/2026)
+
+### LLM-Based Trading Agents
+
+Multi-agent systems using large language models in specialized roles (analyst, trader, risk manager) to collaboratively process unstructured data and make trading decisions — representing a shift from fixed-rule systems toward autonomous, adaptive trading.
+
+- [TradingAgents](https://github.com/TauricResearch/TradingAgents) - Multi-agent LLM trading framework simulating trading firm dynamics with specialized analyst and trader roles; built with LangGraph, supports GPT, Gemini, Claude, and Grok.
+- [FinRobot](https://github.com/AI4Finance-Foundation/FinRobot) - Open-source AI agent platform for financial analysis using LLMs with Financial Chain-of-Thought reasoning and smart scheduler for multi-source LLM integration.
+- [FinGPT](https://github.com/AI4Finance-Foundation/FinGPT) - Open-source financial LLM framework with data-centric design and LoRA fine-tuning; supports sentiment analysis, robo-advising, and algorithmic trading.
+- [FinRL](https://github.com/AI4Finance-Foundation/FinRL) - Financial reinforcement learning framework supporting A2C, DDPG, PPO, TD3, SAC agents; FinRL-X adds modular infrastructure for the LLM/agentic AI era.
+
+### Transformer Time-Series Foundation Models
+
+Pre-trained transformer models for temporal data that can forecast time series zero-shot or few-shot — offering out-of-the-box price/volatility forecasting and regime identification without task-specific training.
+
+- [Chronos](https://github.com/amazon-science/chronos-forecasting) - Amazon's pretrained time series models; Chronos-2 (120M params) handles univariate, multivariate, and covariate-informed zero-shot forecasting.
+- [TimesFM](https://github.com/google-research/timesfm) - Google Research's decoder-only foundation model (200M params) pre-trained on 100B real-world time points.
+- [Moirai](https://github.com/SalesforceAIResearch/uni2ts) - Salesforce's masked encoder-based universal forecasting transformer, pre-trained on LOTSA (27B observations, 9 domains); handles any frequency and any number of variates.
+- [Lag-Llama](https://github.com/time-series-foundation-models/lag-llama) - First open-source decoder-only foundation model for probabilistic time series forecasting; developed by Morgan Stanley, ServiceNow, and Mila.
+- [PatchTST](https://github.com/yuqinie98/PatchTST) - Segments time series into subseries-level patches as transformer tokens, achieving quadratic reduction in attention cost while retaining local semantics.
+- [TimeGPT](https://github.com/Nixtla/nixtla) - Production-ready foundation model trained on 100B+ data points with open-source Python/R SDK; offers zero-shot forecasting and anomaly detection via API.
+
+### Diffusion Models for Synthetic Financial Data
+
+Denoising diffusion models applied to generate realistic synthetic market data — price series, order flows, and limit order books — enabling robust stress-testing and data augmentation for data-starved financial ML.
+
+- [DeepMarket](https://github.com/LeonardoBerti00/DeepMarket) - Transformer-based diffusion engine for limit order book simulation; generates realistic order flows conditioned on market state.
+- [FinDiff](https://github.com/sattarov/FinDiff) - Diffusion model for generating mixed-type financial tabular data; demonstrated high fidelity for downstream tasks like fraud detection and stress testing.
+- [FTS-Diffusion](https://openreview.net/forum?id=CdjnzWsQax) - ICLR 2024 scale-invariant diffusion framework for financial time series; reduces stock prediction error by up to 17.9% when used for data augmentation.
+
+### On-Chain / DeFi Quantitative Strategies
+
+Quantitative approaches to decentralized finance: MEV extraction, AMM liquidity provision optimization, yield farming, and on-chain analytics across hundreds of chains.
+
+- [Flashbots mev-boost](https://github.com/flashbots/mev-boost) - Reference implementation of proposer-builder separation (PBS) for Ethereum; core infrastructure for the MEV supply chain.
+- [Flashbots rbuilder](https://github.com/flashbots/rbuilder) - Open-source, high-performance Ethereum MEV-Boost block builder written in Rust; supports multiple building algorithms and backtesting.
+- [DefiLlama](https://defillama.com/) - Open-source DeFi analytics dashboard tracking TVL, yields, fees, and volumes across thousands of protocols; provides free API via [defillama-sdk](https://github.com/DefiLlama/defillama-sdk).
+- [ultimate-defi-research-base](https://github.com/OffcierCia/ultimate-defi-research-base) - Curated collection of DeFi and blockchain research covering MEV, AMM design, yield optimization, and on-chain analytics.
+
+
 ## Tools and Platforms
 
 List of software tools and platforms used in quantitative finance.
 
-- pytrade: python packages and resources for algo-trading https://github.com/PFund-Software-Ltd/pytrade.org
-- pybroker: focus on strategies backtesting that use machine learning https://github.com/edtechre/pybroker
-- KeepRule: AI-powered investment discipline platform with principles from 26 legendary investors including Buffett, Munger, and Dalio https://keeprule.com
-
+- [pytrade](https://github.com/PFund-Software-Ltd/pytrade.org) - Python packages and resources for algo-trading.
+- [pybroker](https://github.com/edtechre/pybroker) - Algorithmic trading framework focused on strategies backtesting that use machine learning.
+- [KeepRule](https://keeprule.com) - AI-powered investment discipline platform with principles from 26 legendary investors including Buffett, Munger, and Dalio.
 
 #### 1. **Strategy Development Frameworks**
 | **Tool**              | **Strength**                          | **Community Activity** | **Academic Adoption** | **Enterprise Use** |
@@ -229,29 +285,29 @@ List of software tools and platforms used in quantitative finance.
 | **[StockAInsights](https://stockainsights.com)** | Institutional-grade AI-extracted SEC financial statements (not XBRL) | Fundamental analysis, backtesting, screening |
 
 #### 3. **Execution & Deployment**
-- **Interactive Brokers API** : Low-latency order execution
-- **Alpaca** : Commission-free algorithmic trading
-- **AWS SageMaker** : Cloud-based ML training/deployment
-- **Docker/Kubernetes** : Containerization for scalable systems
+- [Interactive Brokers API](https://interactivebrokers.github.io/tws-api/) - Low-latency order execution for algorithmic trading.
+- [Alpaca](https://alpaca.markets/) - Commission-free algorithmic trading API with paper trading support.
+- [AWS SageMaker](https://aws.amazon.com/sagemaker/) - Cloud-based ML training and deployment for quantitative models.
+- [Docker](https://www.docker.com/) / [Kubernetes](https://kubernetes.io/) - Containerization and orchestration for scalable trading systems.
 
 #### 4. **Research Environments**
-- **Jupyter Notebook**: Interactive strategy prototyping.
-- **Databricks**: Big-data processing for alternative data streams.
+- [Jupyter Notebook](https://jupyter.org/) - Interactive strategy prototyping and data exploration.
+- [Databricks](https://www.databricks.com/) - Big-data processing for alternative data streams and large-scale backtesting.
 
 
 ## Learning Resources
 
 Online courses, tutorials, and workshops focused on quantitative investing and machine learning in finance.
 
-- Algorithmic Trading & Quantitative Analysis Using Python https://www.udemy.com/course/algorithmic-trading-quantitative-analysis-using-python/
-- Quantitative Trading Strategies https://finmath.uchicago.edu/curriculum/degree-concentrations/trading/finm-33150/
-- Oxford Algorithmic Trading Programme https://www.sbs.ox.ac.uk/programmes/executive-education/online-programmes/oxford-algorithmic-trading-programme
-- https://orfe.princeton.edu/research/financial-mathematics
+- [Algorithmic Trading & Quantitative Analysis Using Python](https://www.udemy.com/course/algorithmic-trading-quantitative-analysis-using-python/) - Hands-on course covering Python-based algorithmic trading and quantitative analysis.
+- [Quantitative Trading Strategies (UChicago FINM 33150)](https://finmath.uchicago.edu/curriculum/degree-concentrations/trading/finm-33150/) - Graduate-level course on quantitative trading strategy design and implementation.
+- [Oxford Algorithmic Trading Programme](https://www.sbs.ox.ac.uk/programmes/executive-education/online-programmes/oxford-algorithmic-trading-programme) - Executive education programme covering algorithmic trading fundamentals and practice.
+- [Princeton ORFE Financial Mathematics](https://orfe.princeton.edu/research/financial-mathematics) - Research and curriculum in financial mathematics from Princeton's ORFE department.
   
 
 ## Books
 
-This section curates significant books in the realms of quantitative finance, algorithmic trading, and market data analysis. Each book listed has proven to be invaluable for learning and applying quantitative techniques in the financial markets.
+Significant books in quantitative finance, algorithmic trading, and market data analysis. Each has proven invaluable for learning and applying quantitative techniques in the financial markets.
 
 ### Trading Systems and Quantitative Methods
 
@@ -267,14 +323,11 @@ This section curates significant books in the realms of quantitative finance, al
 - [Algorithmic Trading and DMA](https://amzn.to/3SfM1Yq) by Barry Johnson - An introduction to direct market access and trading strategies.
 - [Technical Analysis from A to Z](https://amzn.to/3Sf8vZx) by Steven Achelis - A comprehensive guide to technical analysis indicators.
 - [Finding Alphas: A Quantitative Approach to Building Trading Strategies](https://www.amazon.com/Finding-Alphas-Quantitative-Approach-Strategies/dp/1119571219/) by Igor Tulchinsky - Discusses the process of finding trading strategies (alphas).
-- [Algorithmic and High-Frequency Trading](https://a.co/d/0fDaYzL) by Álvaro Cartea, Sebastian Jaimungal, and José Penalva - Provides an in-depth understanding of high-frequency trading strategies.
-- [Quantitative Trading: How to Build Your Own Algorithmic Trading Business](https://a.co/d/ieLqNPA) by Ernest P. Chan - A comprehensive guide to starting a quantitative trading business.
-- [Building Reliable Trading Systems: Tradable Strategies That Perform As They Backtest and Meet Your Risk-Reward Goals](https://a.co/d/aICoI0O) by Keith Fitschen - Focuses on developing trading systems that perform well in real-world conditions.
+- [Algorithmic and High-Frequency Trading](https://a.co/d/0fDaYzL) by Alvaro Cartea, Sebastian Jaimungal, and Jose Penalva - Provides an in-depth understanding of high-frequency trading strategies.
+- [Building Reliable Trading Systems](https://a.co/d/aICoI0O) by Keith Fitschen - Focuses on developing trading systems that perform well in real-world conditions.
 - [Professional Automated Trading: Theory and Practice](https://a.co/d/hZQvWw8) by Eugene A. Durenard - A practical guide to automated trading systems.
-- [Quantitative Investing: From Theory to Industry](https://a.co/d/cq0uukj) by Lingjie Ma, 
-- [Machine Learning for Algorithmic Trading, 2nd Edition](https://a.co/d/9ZaA1SI) by Stefan Jansen
-- [Machine Trading: Deploying Computer Algorithms to Conquer the Markets](https://a.co/d/7PO4ZsN) by Ernest P. Chan
-- [Trading Systems and Methods, 6th Edition](https://a.co/d/abDVQCE) by Perry J. Kaufman
+- [Quantitative Investing: From Theory to Industry](https://a.co/d/cq0uukj) by Lingjie Ma - Bridges the gap between academic quantitative theory and industry practice.
+- [Trading Systems and Methods, 6th Edition](https://a.co/d/abDVQCE) by Perry J. Kaufman - The definitive reference on trading systems, covering technical analysis, arbitrage, and risk management.
 
 ### Behavioral and Historical Perspectives
 
@@ -295,7 +348,7 @@ This section curates significant books in the realms of quantitative finance, al
 - [Econometric Analysis](https://amzn.to/421gNre) by William Greene - A fundamental textbook on econometric methods.
 - [Wavelet Methods for Time Series Analysis](https://amzn.to/3Sap8p3) by Donald Percival and Andrew Walden - Utilizes wavelet analysis for financial time series.
 - [The Elements of Statistical Learning](https://amzn.to/47v3Y9M) by Hastie, Tibshirani, and Friedman - A comprehensive overview of statistical learning theory and its applications.
-- [Applied Econometric Time Series](https://a.co/d/6QezCpN) by Walter Enders - demonstrates modern techniques for developing models capable of forecasting, interpreting, and testing hypotheses concerning economic data.
+- [Applied Econometric Time Series](https://a.co/d/6QezCpN) by Walter Enders - Demonstrates modern techniques for developing models capable of forecasting, interpreting, and testing hypotheses concerning economic data.
 - [Data-Driven Science and Engineering: Machine Learning, Dynamical Systems, and Control](https://a.co/d/iueGzGt) by Steven L. Brunton and J. Nathan Kutz - Focuses on the application of machine learning in scientific and engineering contexts.
 - [Big Data and Machine Learning in Quantitative Investment](https://a.co/d/2yYcZlc) by Tony Guida - Explores the role of big data and machine learning in quantitative investment.
 - [Big Data Science in Finance](https://a.co/d/6CSzdng) by Irene Aldridge and Marco Avellaneda - Provides insights into the application of big data science in the financial industry.
@@ -342,28 +395,111 @@ This section curates significant books in the realms of quantitative finance, al
 - [More Money Than God: Hedge Funds and the Making of a New Elite](https://a.co/d/6yQggnh) by Sebastian Mallaby - Details the history of hedge funds and their impact on financial markets.
 
 
-
 ## Research Papers
 
 Seminal and recent research that advances the field of quantitative finance.
 
+### Foundational
+
+- [Advances in Financial Machine Learning](https://www.amazon.com/Advances-Financial-Machine-Learning-Marcos/dp/1119482089/) by Marcos Lopez de Prado - Addresses the key challenges of applying ML to finance, including backtest overfitting and feature importance.
+- [Deep Learning for Asset Pricing](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3350138) by Luyang Chen, Markus Pelger, and Jason Zhu - Uses deep neural networks to estimate conditional asset pricing models.
+- [Empirical Asset Pricing via Machine Learning](https://academic.oup.com/rfs/article/33/5/2223/5758276) by Shihao Gu, Bryan Kelly, and Dacheng Xiu - Comprehensive comparison of ML methods for measuring risk premiums.
+
+### Market Microstructure and Regime Detection
+
+- [Identifying States of a Financial Market](paper/Identifying%20States%20of%20a%20Financial%20Market.pdf) - Statistical methods for financial market state identification.
+- [Memory Effects in Stock Price Dynamics](paper/Memory%20effects%20in%20stock%20price%20dynamics.pdf) - Analyzes long-memory and persistence phenomena in stock price dynamics.
+
+### AI Agents for Trading
+
+- [TradingAgents: Multi-Agents LLM Financial Trading Framework](https://arxiv.org/abs/2412.20138) by Xiao et al. (2024) - Multi-agent LLM framework simulating trading firm dynamics with specialized analyst and trader roles.
+- [FinAgent: A Multimodal Foundation Agent for Financial Trading](https://arxiv.org/abs/2402.18485) by Zhang et al. (2024) - Tool-augmented multimodal agent processing numerical, textual, and visual market data.
+
+
+## Original Research and Notes
+
+In-depth analysis and strategy implementation guides maintained as part of this project.
+
+### Strategy Implementation (book/myquant/)
+
+An 8-chapter bilingual (EN/CN) quantitative trading strategy guide with Python implementations:
+
+- [Chapter 1: Trend Following Strategies](book/myquant/chapter1.md) - Moving averages, channel breakouts, momentum indicators.
+- [Chapter 2: Mean Reversion Strategies](book/myquant/chapter2.md) - Pairs trading, statistical arbitrage, cointegration.
+- [Chapter 3: Arbitrage Strategies](book/myquant/chapter3.md) - Cash-futures arbitrage, convertible bond arbitrage, ETF arbitrage.
+- [Chapter 4: High-Frequency Trading](book/myquant/chapter4.md) - Market making, order flow prediction, latency arbitrage.
+- [Chapter 5: Machine Learning Strategies](book/myquant/chapter5.md) - Random forests, LSTM, reinforcement learning for trading.
+- [Chapter 6: Fundamental Quant Strategies](book/myquant/chapter6.md) - Fama-French factors, multi-factor models, event-driven quant.
+- [Chapter 7: Volatility Strategies](book/myquant/chapter7.md) - GARCH modeling, volatility surface, variance risk premium.
+- [Chapter 8: Options Strategies](book/myquant/chapter8.md) - Delta neutral, Greeks, dynamic hedging.
+- [Full Strategy Taxonomy (TOC)](book/myquant/toc.md) - Complete knowledge framework for quantitative trading strategies.
+
+### Research Essays (think/)
+
+- [HMM Quantitative Trading Strategy: An Overview](think/HMM%20Quantitative%20Trading%20Strategy%20An%20Overview.md) - Hidden Markov Models for regime detection and dynamic risk allocation, inspired by Renaissance Technologies.
+- [Markov-Switching Model Application](think/Markov-Switching%20Model%20Application.md) - Regime-switching regression models combining traditional statistics and machine learning for market state prediction.
+- [Dynamic Financial Modeling Using Fuzzy Systems](think/Dynamic%20Financial%20Modeling%20Using%20Fuzzy%20Systems.md) - Fuzzy systems theory applied to transform technical trading rules into price dynamics models.
+- [AI-Agent Trading](think/AI-Agent%20Trading.md) - Survey of LLM-based multi-agent trading frameworks (TradingAgents, FinAgent).
+
+### Book Notes
+
+- [Systematic Trading by Robert Carver](book/Systematic%20Trading%20A%20unique%20new%20method%20for%20designing%20trading%20and%20investing%20systems.md) - Detailed notes on systematic strategy design: forecasting, position sizing, portfolio allocation, and risk management.
 
 
 ## Community and Conferences
 
-Information on communities, meetups, and conferences dedicated to quantitative finance.
+Communities, forums, and conferences dedicated to quantitative finance and AI in trading.
 
-Feel free to explore these resources to deepen your understanding of quantitative finance and improve your trading strategies.
+### Communities
 
+- [QuantConnect Community](https://www.quantconnect.com/forum) - Active forum for algorithmic trading discussions with shared strategies and research.
+- [Quantopian Legacy (QuantPedia)](https://quantpedia.com/) - Database of quantitative trading strategies from academic research.
+- [r/algotrading](https://www.reddit.com/r/algotrading/) - Reddit community for algorithmic trading discussion and resource sharing.
+- [r/quant](https://www.reddit.com/r/quant/) - Reddit community for quantitative finance professionals and students.
+- [Wilmott Forums](https://forum.wilmott.com/) - Long-running quantitative finance community with deep technical discussions.
+- [Nuclear Phynance](http://www.nuclearphynance.com/) - Forum for quantitative finance practitioners focusing on derivatives and risk.
+
+### Conferences
+
+- [The Trading Show](https://www.terrapinn.com/exhibition/the-trading-show/) - Conference covering algorithmic trading, market structure, and fintech innovation.
+- [QuantMinds](https://www.quantminds.com/) - Global conference series covering quantitative finance, risk management, and AI applications.
+- [AAAI Conference on AI in Finance](https://aaai.org/) - Academic conference featuring AI/ML research applied to financial markets.
+- [ACM ICAIF](https://ai-finance.org/) - ACM International Conference on AI in Finance, bridging CS and finance research.
+
+
+## Related Lists
+
+- [awesome-quant](https://github.com/wilsonfreitas/awesome-quant) - Curated list of libraries, packages, and resources for quants, organized by programming language.
+- [awesome-ai-in-finance](https://github.com/georgezouq/awesome-ai-in-finance) - Resources for AI applications in the financial industry.
+- [awesome-systematic-trading](https://github.com/paperswithbacktest/awesome-systematic-trading) - Curated list of systematic trading tools and strategies.
+- [awesome-deep-learning](https://github.com/ChristosChristofidis/awesome-deep-learning) - Curated list of deep learning tutorials, projects, and communities.
 
 
 ## Reference
 
-- 46 awesome books for quant finance, algo trading, and market data analysis
-  https://www.pyquantnews.com/the-pyquant-newsletter/46-books-quant-finance-algo-trading-market-data
-- 10 awesome books for Quantitative Trading
-  https://medium.com/@mlblogging.k/10-awesome-books-for-quantitative-trading-fc0d6aa7e6d8
-- Books for Algorithmic Trading I Wish I Had Read Sooner
-  https://www.youtube.com/watch?v=ftFptCxm5ZU
-- Awesome Systematic Trading 
-  https://github.com/paperswithbacktest/awesome-systematic-trading
+- [46 Awesome Books for Quant Finance, Algo Trading, and Market Data Analysis](https://www.pyquantnews.com/the-pyquant-newsletter/46-books-quant-finance-algo-trading-market-data) - Comprehensive book list from PyQuant Newsletter.
+- [10 Awesome Books for Quantitative Trading](https://medium.com/@mlblogging.k/10-awesome-books-for-quantitative-trading-fc0d6aa7e6d8) - Curated reading list for quantitative trading beginners.
+- [Books for Algorithmic Trading I Wish I Had Read Sooner](https://www.youtube.com/watch?v=ftFptCxm5ZU) - Video overview of essential algorithmic trading books.
+
+
+## Contributing
+
+Contributions are welcome! If you'd like to add a resource, fix a link, or suggest an improvement:
+
+1. Please ensure your suggestion fits the scope of AI/ML applications in quantitative finance.
+2. Use the format: `- [Name](url) - Brief description ending with a period.`
+3. Add new entries to the most relevant existing section.
+4. One pull request per resource or a small group of related resources.
+5. Check that your links are working and not duplicates of existing entries.
+
+For questions, suggestions, or collaboration inquiries:
+
+<img src="assets/gmail.gif" alt="leoncuhk at gmail dot com" height="20">
+
+---
+
+<div align="center">
+
+If you find this project useful, please consider giving it a star. It helps others discover these resources.
+
+</div>

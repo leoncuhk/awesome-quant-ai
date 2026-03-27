@@ -273,6 +273,10 @@ class VolatilityTradingStrategy:
 
 ### 9.1 利率策略
 
+```python
+import pandas as pd
+import numpy as np
+
 class InterestRateStrategy:
     def __init__(self):
         self.yield_curve_data = {}
@@ -345,9 +349,11 @@ class InterestRateStrategy:
         portfolio_weights['short_bond'] = w_short
         
         return portfolio_weights
+```
 
 ### 9.2 汇率策略
 
+```python
 class CurrencyStrategy:
     def __init__(self):
         self.currency_pairs = {}
@@ -433,10 +439,14 @@ class CurrencyStrategy:
                                                np.where(low_vol_regime, momentum_signal, 0))
         
         return signals
+```
 
 ## 十、策略组合与风险管理
 
 ### 10.1 多策略组合框架
+
+```python
+import scipy.optimize as optimize
 
 class MultiStrategyPortfolio:
     def __init__(self, max_allocation_per_strategy=0.3):
@@ -539,9 +549,11 @@ class MultiStrategyPortfolio:
             'max_drawdown': max_drawdown,
             'calmar_ratio': annual_return / abs(max_drawdown)
         }
+```
 
 ### 10.2 动态风险管理
 
+```python
 class DynamicRiskManager:
     def __init__(self, target_volatility=0.15, lookback_window=60):
         self.target_volatility = target_volatility
@@ -601,11 +613,13 @@ class DynamicRiskManager:
         controlled_returns = returns * position_multiplier.shift(1)
         
         return controlled_returns, position_multiplier
+```
 
 ## 十一、业绩评估与归因
 
 ### 11.1 策略评估框架
 
+```python
 class StrategyEvaluator:
     def __init__(self):
         self.benchmark_return = 0.03  # 无风险收益率
@@ -684,4 +698,4 @@ class StrategyEvaluator:
             rolling_metrics.iloc[i]['rolling_max_drawdown'] = drawdown.min()
         
         return rolling_metrics
-    
+```
