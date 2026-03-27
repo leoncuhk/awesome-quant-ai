@@ -80,35 +80,35 @@ class VolatilitySurfaceStrategy:
         """计算隐含波动率"""
         from scipy.optimize import brentq
         
-        def black_scholes_price(vol):
+        def black_scholes_price(vol, strike):
             """Black-Scholes期权定价公式"""
             from scipy.stats import norm
-            
-            d1 = (np.log(stock_price / strike_prices) + 
+
+            d1 = (np.log(stock_price / strike) +
                   (risk_free_rate + 0.5 * vol**2) * time_to_expiry) / (vol * np.sqrt(time_to_expiry))
             d2 = d1 - vol * np.sqrt(time_to_expiry)
-            
+
             if option_type == 'call':
-                price = (stock_price * norm.cdf(d1) - 
-                        strike_prices * np.exp(-risk_free_rate * time_to_expiry) * norm.cdf(d2))
+                price = (stock_price * norm.cdf(d1) -
+                        strike * np.exp(-risk_free_rate * time_to_expiry) * norm.cdf(d2))
             else:
-                price = (strike_prices * np.exp(-risk_free_rate * time_to_expiry) * norm.cdf(-d2) - 
+                price = (strike * np.exp(-risk_free_rate * time_to_expiry) * norm.cdf(-d2) -
                         stock_price * norm.cdf(-d1))
-            
+
             return price
-        
+
         implied_vols = []
-        
+
         for i, market_price in enumerate(option_prices):
             try:
                 strike = strike_prices[i]
-                
-                def objective(vol):
-                    return black_scholes_price(vol) - market_price
-                
+
+                def objective(vol, k=strike):
+                    return black_scholes_price(vol, k) - market_price
+
                 iv = brentq(objective, 0.01, 5.0)
                 implied_vols.append(iv)
-            except:
+            except Exception:
                 implied_vols.append(np.nan)
         
         return np.array(implied_vols)

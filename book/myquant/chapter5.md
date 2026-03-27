@@ -273,7 +273,7 @@ class XGBoostTradingStrategy:
             'learning_rate': 0.1,
             'subsample': 0.8,
             'colsample_bytree': 0.8,
-            'random_state': 42
+            'seed': 42
         }
         
         # 训练模型
@@ -298,9 +298,10 @@ class XGBoostTradingStrategy:
         print(classification_report(y_val, val_pred_binary))
         
         # 特征重要性
+        importance_dict = self.model.get_score(importance_type='weight')
         feature_importance = pd.DataFrame({
-            'feature': features.columns,
-            'importance': self.model.get_score(importance_type='weight').values()
+            'feature': list(importance_dict.keys()),
+            'importance': list(importance_dict.values())
         }).sort_values('importance', ascending=False)
         
         print("\n前10个重要特征:")
@@ -378,19 +379,21 @@ class LSTMTradingStrategy:
         # 波动率
         features['volatility'] = features['returns'].rolling(20).std()
         
-        # 标准化
-        features_scaled = self.scaler.fit_transform(features.dropna())
-        
-        # 创建序列数据
+        # 注意：标准化应仅在训练集上fit，此处先保存原始数据
+        # 实际的fit_transform在train_model中按训练/验证拆分后进行
+        features_clean = features.dropna()
+
+        # 创建序列数据（使用原始值，标准化在拆分后进行）
         X, y = [], []
-        for i in range(self.sequence_length, len(features_scaled) - self.prediction_horizon):
-            X.append(features_scaled[i-self.sequence_length:i])
+        features_values = features_clean.values
+        for i in range(self.sequence_length, len(features_values) - self.prediction_horizon):
+            X.append(features_values[i-self.sequence_length:i])
             # 预测未来价格变化方向
-            future_return = (features.iloc[i + self.prediction_horizon]['close'] / 
-                           features.iloc[i]['close'] - 1)
+            future_return = (features_clean.iloc[i + self.prediction_horizon]['close'] /
+                           features_clean.iloc[i]['close'] - 1)
             y.append(1 if future_return > 0 else 0)
-        
-        return np.array(X), np.array(y), features.columns
+
+        return np.array(X), np.array(y), features_clean.columns
     
     def build_model(self, input_shape):
         """构建LSTM模型"""
@@ -424,12 +427,20 @@ class LSTMTradingStrategy:
     def train_model(self, data):
         """训练LSTM模型"""
         X, y, feature_names = self.prepare_lstm_data(data)
-        
+
         # 划分训练集和验证集
         split_point = int(len(X) * 0.8)
         X_train, X_val = X[:split_point], X[split_point:]
         y_train, y_val = y[:split_point], y[split_point:]
-        
+
+        # 标准化：仅在训练集上fit，避免数据泄露
+        n_samples, n_steps, n_features = X_train.shape
+        X_train_2d = X_train.reshape(-1, n_features)
+        self.scaler.fit(X_train_2d)
+        X_train = self.scaler.transform(X_train_2d).reshape(n_samples, n_steps, n_features)
+        X_val_2d = X_val.reshape(-1, n_features)
+        X_val = self.scaler.transform(X_val_2d).reshape(X_val.shape)
+
         # 构建模型
         self.model = self.build_model((X_train.shape[1], X_train.shape[2]))
         

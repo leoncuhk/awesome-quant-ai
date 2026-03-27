@@ -211,8 +211,9 @@ class PairsTradingStrategy:
         total_return = (1 + returns).prod() - 1
         annual_return = returns.mean() * 252
         volatility = returns.std() * np.sqrt(252)
-        sharpe = annual_return / volatility if volatility > 0 else 0
-        
+        risk_free_rate = 0.03  # 年化无风险利率
+        sharpe = (annual_return - risk_free_rate) / volatility if volatility > 0 else 0
+
         # 最大回撤
         cumulative = (1 + returns).cumprod()
         rolling_max = cumulative.expanding().max()
@@ -799,7 +800,8 @@ class VECMStrategy:
         total_return = (1 + strategy_returns).prod() - 1
         annual_return = strategy_returns.mean() * 252
         volatility = strategy_returns.std() * np.sqrt(252)
-        sharpe_ratio = annual_return / volatility if volatility > 0 else 0
+        risk_free_rate = 0.03  # 年化无风险利率
+        sharpe_ratio = (annual_return - risk_free_rate) / volatility if volatility > 0 else 0
         
         # 最大回撤
         cumulative = (1 + strategy_returns).cumprod()

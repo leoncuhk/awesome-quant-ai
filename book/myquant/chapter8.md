@@ -141,19 +141,19 @@ class DeltaNeutralStrategy:
             if i > 0:
                 stock_move = stock_price - stock_price_path[i-1]
                 
-                # 基于Gamma的理论交易量
-                theoretical_trade = -0.5 * total_gamma * stock_move
-                
+                # Delta对冲交易量：delta变化 ≈ gamma * 价格变动
+                theoretical_trade = -total_gamma * stock_move
+
                 # 实际交易（考虑交易成本）
                 if abs(theoretical_trade) > 0.01:  # 最小交易门槛
                     actual_trade = theoretical_trade
                     stock_position += actual_trade
-                    
+
                     # 计算交易成本
                     trade_cost = abs(actual_trade) * stock_price * transaction_cost
                     daily_pnl -= trade_cost
-                    
-                    # Gamma Scalping收益
+
+                    # Gamma Scalping P&L: 0.5 * gamma * move^2
                     scalping_pnl = 0.5 * total_gamma * stock_move**2
                     daily_pnl += scalping_pnl
             
@@ -521,7 +521,35 @@ class MultiStrategyPortfolio:
         )
         
         return dict(zip(returns.columns, result.x))
-    
+
+    def mean_variance_optimization(self, returns):
+        """均值方差优化"""
+        mean_returns = returns.mean() * 252
+        cov_matrix = returns.cov() * 252
+        n_assets = len(returns.columns)
+
+        def neg_sharpe(weights):
+            port_return = np.dot(weights, mean_returns)
+            port_vol = np.sqrt(np.dot(weights, np.dot(cov_matrix, weights)))
+            return -port_return / port_vol
+
+        constraints = {'type': 'eq', 'fun': lambda x: np.sum(x) - 1}
+        bounds = tuple((0, self.max_allocation) for _ in range(n_assets))
+
+        result = optimize.minimize(
+            neg_sharpe,
+            np.ones(n_assets) / n_assets,
+            method='SLSQP',
+            bounds=bounds,
+            constraints=constraints
+        )
+
+        return dict(zip(returns.columns, result.x))
+
+    def equal_risk_contribution(self, returns):
+        """等风险贡献优化（与风险平价等价）"""
+        return self.risk_parity_optimization(returns)
+
     def calculate_portfolio_metrics(self):
         """计算组合指标"""
         if not self.allocations:

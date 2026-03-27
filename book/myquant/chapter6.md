@@ -21,47 +21,63 @@ class FamaFrenchStrategy:
         return market_excess
     
     def calculate_size_factor(self, stock_data):
-        """计算规模因子(SMB) - Small Minus Big"""
-        # 按市值分组
-        stock_data['market_cap_rank'] = stock_data['market_cap'].rank(pct=True)
-        
-        small_cap = stock_data[stock_data['market_cap_rank'] <= 0.5]
-        big_cap = stock_data[stock_data['market_cap_rank'] > 0.5]
-        
-        smb = small_cap['returns'].mean() - big_cap['returns'].mean()
+        """计算规模因子(SMB) - Small Minus Big
+
+        注意：简化实现。标准Fama-French方法使用2x3分组(规模x价值)。
+        此处按每期市值中位数分组，返回时间序列。
+        """
+        def _daily_smb(group):
+            median_cap = group['market_cap'].median()
+            small = group[group['market_cap'] <= median_cap]
+            big = group[group['market_cap'] > median_cap]
+            return small['returns'].mean() - big['returns'].mean()
+
+        smb = stock_data.groupby('date').apply(_daily_smb)
         return smb
-    
+
     def calculate_value_factor(self, stock_data):
-        """计算价值因子(HML) - High Minus Low"""
-        # 按账面市值比分组
-        stock_data['bm_rank'] = stock_data['book_to_market'].rank(pct=True)
-        
-        high_bm = stock_data[stock_data['bm_rank'] >= 0.7]
-        low_bm = stock_data[stock_data['bm_rank'] <= 0.3]
-        
-        hml = high_bm['returns'].mean() - low_bm['returns'].mean()
+        """计算价值因子(HML) - High Minus Low
+
+        按每期账面市值比的30/70分位分组，返回时间序列。
+        """
+        def _daily_hml(group):
+            q70 = group['book_to_market'].quantile(0.7)
+            q30 = group['book_to_market'].quantile(0.3)
+            high_bm = group[group['book_to_market'] >= q70]
+            low_bm = group[group['book_to_market'] <= q30]
+            return high_bm['returns'].mean() - low_bm['returns'].mean()
+
+        hml = stock_data.groupby('date').apply(_daily_hml)
         return hml
-    
+
     def calculate_profitability_factor(self, stock_data):
-        """计算盈利能力因子(RMW) - Robust Minus Weak"""
-        # 按ROE分组
-        stock_data['roe_rank'] = stock_data['roe'].rank(pct=True)
-        
-        robust_prof = stock_data[stock_data['roe_rank'] >= 0.7]
-        weak_prof = stock_data[stock_data['roe_rank'] <= 0.3]
-        
-        rmw = robust_prof['returns'].mean() - weak_prof['returns'].mean()
+        """计算盈利能力因子(RMW) - Robust Minus Weak
+
+        按每期ROE的30/70分位分组，返回时间序列。
+        """
+        def _daily_rmw(group):
+            q70 = group['roe'].quantile(0.7)
+            q30 = group['roe'].quantile(0.3)
+            robust = group[group['roe'] >= q70]
+            weak = group[group['roe'] <= q30]
+            return robust['returns'].mean() - weak['returns'].mean()
+
+        rmw = stock_data.groupby('date').apply(_daily_rmw)
         return rmw
-    
+
     def calculate_investment_factor(self, stock_data):
-        """计算投资因子(CMA) - Conservative Minus Aggressive"""
-        # 按资产增长率分组
-        stock_data['asset_growth_rank'] = stock_data['asset_growth'].rank(pct=True)
-        
-        conservative = stock_data[stock_data['asset_growth_rank'] <= 0.3]
-        aggressive = stock_data[stock_data['asset_growth_rank'] >= 0.7]
-        
-        cma = conservative['returns'].mean() - aggressive['returns'].mean()
+        """计算投资因子(CMA) - Conservative Minus Aggressive
+
+        按每期资产增长率的30/70分位分组，返回时间序列。
+        """
+        def _daily_cma(group):
+            q30 = group['asset_growth'].quantile(0.3)
+            q70 = group['asset_growth'].quantile(0.7)
+            conservative = group[group['asset_growth'] <= q30]
+            aggressive = group[group['asset_growth'] >= q70]
+            return conservative['returns'].mean() - aggressive['returns'].mean()
+
+        cma = stock_data.groupby('date').apply(_daily_cma)
         return cma
     
     def build_factor_model(self, stock_data, market_data):
@@ -145,7 +161,6 @@ class FamaFrenchStrategy:
 ```python
 class CustomMultiFactorStrategy:
     def __init__(self):
-        self.factor_calculator = FactorCalculator()
         self.factor_weights = {}
     
     def calculate_fundamental_factors(self, financial_data):
