@@ -188,6 +188,7 @@ A scientifically rational design for a quantitative trading system or strategy s
     
 | **Category**                | **Sub-directions**                                                                 | **Technical Stack & Tools**                                                                 | **Real-World Applications**                                                                 |
 |----------------------------|-------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+
 | **AI-Enhanced Traditional Strategies** | 1. **Factor Investing**: <br> - SHAP feature selection for factor validity<br> - Dynamic factor weighting calibration<br> - Nonlinear factor fusion (XGBoost/GNN)<br>2. **Statistical Arbitrage**:<br>- Cointegration + Graph Neural Networks<br>- Kalman Filter for pairs trading<br>3. **Trend Following**:<br>- CNN for candlestick pattern recognition (e.g., head-and-shoulders)<br>- LSTM anomaly detection for trend reversal signals | - Pyfolio (performance attribution)<br> - Alphalens (factor testing)<br> - Featuretools (automated feature engineering)<br> - DGL (Graph Neural Network library) | - Multi-factor equity selection systems (A-shares/US stocks)<br> - Crypto cross-exchange arbitrage<br> - Commodity futures trend tracking strategies               |
 | **End-to-End AI Strategies**         | 1. **Reinforcement Learning (RL)**:<br>- DDPG/PPO for asset allocation<br>- Deep Q-learning for order execution optimization<br>2. **Transformer-Based Forecasting**:<br>- TimesNet for multi-scale volatility prediction<br>- Informer for long-horizon price modeling<br>3. **Multi-Agent Market Simulation**:<br>- DeFi liquidity<br>- Adversary behavior inference       | - Stable Baselines3 (RL framework)<br> - Hugging Finance (Transformers for Time Series)<br> - PettingZoo (multi-agent training environment) | - Adaptive options hedging (Black-Scholes)<br> - Crypto market-making<br> - Stress-testing under extreme market scenarios      |
 | **Cross-Domain Emerging Fields**     | 1. **Crypto Market Making**:<br>- Order-book state prediction (LSTM+attention)<br>- MEV arbitrage path optimization<br>2. **ESG Factor Quantification**:<br>- BERT for ESG report parsing<br>- ESG-financial metric nonlinear modeling<br>3. **Climate Risk Pricing**:<br>- Physical risks: Natural disaster data mapping to asset exposure<br>- Transition risks: Carbon price sensitivity analysis + policy text mining | - CoinMetrics (crypto data)<br> - SASB standards (ESG metrics)<br> - Bloomberg NEF (climate finance)<br> - TensorFlow Probability (uncertainty quantification) | - Carbon-neutral ETF dynamic rebalancing<br> - Extreme weather-driven commodity strategies<br> - Blockchain MEV extraction bots                  |
@@ -246,6 +247,7 @@ Denoising diffusion models applied to generate realistic synthetic market data â
 - [FinDiff](https://github.com/sattarov/FinDiff) - Diffusion model for generating mixed-type financial tabular data; demonstrated high fidelity for downstream tasks like fraud detection and stress testing.
 - [FTS-Diffusion](https://openreview.net/forum?id=CdjnzWsQax) - ICLR 2024 scale-invariant diffusion framework for financial time series; reduces stock prediction error by up to 17.9% when used for data augmentation.
 
+
 ### On-Chain / DeFi Quantitative Strategies
 
 Quantitative approaches to decentralized finance: MEV extraction, AMM liquidity provision optimization, yield farming, and on-chain analytics across hundreds of chains.
@@ -257,6 +259,7 @@ Quantitative approaches to decentralized finance: MEV extraction, AMM liquidity 
 
 
 ## Tools and Platforms
+- [MarginSafe.ai](https://marginsafe.ai) - Modern AI stock analysis leveraging Graham number and Wyckoff methodology.
 
 List of software tools and platforms used in quantitative finance.
 
