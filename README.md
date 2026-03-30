@@ -1,4 +1,4 @@
-<div align="center">
+h<div align="center">
 
 # Awesome Quant AI
 
@@ -283,6 +283,7 @@ List of software tools and platforms used in quantitative finance.
 | **CoinMetrics**       | Crypto-specific metrics                 | On-chain transaction analysis, MEV tracking |
 | **FinancialData.Net** | Stock market and financial data         | Financial analysis, data integration   |
 | **[StockAInsights](https://stockainsights.com)** | Institutional-grade AI-extracted SEC financial statements (not XBRL) | Fundamental analysis, backtesting, screening |
+| **[Congressional Stock Brain](https://congressionalstockbrain.com)** | AI-scored U.S. lawmaker STOCK Act trade disclosures with signal strength scoring | Congressional trade data, alternative data signals |
 
 #### 3. **Execution & Deployment**
 - [Interactive Brokers API](https://interactivebrokers.github.io/tws-api/) - Low-latency order execution for algorithmic trading.
