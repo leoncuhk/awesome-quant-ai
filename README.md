@@ -4,7 +4,7 @@
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-A curated list of awesome resources for quantitative investment and trading strategies focusing on artificial intelligence and machine learning applications in finance.
+A curated list of awesome resources for quantitative investment andh trading strategies focusing on artificial intelligence and machine learning applications in finance.
 
 <br>
 
@@ -283,10 +283,10 @@ List of software tools and platforms used in quantitative finance.
 | **CoinMetrics**       | Crypto-specific metrics                 | On-chain transaction analysis, MEV tracking |
 | **FinancialData.Net** | Stock market and financial data         | Financial analysis, data integration   |
 | **[StockAInsights](https://stockainsights.com)** | Institutional-grade AI-extracted SEC financial statements (not XBRL) | Fundamental analysis, backtesting, screening |
+| **[Congressional Stock Brain](https://congressionalstockbrain.com)** | AI-scored U.S. STOCK Act disclosures — tracks all lawmaker trades with signal strength ratings | Congressional trade monitoring, event-driven investing |
 
 #### 3. **Execution & Deployment**
 - [Interactive Brokers API](https://interactivebrokers.github.io/tws-api/) - Low-latency order execution for algorithmic trading.
-- [Alpaca](https://alpaca.markets/) - Commission-free algorithmic trading API with paper trading support.
 - [AWS SageMaker](https://aws.amazon.com/sagemaker/) - Cloud-based ML training and deployment for quantitative models.
 - [Docker](https://www.docker.com/) / [Kubernetes](https://kubernetes.io/) - Containerization and orchestration for scalable trading systems.
 
