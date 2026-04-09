@@ -502,6 +502,12 @@ For questions, suggestions, or collaboration inquiries:
 ---
 
 <div align="center">
+<img src="assets/framework.png" alt="Quantitative Investment Framework" width="860">
+</div>
+
+---
+
+<div align="center">
 
 If you find this project useful, please consider giving it a star. It helps others discover these resources.
 
