@@ -223,6 +223,7 @@ Comparing three major approaches to quantitative trading: Quantitative Trading, 
 Multi-agent systems using large language models in specialized roles (analyst, trader, risk manager) to collaboratively process unstructured data and make trading decisions — representing a shift from fixed-rule systems toward autonomous, adaptive trading.
 
 - [TradingAgents](https://github.com/TauricResearch/TradingAgents) - Multi-agent LLM trading framework simulating trading firm dynamics with specialized analyst and trader roles; built with LangGraph, supports GPT, Gemini, Claude, and Grok.
+- [Stock Research Desk](https://github.com/wd041216-bit/stock-research-desk) - Cloud-only multi-agent equity research desk for ticker memos, theme screening, watchlists, and one-DOCX delivery; focused on research workflow rather than trade execution.
 - [FinRobot](https://github.com/AI4Finance-Foundation/FinRobot) - Open-source AI agent platform for financial analysis using LLMs with Financial Chain-of-Thought reasoning and smart scheduler for multi-source LLM integration.
 - [FinGPT](https://github.com/AI4Finance-Foundation/FinGPT) - Open-source financial LLM framework with data-centric design and LoRA fine-tuning; supports sentiment analysis, robo-advising, and algorithmic trading.
 - [FinRL](https://github.com/AI4Finance-Foundation/FinRL) - Financial reinforcement learning framework supporting A2C, DDPG, PPO, TD3, SAC agents; FinRL-X adds modular infrastructure for the LLM/agentic AI era.
