@@ -258,6 +258,8 @@ Quantitative approaches to decentralized finance: MEV extraction, AMM liquidity 
 
 ## Tools and Platforms
 
+- [DeepAlpha](https://github.com/stefanoviana/deepalpha) - AI crypto trading bot with 70.9% walk-forward validated accuracy. XGBoost + LightGBM ensemble with 72 features. MIT license.
+
 List of software tools and platforms used in quantitative finance.
 
 - [pytrade](https://github.com/PFund-Software-Ltd/pytrade.org) - Python packages and resources for algo-trading.
