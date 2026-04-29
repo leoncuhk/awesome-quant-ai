@@ -226,6 +226,7 @@ Multi-agent systems using large language models in specialized roles (analyst, t
 - [FinRobot](https://github.com/AI4Finance-Foundation/FinRobot) - Open-source AI agent platform for financial analysis using LLMs with Financial Chain-of-Thought reasoning and smart scheduler for multi-source LLM integration.
 - [FinGPT](https://github.com/AI4Finance-Foundation/FinGPT) - Open-source financial LLM framework with data-centric design and LoRA fine-tuning; supports sentiment analysis, robo-advising, and algorithmic trading.
 - [FinRL](https://github.com/AI4Finance-Foundation/FinRL) - Financial reinforcement learning framework supporting A2C, DDPG, PPO, TD3, SAC agents; FinRL-X adds modular infrastructure for the LLM/agentic AI era.
+- [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) - Natural-language multi-agent finance research framework with 29 swarm presets (investment committee, quant desk, risk committee); 7 cross-market backtest engines (A-shares/US/Crypto/Futures/Forex/Options) plus a shared-capital CompositeEngine; 5-source auto-fallback data layer (tushare/okx/yfinance/akshare/ccxt); 17-tool MCP server for Claude Desktop; CLI + FastAPI + React frontend.
 
 ### Transformer Time-Series Foundation Models
 
