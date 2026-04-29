@@ -488,13 +488,13 @@ Communities, forums, and conferences dedicated to quantitative finance and AI in
 
 ## Contributing
 
-Contributions are welcome! If you'd like to add a resource, fix a link, or suggest an improvement:
+Contributions are welcome — please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a PR.
 
-1. Please ensure your suggestion fits the scope of AI/ML applications in quantitative finance.
-2. Use the format: `- [Name](url) - Brief description ending with a period.`
-3. Add new entries to the most relevant existing section.
-4. One pull request per resource or a small group of related resources.
-5. Check that your links are working and not duplicates of existing entries.
+Quick version:
+- This list is **curated**, not comprehensive — additions should match the bar set by existing entries in that section.
+- Prefer **open-source projects, established research frameworks, or widely-used data APIs**. Commercial SaaS without traction or an open-source component is usually declined.
+- **Disclose affiliation** if you built it.
+- Format: `- [Name](url) - Brief description ending with a period.` — one PR per resource, added to the most relevant section.
 
 For questions, suggestions, or collaboration inquiries:
 
