@@ -265,6 +265,7 @@ List of software tools and platforms used in quantitative finance.
 - [pytrade](https://github.com/PFund-Software-Ltd/pytrade.org) - Python packages and resources for algo-trading.
 - [pybroker](https://github.com/edtechre/pybroker) - Algorithmic trading framework focused on strategies backtesting that use machine learning.
 - [KeepRule](https://keeprule.com) - AI-powered investment discipline platform with principles from 26 legendary investors including Buffett, Munger, and Dalio.
+- [DeepAlpha](https://github.com/stefanoviana/deepalpha) - AI-powered crypto trading bot with 3-model ML ensemble (XGBoost, LightGBM, CatBoost), 12 exchanges via CCXT, grid trading, DCA with safety orders. Walk-forward validated.
 
 #### 1. **Strategy Development Frameworks**
 | **Tool**              | **Strength**                          | **Community Activity** | **Academic Adoption** | **Enterprise Use** |
