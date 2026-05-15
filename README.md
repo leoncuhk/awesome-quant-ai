@@ -19,6 +19,7 @@ A curated list of awesome resources for quantitative investment and trading stra
 <br>
 
 ## Contents
+- [FilingFirehose](https://filingfirehose.com) - SEC EDGAR JSON API with body-text-classified 8-Ks, activist 13D tagging, ATM detection. Hosted MCP server + ChatGPT GPT for AI workflows. Free public tier, paid $29-$299/mo.
 
 - [Introduction](#introduction)
 - [Design Approach](#design-approach)
