@@ -287,6 +287,7 @@ List of software tools and platforms used in quantitative finance.
 | **FinancialData.Net** | Stock market and financial data         | Financial analysis, data integration   |
 | **[StockAInsights](https://stockainsights.com)** | Institutional-grade AI-extracted SEC financial statements (not XBRL) | Fundamental analysis, backtesting, screening |
 | **[Adanos](https://adanos.org)** | Multi-source market sentiment data for US stocks across Reddit, X, finance news, and Polymarket | Alternative data research, event-driven signal generation, sentiment factor modeling |
+| **[Helium MCP](https://heliumtrades.com/mcp-page/)** | Free REST + MCP API for ML-derived options pricing (fair value, prob_ITM, Greeks) + 31-dim news bias scoring (3.2M+ articles) | Quant-ready options analytics, AI-assistant-callable, sentiment overlays |
 
 #### 3. **Execution & Deployment**
 - [Interactive Brokers API](https://interactivebrokers.github.io/tws-api/) - Low-latency order execution for algorithmic trading.
