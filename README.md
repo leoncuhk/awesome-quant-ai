@@ -255,6 +255,7 @@ Quantitative approaches to decentralized finance: MEV extraction, AMM liquidity 
 - [Flashbots rbuilder](https://github.com/flashbots/rbuilder) - Open-source, high-performance Ethereum MEV-Boost block builder written in Rust; supports multiple building algorithms and backtesting.
 - [DefiLlama](https://defillama.com/) - Open-source DeFi analytics dashboard tracking TVL, yields, fees, and volumes across thousands of protocols; provides free API via [defillama-sdk](https://github.com/DefiLlama/defillama-sdk).
 - [ultimate-defi-research-base](https://github.com/OffcierCia/ultimate-defi-research-base) - Curated collection of DeFi and blockchain research covering MEV, AMM design, yield optimization, and on-chain analytics.
+- [TWZRD Agent Intel](https://intel.twzrd.xyz) - Trust-scoring MCP server for Solana AI agent wallets; verify agent identity before x402 USDC micropayments. Exposes `score_agent` and `preflight_check` tools (free) plus a signed `get_trust_receipt` (HTTP 402 paid). Zero-install: `{"mcpServers":{"twzrd-agent-intel":{"url":"https://intel.twzrd.xyz/mcp"}}}`.
 
 
 ## Tools and Platforms
