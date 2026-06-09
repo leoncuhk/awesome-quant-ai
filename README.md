@@ -287,6 +287,7 @@ List of software tools and platforms used in quantitative finance.
 | **FinancialData.Net** | Stock market and financial data         | Financial analysis, data integration   |
 | **[StockAInsights](https://stockainsights.com)** | Institutional-grade AI-extracted SEC financial statements (not XBRL) | Fundamental analysis, backtesting, screening |
 | **[Adanos](https://adanos.org)** | Multi-source market sentiment data for US stocks across Reddit, X, finance news, and Polymarket | Alternative data research, event-driven signal generation, sentiment factor modeling |
+| **[The Stall](https://github.com/thebrierfox/the-stall)** | x402 pay-per-call MCP server — 183 AI data tools for quant finance: US/intl stocks, equity fundamentals, macro indicators, options chains, earnings, insider trades, hedge fund holdings, crypto/DeFi analytics. No API keys required; USDC micropayments on Base | Quantitative research data layer, agent-native finance pipelines, pay-as-you-go market data access |
 
 #### 3. **Execution & Deployment**
 - [Interactive Brokers API](https://interactivebrokers.github.io/tws-api/) - Low-latency order execution for algorithmic trading.
