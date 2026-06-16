@@ -307,6 +307,7 @@ Online courses, tutorials, and workshops focused on quantitative investing and m
 - [Quantitative Trading Strategies (UChicago FINM 33150)](https://finmath.uchicago.edu/curriculum/degree-concentrations/trading/finm-33150/) - Graduate-level course on quantitative trading strategy design and implementation.
 - [Oxford Algorithmic Trading Programme](https://www.sbs.ox.ac.uk/programmes/executive-education/online-programmes/oxford-algorithmic-trading-programme) - Executive education programme covering algorithmic trading fundamentals and practice.
 - [Princeton ORFE Financial Mathematics](https://orfe.princeton.edu/research/financial-mathematics) - Research and curriculum in financial mathematics from Princeton's ORFE department.
+- [Build a Financial Research Agent (Superhighway)](https://superhighway.walls.sh/guides/financial-research-agent) - Hands-on Python tutorial building an AI agent that researches companies, scrapes financial data, pulls earnings news, and generates a structured investment brief with bull/bear case using an LLM.
   
 
 ## Books
