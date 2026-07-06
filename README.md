@@ -461,7 +461,6 @@ Communities, forums, and conferences dedicated to quantitative finance and AI in
 - [r/algotrading](https://www.reddit.com/r/algotrading/) - Reddit community for algorithmic trading discussion and resource sharing.
 - [r/quant](https://www.reddit.com/r/quant/) - Reddit community for quantitative finance professionals and students.
 - [Wilmott Forums](https://forum.wilmott.com/) - Long-running quantitative finance community with deep technical discussions.
-- [Nuclear Phynance](http://www.nuclearphynance.com/) - Forum for quantitative finance practitioners focusing on derivatives and risk.
 
 ### Conferences
 
