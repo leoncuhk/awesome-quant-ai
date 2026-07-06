@@ -34,7 +34,6 @@ A curated list of awesome resources for quantitative investment and trading stra
 - [Original Research and Notes](#original-research-and-notes)
 - [Community and Conferences](#community-and-conferences)
 - [Related Lists](#related-lists)
-- [Reference](#reference)
 - [Contributing](#contributing)
 
 ## Introduction
@@ -215,18 +214,11 @@ Comparing three major approaches to quantitative trading: Quantitative Trading, 
 |---------|----------------------------------|-------------------------|---------------------|
 | **Decision Process** | Static rules based on mathematical models and historical data | Predefined algorithmic logic with optimization mechanisms | Autonomous learning and decision-making agents adapting to environment changes |
 | **Adaptability** | Low, requires manual parameter and rule adjustments | Medium, self-adapts through parameter optimization | High, real-time learning and adaptation to market conditions |
-| **Market Understanding** | Limited to pre-programmed rule scopes | Medium, can capture some complex patterns | Comprehensive, can understand and adapt to complex market structures |
-| **Learning Capability** | None or limited | Based on supervised learning or parameter optimization | Autonomous learning and exploration abilities, can improve strategies through reinforcement learning |
-| **Flexibility** | Low, fixed rules | Medium, adjustable algorithms but fixed frameworks | High, autonomous adjustment of strategies and objectives |
+| **Learning Capability** | None or limited | Based on supervised learning or parameter optimization | Autonomous learning and exploration, improving strategies through reinforcement learning |
 | **Transparency** | High, clear and explainable rules | Medium, higher algorithm complexity but traceable | Lower, decision processes may be "black box" |
 | **Risk Management** | Fixed rule-based risk control | Built-in algorithmic risk control mechanisms | Dynamic risk assessment and adaptive risk management |
-| **Complexity** | Low to medium | Medium to high | High, involving complex AI/ML models and architectures |
-| **Computational Requirements** | Lower | Medium | High, especially during training phases |
 | **Data Dependency** | Relies on specific types of historical data | Strong dependency on multiple data sources | Can process multi-dimensional, unstructured data including real-time feedback |
-| **Maintenance Cost** | Lower, simple and stable rules | Medium, requires periodic adjustments and optimization | High, requires continuous monitoring and possible retraining |
-| **Innovation Potential** | Limited by preset rules | Medium, achievable through algorithm optimization | High, can discover new trading strategies and opportunities |
 | **Typical Applications** | Trend following, mean reversion, fundamental quantitative analysis | Statistical arbitrage, high-frequency trading, factor models | Adaptive trading systems, hybrid strategy optimization, multi-objective decision making |
-| **Recent Developments** | Integration of more data sources | Introduction of machine learning to optimize algorithm parameters | Multi-agent collaboration, meta-learning, transfer learning applications |
 
 
 ## Frontier: Emerging Topics (2025/2026)
@@ -290,10 +282,6 @@ Quantitative approaches to decentralized finance: MEV extraction, AMM liquidity 
 
 List of software tools and platforms used in quantitative finance.
 
-- [pytrade](https://github.com/PFund-Software-Ltd/pytrade.org) - Python packages and resources for algo-trading.
-- [pybroker](https://github.com/edtechre/pybroker) - Algorithmic trading framework focused on strategies backtesting that use machine learning.
-- [KeepRule](https://keeprule.com) - AI-powered investment discipline platform with principles from 26 legendary investors including Buffett, Munger, and Dalio.
-
 #### 1. **Strategy Development Frameworks**
 | **Tool**              | **Strength**                          | **Notes** |
 |-----------------------|----------------------------------------|-----------|
@@ -304,6 +292,7 @@ List of software tools and platforms used in quantitative finance.
 | **[vectorbt](https://github.com/polakowo/vectorbt)** | Vectorized backtesting at scale — thousands of parameter combinations in seconds | Built on NumPy/Numba; ideal for fast strategy sweeps |
 | **[Backtrader](https://github.com/mementum/backtrader)** | Feature-rich event-driven backtesting | Mature and widely taught, though maintenance has slowed |
 | **[zipline-reloaded](https://github.com/stefan-jansen/zipline-reloaded)** | Community-maintained fork of Quantopian's Zipline | Original Zipline is unmaintained since Quantopian's 2020 shutdown |
+| **[pybroker](https://github.com/edtechre/pybroker)** | Backtesting framework designed for ML-driven strategies | Built-in walk-forward analysis and bootstrapped metrics |
 | **[Riskfolio-Lib](https://github.com/dcajasn/Riskfolio-Lib)** | Portfolio optimization: mean-risk, risk parity, hierarchical clustering methods | 20+ risk measures; strong documentation |
 | **[skfolio](https://github.com/skfolio/skfolio)** | Portfolio optimization with a scikit-learn-compatible API | Cross-validation and hyperparameter tuning for allocation models |
 | **[Ray/RLlib](https://github.com/ray-project/ray)** | Distributed reinforcement learning for adaptive strategies | Industry-standard RL infrastructure |
@@ -313,15 +302,15 @@ List of software tools and platforms used in quantitative finance.
 |-----------------------|-----------------------------------------|----------------------------------------|
 | **[FRED](https://fred.stlouisfed.org/)** | 800K+ US and international macro time series, free API | Macro research, regime models, rates and inflation data |
 | **[yfinance](https://github.com/ranaroussi/yfinance)** | Python wrapper for Yahoo Finance data | Free equity/ETF/FX/crypto prices for research and prototyping |
-| **Alpha Vantage**     | Free APIs for stock/crypto data         | Historical price/volume analysis       |
+| **[Alpha Vantage](https://www.alphavantage.co/)** | Free APIs for stock/crypto data         | Historical price/volume analysis       |
 | **[Nasdaq Data Link](https://data.nasdaq.com/)** | Premium and free structured datasets (formerly Quandl) | Macroeconomic/factor data integration  |
 | **[Databento](https://databento.com/)** | Institutional market data (equities, futures, options) with usage-based pricing | Tick-level and order-book data for microstructure research |
 | **[akshare](https://github.com/akfamily/akshare)** | Free Python library for Chinese market data (A-shares, futures, funds, macro) | China market research; no account required |
-| **Bloomberg Terminal**| Institutional-grade market data         | High-frequency trading, ESG analytics  |
-| **CoinMetrics**       | Crypto-specific metrics                 | On-chain transaction analysis, MEV tracking |
+| **[Bloomberg Terminal](https://www.bloomberg.com/professional/products/bloomberg-terminal/)** | Institutional-grade market data         | High-frequency trading, ESG analytics  |
+| **[CoinMetrics](https://coinmetrics.io/)** | Crypto-specific metrics                 | On-chain transaction analysis, MEV tracking |
 | **[CoinPaprika](https://api.coinpaprika.com)** | Free crypto market data (12K+ coins, 350+ exchanges) | Tickers, OHLCV, historical prices. No API key for free tier |
 | **[DexPaprika](https://api.dexpaprika.com)** | Free DEX data (34 chains, 30M+ pools, real-time streaming) | On-chain DEX analytics, pool data, token prices. No API key |
-| **FinancialData.Net** | Stock market and financial data         | Financial analysis, data integration   |
+| **[FinancialData.Net](https://financialdata.net/)** | Stock market and financial data         | Financial analysis, data integration   |
 | **[StockAInsights](https://stockainsights.com)** | Institutional-grade AI-extracted SEC financial statements (not XBRL) | Fundamental analysis, backtesting, screening |
 | **[Adanos](https://adanos.org)** | Multi-source market sentiment data for US stocks across Reddit, X, finance news, and Polymarket | Alternative data research, event-driven signal generation, sentiment factor modeling |
 
@@ -517,7 +506,6 @@ Communities, forums, and conferences dedicated to quantitative finance and AI in
 
 - [The Trading Show](https://www.terrapinn.com/conference/the-trading-show-new-york/) - Conference covering algorithmic trading, market structure, and fintech innovation.
 - [QuantMinds](https://informaconnect.com/quantminds-international/) - Global conference series covering quantitative finance, risk management, and AI applications.
-- [AAAI Conference on AI in Finance](https://aaai.org/) - Academic conference featuring AI/ML research applied to financial markets.
 - [ACM ICAIF](https://ai-finance.org/) - ACM International Conference on AI in Finance, bridging CS and finance research.
 
 
@@ -527,13 +515,8 @@ Communities, forums, and conferences dedicated to quantitative finance and AI in
 - [awesome-ai-in-finance](https://github.com/georgezouq/awesome-ai-in-finance) - Resources for AI applications in the financial industry.
 - [awesome-systematic-trading](https://github.com/paperswithbacktest/awesome-systematic-trading) - Curated list of systematic trading tools and strategies.
 - [awesome-deep-learning](https://github.com/ChristosChristofidis/awesome-deep-learning) - Curated list of deep learning tutorials, projects, and communities.
-
-
-## Reference
-
-- [46 Awesome Books for Quant Finance, Algo Trading, and Market Data Analysis](https://www.pyquantnews.com/the-pyquant-newsletter/46-books-quant-finance-algo-trading-market-data) - Comprehensive book list from PyQuant Newsletter.
-- [10 Awesome Books for Quantitative Trading](https://medium.com/@mlblogging.k/10-awesome-books-for-quantitative-trading-fc0d6aa7e6d8) - Curated reading list for quantitative trading beginners.
-- [Books for Algorithmic Trading I Wish I Had Read Sooner](https://www.youtube.com/watch?v=ftFptCxm5ZU) - Video overview of essential algorithmic trading books.
+- [pytrade.org](https://github.com/PFund-Software-Ltd/pytrade.org) - Directory of Python packages and resources for algo-trading.
+- [46 Awesome Books for Quant Finance](https://www.pyquantnews.com/the-pyquant-newsletter/46-books-quant-finance-algo-trading-market-data) - Comprehensive book list from PyQuant Newsletter.
 
 
 ## Contributing
@@ -561,9 +544,5 @@ For questions, suggestions, or collaboration inquiries:
 <div align="center">
 
 If you find this project useful, please consider giving it a star. It helps others discover these resources.
-
-<a href="https://star-history.com/#leoncuhk/awesome-quant-ai&Date">
-<img src="https://api.star-history.com/svg?repos=leoncuhk/awesome-quant-ai&type=Date" alt="Star History Chart" width="600">
-</a>
 
 </div>
