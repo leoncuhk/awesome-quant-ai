@@ -466,7 +466,7 @@ Communities, forums, and conferences dedicated to quantitative finance and AI in
 ### Conferences
 
 - [The Trading Show](https://www.terrapinn.com/exhibition/the-trading-show/) - Conference covering algorithmic trading, market structure, and fintech innovation.
-- [QuantMinds](https://www.quantminds.com/) - Global conference series covering quantitative finance, risk management, and AI applications.
+- [QuantMinds](https://informaconnect.com/quantminds-international/) - Global conference series covering quantitative finance, risk management, and AI applications.
 - [AAAI Conference on AI in Finance](https://aaai.org/) - Academic conference featuring AI/ML research applied to financial markets.
 - [ACM ICAIF](https://ai-finance.org/) - ACM International Conference on AI in Finance, bridging CS and finance research.
 
