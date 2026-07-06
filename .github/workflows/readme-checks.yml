@@ -1,0 +1,41 @@
+name: README checks
+
+on:
+  pull_request:
+    paths:
+      - 'README.md'
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  duplicates:
+    name: Duplicate link check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check for duplicate URLs in README
+        run: |
+          python3 - <<'EOF'
+          import re, collections, sys
+          text = open('README.md').read()
+          urls = [u.rstrip('/') for u in re.findall(r'\]\((https?://[^)]+)\)', text)]
+          dupes = {u: c for u, c in collections.Counter(urls).items() if c > 1}
+          for u, c in sorted(dupes.items()):
+              print(f'::error::URL appears {c} times in README.md: {u}')
+          sys.exit(1 if dupes else 0)
+          EOF
+
+  links:
+    name: Dead link check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --accept '100..=103,200..=299,403,429' README.md
+          fail: true
