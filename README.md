@@ -14,6 +14,8 @@ A curated list of awesome resources for quantitative investment and trading stra
 
 *Your edge: which layer do you understand better than consensus?*
 
+⭐ Beyond curated links, this project includes an [original 8-chapter bilingual strategy guide](#original-research-and-notes) with Python implementations and [research essays](#research-essays-think) on regime detection and AI-agent trading.
+
 </div>
 
 <br>
@@ -32,7 +34,6 @@ A curated list of awesome resources for quantitative investment and trading stra
 - [Original Research and Notes](#original-research-and-notes)
 - [Community and Conferences](#community-and-conferences)
 - [Related Lists](#related-lists)
-- [Reference](#reference)
 - [Contributing](#contributing)
 
 ## Introduction
@@ -114,6 +115,9 @@ A scientifically rational design for a quantitative trading system or strategy s
   * **Mean Reversion**: Assuming asset prices will revert to their historical average.
   * **Pairs Trading**: Taking long and short positions in correlated securities.
   * **Cointegration Analysis**: Exploiting long-term price relationships.
+- **Key resources**:
+  * [Statistical Arbitrage in the U.S. Equities Market](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1153505) by Avellaneda and Lee - The canonical PCA/ETF-factor mean-reversion framework.
+  * [Pairs Trading: Performance of a Relative-Value Arbitrage Rule](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=141615) by Gatev, Goetzmann, and Rouwenhorst - The foundational empirical study of pairs trading.
 
 ### 2. Factor Investing
 
@@ -124,6 +128,9 @@ A scientifically rational design for a quantitative trading system or strategy s
   * **Size**: Investing in small-cap stocks.
   * **Quality**: Selecting stocks based on financial health indicators.
   * **Low Volatility**: Investing in stocks with lower price fluctuations.
+- **Key resources**:
+  * [Kenneth French Data Library](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html) - The canonical free source for factor return data (Fama-French factors, momentum, portfolios).
+  * [... and the Cross-Section of Expected Returns](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2249314) by Harvey, Liu, and Zhu - The "factor zoo" critique: why most published factors fail multiple-testing scrutiny.
 
 ### 3. High-Frequency Trading (HFT)
 
@@ -132,6 +139,8 @@ A scientifically rational design for a quantitative trading system or strategy s
   * **Market Making**: Providing liquidity by simultaneously placing buy and sell orders.
   * **Latency Arbitrage**: Exploiting tiny price discrepancies.
   * **Order Flow Prediction**: Anticipating and acting on order flow patterns.
+- **Key resources**:
+  * [Hummingbot](https://github.com/hummingbot/hummingbot) - Open-source framework for running market-making and arbitrage bots on centralized and decentralized exchanges.
 
 ### 4. Trend Following
 
@@ -140,6 +149,9 @@ A scientifically rational design for a quantitative trading system or strategy s
   * **Moving Averages**: Using price averages to identify trends.
   * **Breakout Trading**: Entering positions when prices move beyond support/resistance levels.
   * **Momentum Indicators**: Using technical indicators to measure price velocity.
+- **Key resources**:
+  * [Time Series Momentum](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2089463) by Moskowitz, Ooi, and Pedersen - The seminal evidence for trend persistence across 58 futures markets.
+  * [pysystemtrade](https://github.com/robcarver17/pysystemtrade) - Robert Carver's open-source systematic futures trading framework implementing his book's methodology.
 
 ### 5. Volatility Trading
 
@@ -147,6 +159,8 @@ A scientifically rational design for a quantitative trading system or strategy s
 - **Methods**:
   * **Options Pricing**: Using volatility models for options valuation.
   * **Volatility Arbitrage**: Exploiting differences between implied and realized volatility.
+- **Key resources**:
+  * [Deep Hedging](https://arxiv.org/abs/1802.03042) by Buehler, Gonon, Teichmann, and Wood - Reinforcement learning for hedging derivatives under transaction costs, beyond Black-Scholes assumptions.
 
 ### 6. Risk Parity
 
@@ -169,6 +183,8 @@ A scientifically rational design for a quantitative trading system or strategy s
   * **Merger Arbitrage**: Trading around M&A activities.
   * **Earnings Announcements**: Trading based on financial report releases.
   * **Economic Data Releases**: Trading on macroeconomic news.
+- **Key resources**:
+  * [Characteristics of Risk and Return in Risk Arbitrage](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=268144) by Mitchell and Pulvino - The definitive empirical study of merger arbitrage returns.
 
 ### 9. Machine Learning and AI Strategies
 
@@ -178,6 +194,8 @@ A scientifically rational design for a quantitative trading system or strategy s
   * **Unsupervised Learning**: Discovering hidden patterns in data.
   * **Reinforcement Learning**: Learning optimal strategies through environment interaction.
   * **Natural Language Processing (NLP)**: Analyzing text data for trading signals.
+- **Key resources**:
+  * [machine-learning-for-trading](https://github.com/stefan-jansen/machine-learning-for-trading) - Stefan Jansen's companion code to his book: 150+ notebooks covering the full ML4T workflow from data to deployment.
 
 ### 10. Multi-Strategy Approach
 
@@ -185,12 +203,6 @@ A scientifically rational design for a quantitative trading system or strategy s
 - **Examples**:
   * **Multi-Factor Models**: Integrating multiple factors in a single strategy.
   * **Strategy Allocation**: Dynamically allocating capital across various quantitative strategies.
-    
-| **Category**                | **Sub-directions**                                                                 | **Technical Stack & Tools**                                                                 | **Real-World Applications**                                                                 |
-|----------------------------|-------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
-| **AI-Enhanced Traditional Strategies** | 1. **Factor Investing**: <br> - SHAP feature selection for factor validity<br> - Dynamic factor weighting calibration<br> - Nonlinear factor fusion (XGBoost/GNN)<br>2. **Statistical Arbitrage**:<br>- Cointegration + Graph Neural Networks<br>- Kalman Filter for pairs trading<br>3. **Trend Following**:<br>- CNN for candlestick pattern recognition (e.g., head-and-shoulders)<br>- LSTM anomaly detection for trend reversal signals | - Pyfolio (performance attribution)<br> - Alphalens (factor testing)<br> - Featuretools (automated feature engineering)<br> - DGL (Graph Neural Network library) | - Multi-factor equity selection systems (A-shares/US stocks)<br> - Crypto cross-exchange arbitrage<br> - Commodity futures trend tracking strategies               |
-| **End-to-End AI Strategies**         | 1. **Reinforcement Learning (RL)**:<br>- DDPG/PPO for asset allocation<br>- Deep Q-learning for order execution optimization<br>2. **Transformer-Based Forecasting**:<br>- TimesNet for multi-scale volatility prediction<br>- Informer for long-horizon price modeling<br>3. **Multi-Agent Market Simulation**:<br>- DeFi liquidity<br>- Adversary behavior inference       | - Stable Baselines3 (RL framework)<br> - Hugging Finance (Transformers for Time Series)<br> - PettingZoo (multi-agent training environment) | - Adaptive options hedging (Black-Scholes)<br> - Crypto market-making<br> - Stress-testing under extreme market scenarios      |
-| **Cross-Domain Emerging Fields**     | 1. **Crypto Market Making**:<br>- Order-book state prediction (LSTM+attention)<br>- MEV arbitrage path optimization<br>2. **ESG Factor Quantification**:<br>- BERT for ESG report parsing<br>- ESG-financial metric nonlinear modeling<br>3. **Climate Risk Pricing**:<br>- Physical risks: Natural disaster data mapping to asset exposure<br>- Transition risks: Carbon price sensitivity analysis + policy text mining | - CoinMetrics (crypto data)<br> - SASB standards (ESG metrics)<br> - Bloomberg NEF (climate finance)<br> - TensorFlow Probability (uncertainty quantification) | - Carbon-neutral ETF dynamic rebalancing<br> - Extreme weather-driven commodity strategies<br> - Blockchain MEV extraction bots                  |
 
 
 
@@ -202,18 +214,11 @@ Comparing three major approaches to quantitative trading: Quantitative Trading, 
 |---------|----------------------------------|-------------------------|---------------------|
 | **Decision Process** | Static rules based on mathematical models and historical data | Predefined algorithmic logic with optimization mechanisms | Autonomous learning and decision-making agents adapting to environment changes |
 | **Adaptability** | Low, requires manual parameter and rule adjustments | Medium, self-adapts through parameter optimization | High, real-time learning and adaptation to market conditions |
-| **Market Understanding** | Limited to pre-programmed rule scopes | Medium, can capture some complex patterns | Comprehensive, can understand and adapt to complex market structures |
-| **Learning Capability** | None or limited | Based on supervised learning or parameter optimization | Autonomous learning and exploration abilities, can improve strategies through reinforcement learning |
-| **Flexibility** | Low, fixed rules | Medium, adjustable algorithms but fixed frameworks | High, autonomous adjustment of strategies and objectives |
+| **Learning Capability** | None or limited | Based on supervised learning or parameter optimization | Autonomous learning and exploration, improving strategies through reinforcement learning |
 | **Transparency** | High, clear and explainable rules | Medium, higher algorithm complexity but traceable | Lower, decision processes may be "black box" |
 | **Risk Management** | Fixed rule-based risk control | Built-in algorithmic risk control mechanisms | Dynamic risk assessment and adaptive risk management |
-| **Complexity** | Low to medium | Medium to high | High, involving complex AI/ML models and architectures |
-| **Computational Requirements** | Lower | Medium | High, especially during training phases |
 | **Data Dependency** | Relies on specific types of historical data | Strong dependency on multiple data sources | Can process multi-dimensional, unstructured data including real-time feedback |
-| **Maintenance Cost** | Lower, simple and stable rules | Medium, requires periodic adjustments and optimization | High, requires continuous monitoring and possible retraining |
-| **Innovation Potential** | Limited by preset rules | Medium, achievable through algorithm optimization | High, can discover new trading strategies and opportunities |
 | **Typical Applications** | Trend following, mean reversion, fundamental quantitative analysis | Statistical arbitrage, high-frequency trading, factor models | Adaptive trading systems, hybrid strategy optimization, multi-objective decision making |
-| **Recent Developments** | Integration of more data sources | Introduction of machine learning to optimize algorithm parameters | Multi-agent collaboration, meta-learning, transfer learning applications |
 
 
 ## Frontier: Emerging Topics (2025/2026)
@@ -226,6 +231,8 @@ Multi-agent systems using large language models in specialized roles (analyst, t
 - [FinRobot](https://github.com/AI4Finance-Foundation/FinRobot) - Open-source AI agent platform for financial analysis using LLMs with Financial Chain-of-Thought reasoning and smart scheduler for multi-source LLM integration.
 - [FinGPT](https://github.com/AI4Finance-Foundation/FinGPT) - Open-source financial LLM framework with data-centric design and LoRA fine-tuning; supports sentiment analysis, robo-advising, and algorithmic trading.
 - [FinRL](https://github.com/AI4Finance-Foundation/FinRL) - Financial reinforcement learning framework supporting A2C, DDPG, PPO, TD3, SAC agents; FinRL-X adds modular infrastructure for the LLM/agentic AI era.
+- [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) - Natural-language multi-agent finance research framework with 29 swarm presets (investment committee, quant desk, risk committee); 7 cross-market backtest engines (A-shares/US/Crypto/Futures/Forex/Options) plus a shared-capital CompositeEngine; 5-source auto-fallback data layer (tushare/okx/yfinance/akshare/ccxt); 17-tool MCP server for Claude Desktop; CLI + FastAPI + React frontend.
+- [oracle3](https://github.com/YichengYang-Ethan/oracle3) - Autonomous prediction-market trading agent for Kalshi, Polymarket, and Solana DFlow using Wang Transform pricing, Greeks, Kelly sizing, and constraint-based arbitrage strategies; Apache-2.0 with methodology documented in a companion SSRN working paper.
 
 ### Transformer Time-Series Foundation Models
 
@@ -237,6 +244,21 @@ Pre-trained transformer models for temporal data that can forecast time series z
 - [Lag-Llama](https://github.com/time-series-foundation-models/lag-llama) - First open-source decoder-only foundation model for probabilistic time series forecasting; developed by Morgan Stanley, ServiceNow, and Mila.
 - [PatchTST](https://github.com/yuqinie98/PatchTST) - Segments time series into subseries-level patches as transformer tokens, achieving quadratic reduction in attention cost while retaining local semantics.
 - [TimeGPT](https://github.com/Nixtla/nixtla) - Production-ready foundation model trained on 100B+ data points with open-source Python/R SDK; offers zero-shot forecasting and anomaly detection via API.
+
+### AI-Driven Alpha Mining
+
+Automating the factor-research loop itself: LLM- and RL-based systems that propose, implement, and backtest alpha factors and models with minimal human intervention.
+
+- [RD-Agent](https://github.com/microsoft/RD-Agent) - Microsoft's LLM-based autonomous R&D agent; its quantitative-finance mode (RD-Agent(Q)) iteratively proposes, codes, and backtests factors and models on top of Qlib.
+- [AlphaGen](https://github.com/RL-MLDM/alphagen) - Reinforcement learning framework for generating formulaic alpha factors, optimizing the performance of the factor set as a whole rather than individual factors.
+
+### Financial LLM Evaluation Benchmarks
+
+Standardized benchmarks for measuring what LLMs actually know and can do in finance — essential due diligence before trusting any model with financial analysis.
+
+- [FinanceBench](https://arxiv.org/abs/2311.11944) - Open-book financial QA benchmark of 10,231 questions grounded in public filings; reveals high hallucination rates in frontier LLMs answering from 10-Ks.
+- [FinBen](https://arxiv.org/abs/2402.12659) - Holistic financial benchmark spanning 36 datasets across 24 tasks including information extraction, risk forecasting, and decision-making.
+- [PIXIU](https://github.com/The-FinAI/PIXIU) - Open-source financial LLM toolkit with the FLARE evaluation benchmark, instruction-tuning data, and the FinMA model family.
 
 ### Diffusion Models for Synthetic Financial Data
 
@@ -260,31 +282,36 @@ Quantitative approaches to decentralized finance: MEV extraction, AMM liquidity 
 
 List of software tools and platforms used in quantitative finance.
 
-- [pytrade](https://github.com/PFund-Software-Ltd/pytrade.org) - Python packages and resources for algo-trading.
-- [pybroker](https://github.com/edtechre/pybroker) - Algorithmic trading framework focused on strategies backtesting that use machine learning.
-- [KeepRule](https://keeprule.com) - AI-powered investment discipline platform with principles from 26 legendary investors including Buffett, Munger, and Dalio.
-
 #### 1. **Strategy Development Frameworks**
-| **Tool**              | **Strength**                          | **Community Activity** | **Academic Adoption** | **Enterprise Use** |
-|-----------------------|----------------------------------------|------------------------|-----------------------|--------------------|
-| **Backtrader**        | Multi-factor strategy backtesting       | High                   | Medium                | Medium             |
-| **Zipline**           | End-to-end trading pipelines            | Medium                 | High                  | High (Quantopian)  |
-| **QuantConnect**      | Cross-market support (stocks, crypto)   | High                   | Medium                | High               |
-| **TensorTrade**       | Reinforcement learning prototyping      | Medium                 | Medium                | Medium             |
-| **Ray/Rllib**         | Adaptive strategies in complex environments | High                | High                  | High               |
+| **Tool**              | **Strength**                          | **Notes** |
+|-----------------------|----------------------------------------|-----------|
+| **[Qlib](https://github.com/microsoft/qlib)** | AI-oriented quant research platform: factor library, model zoo, workflow automation | Microsoft; the reference open-source platform for ML-driven quant research |
+| **[OpenBB](https://github.com/OpenBB-finance/OpenBB)** | Open-source investment research terminal aggregating equity, macro, and crypto data | Free CLI + SDK; large active community |
+| **[LEAN](https://github.com/QuantConnect/Lean)** | Institution-grade backtesting and live-trading engine (equities, futures, options, crypto) | Open-source engine behind QuantConnect |
+| **[NautilusTrader](https://github.com/nautechsystems/nautilus_trader)** | High-performance event-driven backtesting and live trading | Rust core with Python API; nanosecond precision |
+| **[vectorbt](https://github.com/polakowo/vectorbt)** | Vectorized backtesting at scale — thousands of parameter combinations in seconds | Built on NumPy/Numba; ideal for fast strategy sweeps |
+| **[Backtrader](https://github.com/mementum/backtrader)** | Feature-rich event-driven backtesting | Mature and widely taught, though maintenance has slowed |
+| **[zipline-reloaded](https://github.com/stefan-jansen/zipline-reloaded)** | Community-maintained fork of Quantopian's Zipline | Original Zipline is unmaintained since Quantopian's 2020 shutdown |
+| **[pybroker](https://github.com/edtechre/pybroker)** | Backtesting framework designed for ML-driven strategies | Built-in walk-forward analysis and bootstrapped metrics |
+| **[Riskfolio-Lib](https://github.com/dcajasn/Riskfolio-Lib)** | Portfolio optimization: mean-risk, risk parity, hierarchical clustering methods | 20+ risk measures; strong documentation |
+| **[skfolio](https://github.com/skfolio/skfolio)** | Portfolio optimization with a scikit-learn-compatible API | Cross-validation and hyperparameter tuning for allocation models |
+| **[Ray/RLlib](https://github.com/ray-project/ray)** | Distributed reinforcement learning for adaptive strategies | Industry-standard RL infrastructure |
 
 #### 2. **Data Providers**
 | **Provider**          | **Key Features**                        | **Use Cases**                          |
 |-----------------------|-----------------------------------------|----------------------------------------|
-| **Alpha Vantage**     | Free APIs for stock/crypto data         | Historical price/volume analysis       |
-| **Quandl**            | Premium structured datasets             | Macroeconomic/factor data integration  |
-| **Yahoo Finance**     | Open-source financial data              | Basic equity/ETF research              |
-| **Bloomberg Terminal**| Institutional-grade market data         | High-frequency trading, ESG analytics  |
-| **CoinMetrics**       | Crypto-specific metrics                 | On-chain transaction analysis, MEV tracking |
+| **[FRED](https://fred.stlouisfed.org/)** | 800K+ US and international macro time series, free API | Macro research, regime models, rates and inflation data |
+| **[yfinance](https://github.com/ranaroussi/yfinance)** | Python wrapper for Yahoo Finance data | Free equity/ETF/FX/crypto prices for research and prototyping |
+| **[Alpha Vantage](https://www.alphavantage.co/)** | Free APIs for stock/crypto data         | Historical price/volume analysis       |
+| **[Nasdaq Data Link](https://data.nasdaq.com/)** | Premium and free structured datasets (formerly Quandl) | Macroeconomic/factor data integration  |
+| **[Databento](https://databento.com/)** | Institutional market data (equities, futures, options) with usage-based pricing | Tick-level and order-book data for microstructure research |
+| **[akshare](https://github.com/akfamily/akshare)** | Free Python library for Chinese market data (A-shares, futures, funds, macro) | China market research; no account required |
+| **[Bloomberg Terminal](https://www.bloomberg.com/professional/products/bloomberg-terminal/)** | Institutional-grade market data         | High-frequency trading, ESG analytics  |
+| **[CoinMetrics](https://coinmetrics.io/)** | Crypto-specific metrics                 | On-chain transaction analysis, MEV tracking |
 | **[CoinPaprika](https://api.coinpaprika.com)** | Free crypto market data (12K+ coins, 350+ exchanges) | Tickers, OHLCV, historical prices. No API key for free tier |
 | **[DexPaprika](https://api.dexpaprika.com)** | Free DEX data (34 chains, 30M+ pools, real-time streaming) | On-chain DEX analytics, pool data, token prices. No API key |
-| **FinancialData.Net** | Stock market and financial data         | Financial analysis, data integration   |
-| **[FXMacroData](https://fxmacrodata.com)** | Macroeconomic announcements, release calendars, FX, COT, commodities, and bond yields across 18 currencies | Global macro research, event-driven strategies, FX workflow integration |
+| **[FinancialData.Net](https://financialdata.net/)** | Stock market and financial data         | Financial analysis, data integration   |
+| **[FXMacroData](https://fxmacrodata.com)** | Macroeconomic announcements, release calendars, FX, COT, commodities, and bond yields with a persistent free USD evaluation tier | Global macro research, event-driven strategies, FX workflow integration |
 | **[StockAInsights](https://stockainsights.com)** | Institutional-grade AI-extracted SEC financial statements (not XBRL) | Fundamental analysis, backtesting, screening |
 | **[Adanos](https://adanos.org)** | Multi-source market sentiment data for US stocks across Reddit, X, finance news, and Polymarket | Alternative data research, event-driven signal generation, sentiment factor modeling |
 
@@ -307,6 +334,10 @@ Online courses, tutorials, and workshops focused on quantitative investing and m
 - [Quantitative Trading Strategies (UChicago FINM 33150)](https://finmath.uchicago.edu/curriculum/degree-concentrations/trading/finm-33150/) - Graduate-level course on quantitative trading strategy design and implementation.
 - [Oxford Algorithmic Trading Programme](https://www.sbs.ox.ac.uk/programmes/executive-education/online-programmes/oxford-algorithmic-trading-programme) - Executive education programme covering algorithmic trading fundamentals and practice.
 - [Princeton ORFE Financial Mathematics](https://orfe.princeton.edu/research/financial-mathematics) - Research and curriculum in financial mathematics from Princeton's ORFE department.
+- [QuantEcon](https://quantecon.org/) - Free open-source lectures on quantitative economics by Thomas Sargent and John Stachurski, with Python and Julia implementations.
+- [Georgia Tech CS 7646: Machine Learning for Trading](https://omscs.gatech.edu/cs-7646-machine-learning-trading) - Graduate course covering ML-driven trading strategy construction, available through Georgia Tech's online MS program.
+- [WorldQuant University MSc in Financial Engineering](https://www.wqu.edu/) - Tuition-free, accredited online master's degree in financial engineering.
+- [Marcos López de Prado's Lectures](https://www.quantresearch.org/Lectures.htm) - Free lecture slides from his Cornell graduate courses on financial machine learning.
   
 
 ## Books
@@ -405,19 +436,29 @@ Seminal and recent research that advances the field of quantitative finance.
 
 ### Foundational
 
-- [Advances in Financial Machine Learning](https://www.amazon.com/Advances-Financial-Machine-Learning-Marcos/dp/1119482089/) by Marcos Lopez de Prado - Addresses the key challenges of applying ML to finance, including backtest overfitting and feature importance.
+- [Empirical Asset Pricing via Machine Learning](https://academic.oup.com/rfs/article/33/5/2223/5758276) by Shihao Gu, Bryan Kelly, and Dacheng Xiu - Comprehensive comparison of ML methods for measuring risk premiums; the benchmark paper of the field.
 - [Deep Learning for Asset Pricing](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3350138) by Luyang Chen, Markus Pelger, and Jason Zhu - Uses deep neural networks to estimate conditional asset pricing models.
-- [Empirical Asset Pricing via Machine Learning](https://academic.oup.com/rfs/article/33/5/2223/5758276) by Shihao Gu, Bryan Kelly, and Dacheng Xiu - Comprehensive comparison of ML methods for measuring risk premiums.
+- [The 10 Reasons Most Machine Learning Funds Fail](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3104816) by Marcos López de Prado - Catalogue of the methodological errors that sink quantitative ML strategies in practice.
+- [Deep Learning Statistical Arbitrage](https://arxiv.org/abs/2106.04028) by Guijarro-Ordonez, Pelger, and Zanotti - Unified framework using transformers and CNNs to extract arbitrage signals from residual portfolios.
+
+### LLMs in Finance
+
+- [FinBERT: Financial Sentiment Analysis with Pre-trained Language Models](https://arxiv.org/abs/1908.10063) by Dogu Araci - The first widely adopted finance-domain BERT model for sentiment analysis.
+- [BloombergGPT: A Large Language Model for Finance](https://arxiv.org/abs/2303.17564) by Wu et al. - 50B-parameter LLM trained on Bloomberg's proprietary financial corpus; the reference point for domain-specific financial LLMs.
+- [Can ChatGPT Forecast Stock Price Movements?](https://arxiv.org/abs/2304.07619) by Alejandro López-Lira and Yuehua Tang - Shows LLM sentiment scores on news headlines predict next-day returns; widely replicated and debated.
+- [Financial Statement Analysis with Large Language Models](https://arxiv.org/abs/2407.17866) by Kim, Muhn, and Nikolaev - GPT-4 analyzing standardized anonymized financials matches or beats human analysts at predicting earnings direction.
 
 ### Market Microstructure and Regime Detection
 
-- [Identifying States of a Financial Market](paper/Identifying%20States%20of%20a%20Financial%20Market.pdf) - Statistical methods for financial market state identification.
-- [Memory Effects in Stock Price Dynamics](paper/Memory%20effects%20in%20stock%20price%20dynamics.pdf) - Analyzes long-memory and persistence phenomena in stock price dynamics.
+- [Identifying States of a Financial Market](paper/Identifying%20States%20of%20a%20Financial%20Market.pdf) by Münnix et al. - Correlation-structure clustering to identify market states; basis for regime-detection approaches. (Local copy.)
+- [Memory Effects in Stock Price Dynamics](paper/Memory%20effects%20in%20stock%20price%20dynamics.pdf) - Analyzes long-memory and persistence phenomena in stock price dynamics. (Local copy.)
 
 ### AI Agents for Trading
 
 - [TradingAgents: Multi-Agents LLM Financial Trading Framework](https://arxiv.org/abs/2412.20138) by Xiao et al. (2024) - Multi-agent LLM framework simulating trading firm dynamics with specialized analyst and trader roles.
 - [FinAgent: A Multimodal Foundation Agent for Financial Trading](https://arxiv.org/abs/2402.18485) by Zhang et al. (2024) - Tool-augmented multimodal agent processing numerical, textual, and visual market data.
+- [FinMem: A Performance-Enhanced LLM Trading Agent with Layered Memory](https://arxiv.org/abs/2311.13743) by Yu et al. (2023) - Trading agent with human-inspired layered memory and character design for improved decision-making.
+- [FinCon: A Synthesized LLM Multi-Agent System with Conceptual Verbal Reinforcement](https://arxiv.org/abs/2407.06567) by Yu et al. (2024) - Manager-analyst agent hierarchy with risk control and self-critique, evaluated on trading and portfolio tasks.
 
 
 ## Original Research and Notes
@@ -457,17 +498,15 @@ Communities, forums, and conferences dedicated to quantitative finance and AI in
 ### Communities
 
 - [QuantConnect Community](https://www.quantconnect.com/forum) - Active forum for algorithmic trading discussions with shared strategies and research.
-- [Quantopian Legacy (QuantPedia)](https://quantpedia.com/) - Database of quantitative trading strategies from academic research.
+- [QuantPedia](https://quantpedia.com/) - Encyclopedia of quantitative trading strategies distilled from academic research.
 - [r/algotrading](https://www.reddit.com/r/algotrading/) - Reddit community for algorithmic trading discussion and resource sharing.
 - [r/quant](https://www.reddit.com/r/quant/) - Reddit community for quantitative finance professionals and students.
 - [Wilmott Forums](https://forum.wilmott.com/) - Long-running quantitative finance community with deep technical discussions.
-- [Nuclear Phynance](http://www.nuclearphynance.com/) - Forum for quantitative finance practitioners focusing on derivatives and risk.
 
 ### Conferences
 
-- [The Trading Show](https://www.terrapinn.com/exhibition/the-trading-show/) - Conference covering algorithmic trading, market structure, and fintech innovation.
-- [QuantMinds](https://www.quantminds.com/) - Global conference series covering quantitative finance, risk management, and AI applications.
-- [AAAI Conference on AI in Finance](https://aaai.org/) - Academic conference featuring AI/ML research applied to financial markets.
+- [The Trading Show](https://www.terrapinn.com/conference/the-trading-show-new-york/) - Conference covering algorithmic trading, market structure, and fintech innovation.
+- [QuantMinds](https://informaconnect.com/quantminds-international/) - Global conference series covering quantitative finance, risk management, and AI applications.
 - [ACM ICAIF](https://ai-finance.org/) - ACM International Conference on AI in Finance, bridging CS and finance research.
 
 
@@ -477,24 +516,19 @@ Communities, forums, and conferences dedicated to quantitative finance and AI in
 - [awesome-ai-in-finance](https://github.com/georgezouq/awesome-ai-in-finance) - Resources for AI applications in the financial industry.
 - [awesome-systematic-trading](https://github.com/paperswithbacktest/awesome-systematic-trading) - Curated list of systematic trading tools and strategies.
 - [awesome-deep-learning](https://github.com/ChristosChristofidis/awesome-deep-learning) - Curated list of deep learning tutorials, projects, and communities.
-
-
-## Reference
-
-- [46 Awesome Books for Quant Finance, Algo Trading, and Market Data Analysis](https://www.pyquantnews.com/the-pyquant-newsletter/46-books-quant-finance-algo-trading-market-data) - Comprehensive book list from PyQuant Newsletter.
-- [10 Awesome Books for Quantitative Trading](https://medium.com/@mlblogging.k/10-awesome-books-for-quantitative-trading-fc0d6aa7e6d8) - Curated reading list for quantitative trading beginners.
-- [Books for Algorithmic Trading I Wish I Had Read Sooner](https://www.youtube.com/watch?v=ftFptCxm5ZU) - Video overview of essential algorithmic trading books.
+- [pytrade.org](https://github.com/PFund-Software-Ltd/pytrade.org) - Directory of Python packages and resources for algo-trading.
+- [46 Awesome Books for Quant Finance](https://www.pyquantnews.com/the-pyquant-newsletter/46-books-quant-finance-algo-trading-market-data) - Comprehensive book list from PyQuant Newsletter.
 
 
 ## Contributing
 
-Contributions are welcome! If you'd like to add a resource, fix a link, or suggest an improvement:
+Contributions are welcome — please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a PR.
 
-1. Please ensure your suggestion fits the scope of AI/ML applications in quantitative finance.
-2. Use the format: `- [Name](url) - Brief description ending with a period.`
-3. Add new entries to the most relevant existing section.
-4. One pull request per resource or a small group of related resources.
-5. Check that your links are working and not duplicates of existing entries.
+Quick version:
+- This list is **curated**, not comprehensive — additions should match the bar set by existing entries in that section.
+- Prefer **open-source projects, established research frameworks, or widely-used data APIs**. Commercial SaaS without traction or an open-source component is usually declined.
+- **Disclose affiliation** if you built it.
+- Format: `- [Name](url) - Brief description ending with a period.` — one PR per resource, added to the most relevant section.
 
 For questions, suggestions, or collaboration inquiries:
 
