@@ -312,6 +312,7 @@ List of software tools and platforms used in quantitative finance.
 | **[DexPaprika](https://api.dexpaprika.com)** | Free DEX data (34 chains, 30M+ pools, real-time streaming) | On-chain DEX analytics, pool data, token prices. No API key |
 | **[FinancialData.Net](https://financialdata.net/)** | Stock market and financial data         | Financial analysis, data integration   |
 | **[StockAInsights](https://stockainsights.com)** | Institutional-grade AI-extracted SEC financial statements (not XBRL) | Fundamental analysis, backtesting, screening |
+| **[BDE Score](https://github.com/hbhqq9/bde-score)** | AI-powered multi-market stock scoring (US/HK/A-share, 73 stocks). BDE transparency framework | Multi-market equity analysis, scoring, EU AI Act Art.50 compliant |
 | **[Adanos](https://adanos.org)** | Multi-source market sentiment data for US stocks across Reddit, X, finance news, and Polymarket | Alternative data research, event-driven signal generation, sentiment factor modeling |
 
 #### 3. **Execution & Deployment**
