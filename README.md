@@ -14,7 +14,7 @@ A curated list of awesome resources for quantitative investment and trading stra
 
 *Your edge: which layer do you understand better than consensus?*
 
-⭐ Beyond curated links, this project includes an [original 8-chapter bilingual strategy guide](#original-research-and-notes) with Python implementations and [research essays](#research-essays-think) on regime detection and AI-agent trading.
+⭐ Beyond curated links, this project includes an [original 11-chapter strategy guide](#original-research-and-notes) with runnable Python implementations and [research notes](#research-essays-think) on regime detection and AI-agent trading.
 
 </div>
 
@@ -468,17 +468,20 @@ In-depth analysis and strategy implementation guides maintained as part of this 
 
 ### Strategy Implementation (book/myquant/)
 
-An 8-chapter bilingual (EN/CN) quantitative trading strategy guide with Python implementations:
+An 11-chapter quantitative trading strategy guide with runnable Python implementations — synthetic-data demos, with look-ahead pitfalls explicitly flagged:
 
 - [Chapter 1: Trend Following Strategies](book/myquant/chapter1.md) - Moving averages, channel breakouts, momentum indicators.
-- [Chapter 2: Mean Reversion Strategies](book/myquant/chapter2.md) - Pairs trading, statistical arbitrage, cointegration.
-- [Chapter 3: Arbitrage Strategies](book/myquant/chapter3.md) - Cash-futures arbitrage, convertible bond arbitrage, ETF arbitrage.
-- [Chapter 4: High-Frequency Trading](book/myquant/chapter4.md) - Market making, order flow prediction, latency arbitrage.
-- [Chapter 5: Machine Learning Strategies](book/myquant/chapter5.md) - Random forests, LSTM, reinforcement learning for trading.
-- [Chapter 6: Fundamental Quant Strategies](book/myquant/chapter6.md) - Fama-French factors, multi-factor models, event-driven quant.
-- [Chapter 7: Volatility Strategies](book/myquant/chapter7.md) - GARCH modeling, volatility surface, variance risk premium.
-- [Chapter 8: Options Strategies](book/myquant/chapter8.md) - Delta neutral, Greeks, dynamic hedging.
-- [Full Strategy Taxonomy (TOC)](book/myquant/toc.md) - Complete knowledge framework for quantitative trading strategies.
+- [Chapter 2: Mean Reversion Strategies](book/myquant/chapter2.md) - Pairs trading, ETF arbitrage, cointegration (VECM).
+- [Chapter 3: Arbitrage Strategies](book/myquant/chapter3.md) - Cash-futures arbitrage, convertible bond arbitrage, options conversion arbitrage.
+- [Chapter 4: High-Frequency Trading](book/myquant/chapter4.md) - Market making, order flow prediction, latency arbitrage, event-driven HFT.
+- [Chapter 5: Machine Learning Strategies](book/myquant/chapter5.md) - Random forests, XGBoost, LSTM, deep reinforcement learning.
+- [Chapter 6: Fundamental Quant Strategies](book/myquant/chapter6.md) - Fama-French five-factor model, multi-factor frameworks, event-driven quant (PEAD).
+- [Chapter 7: Volatility Strategies](book/myquant/chapter7.md) - GARCH forecasting, implied volatility surface, variance risk premium.
+- [Chapter 8: Options Strategies](book/myquant/chapter8.md) - Delta-neutral strategies, Greeks, volatility trading.
+- [Chapter 9: Macro Strategies](book/myquant/chapter9.md) - Interest rate and currency strategies.
+- [Chapter 10: Portfolio Construction and Risk Management](book/myquant/chapter10.md) - Multi-strategy allocation, dynamic risk management.
+- [Chapter 11: Performance Evaluation and Attribution](book/myquant/chapter11.md) - Strategy evaluation framework and performance metrics.
+- [Full Strategy Taxonomy (TOC)](book/myquant/toc.md) - Complete knowledge framework for quantitative trading strategies (EN/CN).
 
 ### Research Essays (think/)
 

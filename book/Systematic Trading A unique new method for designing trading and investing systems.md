@@ -1,426 +1,349 @@
 # Systematic Trading: A unique new method for designing trading and investing systems
 
+Reading notes on Robert Carver's *Systematic Trading* (2015).
 
+> **Scope of these notes:** They cover the front portion of the book — the Introduction, Part One (Theory: psychology, simple rules, sticking to the plan, trading styles), the Part Two toolbox chapters on fitting and portfolio allocation, and the beginning of Part Three (the framework overview) up through the Forecasts chapter. The remaining framework chapters (volatility targeting, position sizing, trading speed and costs, portfolio construction) and Part Four (Practice) are not covered.
 
-处理不确定性，该在什么位置入场，入场后亏了该怎么办，入场后对了又该怎么办，该在什么位置止损，在什么位置止盈，什么位置加仓
+A trading system is a complete decision logic for dealing with uncertainty in price action: where to enter, what to do when a position moves against you, what to do when it moves in your favor, where to place the stop, where to take profit, and when to add to a position. It is a consistent lens for observing otherwise chaotic charts.
 
-一套完整的处理不确定k线走势的交易逻辑，即交易系统，对混沌的k线走势的观察角度
-
-
-
-#### Learning Strategy
+## Learning Strategy
 
 1. **Understanding the Basics**
-   
-   * **Preface** and **Introduction**: Start with these sections to understand the motivation behind systematic trading and the scope of the book.
+   - **Preface** and **Introduction**: Start with these sections to understand the motivation behind systematic trading and the scope of the book.
 
 2. **Theory**
-   
-   * **Part One**: Focus on understanding why systematic trading is necessary and the psychological biases that affect human traders.
+   - **Part One**: Focus on understanding why systematic trading is necessary and the psychological biases that affect human traders.
 
 3. **Toolbox**
-   
-   * **Part Two**: Learn about the tools and techniques used in systematic trading, such as fitting models and portfolio allocation.
+   - **Part Two**: Learn about the tools and techniques used in systematic trading, such as fitting models and portfolio allocation.
 
 4. **Framework**
-   
-   * **Part Three**: Study the detailed framework for creating systematic strategies, including instrument selection, forecasting, and risk management.
+   - **Part Three**: Study the detailed framework for creating systematic strategies, including instrument selection, forecasting, and risk management.
 
 5. **Practice**
-   
-   * **Part Four**: Apply the learned concepts to real-world scenarios tailored to different types of traders (semi-automatic trader, asset allocating investor, staunch systems trader).
+   - **Part Four**: Apply the learned concepts to real-world scenarios tailored to different types of traders (semi-automatic trader, asset allocating investor, staunch systems trader).
 
 6. **Additional Resources**
-   
-   * Use the **Glossary** and **Appendices** for definitions and further reading to deepen your understanding of specific concepts and technical details.
+   - Use the **Glossary** and **Appendices** for definitions and further reading to deepen your understanding of specific concepts and technical details.
 
 By following this structure, you can systematically approach the book and build a strong foundation in designing and implementing trading and investing systems.
 
+## Three Archetypal Systematic Traders and Investors
 
+**Key points:**
 
-#### 三个典型的系统化交易者和投资者群体
+- **Asset allocating investor**: Spreads capital across asset classes, avoids chasing whatever is currently fashionable, and typically uses no leverage. Carver uses an ETF portfolio to show how the systematic framework applies to asset allocation.
+- **Semi-automatic trader**: Trades on discretionary market opportunities, uses leverage and derivatives, but manages positions and risk through the systematic framework. Carver illustrates this with a UK equity trading example.
+- **Staunch systems trader**: Relies entirely on systematic trading rules to forecast price moves, and uses the framework to manage positions and risk. Systems traders typically develop and validate rules with backtesting software; Carver shows how to use such tools safely.
 
-**主要观点**：
+**Structure of the book:**
 
-* **资产配置投资者**：将资金分配到不同的资产类别中，避免短期内追逐时尚，通常不使用杠杆。作者以ETF为例，展示如何应用系统化方法进行资产配置。
-* **半自动交易者**：基于市场机会进行交易，使用杠杆和衍生品，通过系统化框架管理头寸和风险。作者以英国股票交易为例，展示半自动交易策略。
-* **坚定的系统交易者**：完全依赖系统化交易规则预测价格变化，并使用系统化框架管理头寸和风险。系统交易者通常使用回测软件开发和验证交易规则，作者展示了如何安全地使用这些工具。
+- **Theory**: Why you should run a systematic strategy, and an overview of available trading styles.
+- **Toolbox**: The two key techniques for building systematic strategies: backtesting/fitting and portfolio optimization.
+- **Framework**: A complete, extensible framework for constructing systematic strategies.
+- **Practice**: How to apply the framework to the three archetypal traders and investors.
 
-**书的结构**：
+**Limits of human psychology:**
 
-* **理论部分**：解释为何要运行系统化策略，概述可用的交易风格。
-* **工具箱部分**：介绍创建系统化策略的两种关键方法：回测和组合优化。
-* **框架部分**：提供一个完整且可扩展的系统化策略创建框架。
-* **实践部分**：展示如何将框架应用于三种典型的系统化交易者和投资者。
+- Humans still outperform computers at complex intellectual tasks, but emotion prevents us from exploiting that advantage.
+- Fear and greed routinely produce bad decisions — even experienced investors are not immune.
 
-**人类心理的局限**：
+**Advantages of systematic trading:**
 
-* 尽管人类在复杂智力任务上优于计算机，但情绪会妨碍我们充分利用这些优势。
-* 恐惧和贪婪常常导致决策失误，即使是有经验的投资者也难以避免。
+- By removing emotional interference, systematic trading makes decisions more rational and consistent.
+- In extreme market conditions, systems keep running and can stay profitable while humans tend to panic.
 
-**系统化交易的优势**：
+A trading system should be modular, like a car — components can be adjusted and upgraded independently. Successful systems trading does not depend on a magical system, but on avoiding common mistakes: over-complex systems, over-optimism, taking excessive risk, and trading too frequently. Behavioral research shows that humans are systematically prone to error in financial decisions. This is why simple trading rules often outperform clever humans — and why a system only works if you actually stick to it.
 
-* 系统化交易通过消除情绪干扰，使决策更加理性和一致。
-* 在极端市场条件下，系统交易能够稳定运行并盈利，而人类容易恐慌。
+**Human cognitive flaws:**
 
-交易系统应像汽车一样具有模块化设计，可以根据需要进行调整和改进。成功的系统交易不在于神奇的系统，而在于避免常见错误，如系统过于复杂、过于乐观、冒过高风险、交易过于频繁。研究表明，人类为何在做金融决策时容易犯错。简单的交易规则往往比聪明的人类更擅长投资和交易。必须坚持你的系统才能使其有效。
+- Despite the brain's sophistication, cognitive biases produce systematically irrational behavior.
+- These instinctive reactions usually overwhelm our natural decision-making advantages, which is why simple decision rules tend to work better.
 
-**人类心理缺陷**：
+**Prospect Theory:**
 
-* 尽管人类大脑复杂，但由于认知偏差（cognitive biases），往往表现出非理性的行为。
-* 这些本能反应通常会压倒人类在决策上的天然优势，使得简单决策规则更为有效。
-  
-  
+- Explains why investors make predictable mistakes in decisions such as whether to exit a losing position.
+- Most people are reluctant to close a loser, because doing so means admitting a mistake — and a realized loss hurts more than a paper loss.
+- The instinct is to deny that a loss is real until it is crystallized, so people postpone selling losing positions.
+- Conversely, when a position is profitable, people rush to take the gain — locking in confirmation that the buy decision was right and avoiding potential regret.
 
-**前景理论（Prospect Theory）**：
+**Why cutting winners and running losers is bad:**
 
-* 解释了投资者在面对某些交易决策时为何会犯错，如是否应退出亏损的头寸。
-* 大多数人不愿意认赔离场，因为这意味着承认自己犯了错，并且实际化的亏损比账面亏损更让人痛苦。
-* 人类本能地不愿意承认亏损是真实的，直到亏损被确认，因此推迟卖出亏损头寸。
-* 相反，当头寸获利时，人们会急于获利了结，以避免后悔，并确认自己的买入决策是正确的。
+- Taking profits early while letting losses run is usually a poor strategy.
+- Backtests show that a take-profit-early rule generally underperforms a cut-losses-early rule.
 
-**小额获利和放任亏损的坏处**：
+## Simple Trading Rules
 
-* 提早获利、放任亏损的策略通常效果很差。
-* 通过回测发现，与早期亏损止损策略相比，早期获利止损策略在大多数情况下表现较差。
-  
-  
+1. **Why systematic rules help:**
+   - Systematic trading rules correct for serious flaws in human instinct.
+   - They can also exploit the cognitive biases of other human traders, profiting from market anomalies.
 
-### Simple Trading Rules
+2. **Cognitive biases and trading rules:**
+   - A rule that cuts losses early, for example, does more than fix your own instincts — it earns extra return from other traders doing the opposite.
 
-1. **系统化交易规则的优势**：
-   
-   * 系统化交易规则可以帮助纠正人类本能中的严重缺陷。
-   * 同时，这些规则还可以利用其他人类交易者的认知偏差，从市场异常中获利。
+3. **Why rules keep working:**
+   - Cognitive biases explain why certain trading rules have been persistently profitable, and why they are likely to remain effective in the future.
 
-2. **认知偏差与交易规则**：
-   
-   * 例如，早期亏损止损规则不仅仅是纠正人类本能，还能从其他交易者相反的行为中获得额外收益。
+## Sticking to the Plan
 
-3. **确保交易规则的持续有效性**：
-   
-   * 认知偏差解释了某些交易规则为何能持续获利，使得这些规则在未来仍可能有效。
+1. **Why adherence matters:**
+   - There is no point running a systematic strategy if you cannot stick to it.
+   - Faced with losses (or gains), human instinct interferes with execution and pushes you off the predefined rules.
 
-### Sticking to the Plan
+2. **Avoiding intervention:**
+   - You need a commitment mechanism to enforce adherence to the system.
+   - Odysseus had his crew bind him and ignore his orders so he could resist the Sirens.
+   - A modern example: Victor Niederhoffer had an assistant with instructions to forcibly close his positions once a loss limit was hit.
 
-1. **坚持系统的重要性**：
-   
-   * 若不能坚持执行系统化交易策略，则运行该策略没有意义。
-   * 在面对亏损或盈利时，人类本能会干扰系统的执行，导致偏离预定规则。
+3. **Objective systems:**
+   - For commitment to be enforceable, the system must be objective.
+   - Many systems are not fully objective and leave room for subjective interpretation.
+   - A purely objective system is better at preventing human interference and also permits reliable backtesting.
 
-2. **避免干预**：
-   
-   * 我们需要一种承诺机制（commitment mechanism）来确保遵守系统规则。
-   * 例如，奥德修斯通过让船员无视他的命令来避免被塞壬迷惑。
-   * 现代例子如Victor Niederhoffer让助手在达到亏损限额时强制平仓。
+## Automation — The Use of Dogs in Finance and Engineering
 
-3. **客观性系统**：
-   
-   * 为了确保承诺，交易系统必须是客观的。
-   * 许多系统并不完全客观，允许一定程度的主观解释。
-   * 纯客观的系统能更好地防止人类干预，并允许进行可靠的回测。
-     
-     
+**Main points:**
 
-### Automation – The Use of Dogs in Finance and Engineering
+1. **Objective systems can be automated**, and automation is itself a good commitment mechanism.
+   - An automated system needs unambiguous rules — e.g. "buy when the 20-day moving average is above the 40-day moving average" — with no reliance on subjective judgment.
 
-**主要内容**：
+2. **Implementing automation:**
+   - Simple systems can be run manually with pen and paper or a spreadsheet, but complex rules or higher trading frequency require automation.
+   - A semi-automatic trader can automate the position and risk management framework that wraps around their discretionary decisions.
 
-1. * 客观系统可以自动化，这是一种良好的承诺机制（commitment mechanism）。
-   * 自动化的系统需要明确的规则，例如“20日移动平均线高于40日移动平均线时买入”，而不能依赖主观判断。
+3. **Automation does not fully prevent interference:**
+   - A system that generates trades automatically but requires manual execution is easy to override.
+   - A fully automated system is harder to interfere with, but still requires trust and sound design.
 
-2. **自动化的实现**：
-   
-   * 虽然可以通过纸笔或简单的电子表格手动执行交易，但涉及复杂规则或高频交易时，自动化是必需的。
-   * 对于半自动交易者，可以在手动决策后自动化其头寸和风险管理框架。
+4. **The dog analogy:**
+   - The ideal systems trading setup consists of a computer, a dog, and a human. The computer runs the fully automated strategy, the human feeds the dog, and the dog bites the human if he touches the computer.
 
-3. **自动化的干扰问题**：
-   
-   * 自动化并不能完全阻止人为干预。自动生成交易后仍需人工执行的系统容易被干预。
-   * 完全自动化的系统干预难度较大，但仍需要信任和合理设计的系统。
+**Design traps to avoid:**
 
-4. **狗和人的比喻**：
-   
-   * 最好的系统交易设置包括一台计算机、一只狗和一个人。计算机运行全自动策略，人喂狗，如果人干预计算机，狗就咬人。
+- **Over-fitting:**
+  - The human brain is wired to see patterns in data that do not exist, which leads to over-fitting.
+  - Over-fitted systems usually underperform simple rules in live trading.
+- **Overtrading:**
+  - Overconfidence leads to trading too frequently, driving up transaction costs.
+  - Frequent trading resembles gambling and is rarely profitable.
+- **Over-betting:**
+  - Excessive leverage raises the risk of blowing up the account, and makes human intervention almost inevitable.
 
-**避免设计陷阱**：
+**Self-fulfilling prophecies:**
 
-* **过拟合（Over-fitting）**：
-  * 人类大脑倾向于在数据中看到不存在的模式，导致过拟合。
-  * 过拟合的系统在真实交易中表现往往不如简单规则。
-* **过度交易（Overtrading）**：
-  * 过度自信会导致频繁交易，增加交易成本。
-  * 频繁交易类似于赌博行为，极少能盈利。
-* **过度投注（Over-betting）**：
-  * 过度杠杆会增加账户爆仓风险，难以避免人为干预。
+- **Definition**: Some technical trading systems have no theoretical basis but work because enough people use them.
+- **Example**: Fibonacci levels in technical analysis.
 
-**自我实现的预言（Self-Fulfilling Prophecy）**：
+**Where trading rule profits come from:**
 
-* **定义**：某些技术交易系统可能没有理论依据，但因为很多人使用而有效。
-* **应用**：如Fibonacci数列在技术分析中的应用。
+- **Risk premia**: Extra return earned by bearing specific risks.
+- **Skew**: Positive-skew strategies (e.g. buying options) and negative-skew strategies (e.g. selling options) have very different return profiles.
+- **Behavioral effects**: Profiting from the behavioral weaknesses of other market participants.
 
-**交易规则的盈利来源**：
+**Classifying trading styles:**
 
-* **风险溢价（Risk Premia）**：通过承担特定风险获得额外回报。
-* **偏斜（Skew）**：正偏斜策略（如购买期权）和负偏斜策略（如卖出期权）的不同特征。
-* **行为效应**：利用市场参与者的行为弱点获利。
+- **Static vs dynamic**: Static strategies trade rarely; dynamic strategies trade frequently.
+- **Technical vs fundamental**: Technical strategies use price data; fundamental strategies use micro and macro data.
+- **Portfolio size**: Diversified portfolios reduce risk and improve returns.
+- **Leverage**: Use leverage sensibly and avoid exposure to extreme losses.
 
-**交易风格分类**：
+**Trading speed:**
 
-* **静态 vs 动态**：静态策略较少交易，动态策略频繁交易。
-* **技术 vs 基本面**：技术策略使用价格数据，基本面策略使用微观和宏观数据。
-* **投资组合规模**：多样化投资组合降低风险，提高回报。
-* **杠杆**：合理使用杠杆，避免极端损失。
+- **Very slow**: Behaves like a static portfolio, with lower returns.
+- **Medium speed**: The most attractive returns for most traders.
+- **Fast**: High-frequency trading requires careful attention to transaction costs and technology.
 
-**交易速度**：
+**Realistic Sharpe ratios:**
 
-* **非常慢**：类似静态组合，收益较低。
-* **中等速度**：回报更具吸引力，适合大多数交易者。
-* **快速**：高频交易需考虑交易成本和技术要求。
+- Set reasonable expectations. Inflated expectations lead directly to overtrading and over-betting.
 
-**现实的夏普比率**：
+## Fitting
 
-* 设定合理的期望值，避免因过高期望导致的过度交易和投注。
-  
-  
+This chapter covers how to use data to select and calibrate trading rules — one of the critical steps in systematic trading. Carver stresses the danger of over-fitting and offers guidance for avoiding the common traps.
 
-### 拟合
+### The Dangers of Fitting
 
-本章主要讨论了如何使用数据来选择和校准交易规则，这是系统化交易的关键步骤之一。作者强调了避免过度拟合的重要性，并提供了一些建议，以帮助读者在拟合过程中避免常见的陷阱。
+1. **Over-fitting**: Selecting and calibrating too many trading rules produces rules that look excellent on historical data but fail in live trading. Over-fitting yields deceptively optimistic backtest results.
 
-#### 拟合的危险
+2. **No time machines**: Do not fit and test on the same full dataset — that produces over-optimistic results. Use rolling or expanding windows instead.
 
-1. **过度拟合的危险**：过度拟合是指选择和校准过多的交易规则，导致这些规则在历史数据上表现优异，但在未来交易中却不一定有效。过度拟合会导致过于乐观的回测结果。
+3. **Rule-selection risk**: Picking a single rule and discarding the rest breeds overconfidence. Distinguishing genuinely better rules from worse ones usually requires very long data histories.
 
-2. **避免时间机器**：不要使用所有数据进行拟合和测试，这样会导致过度乐观的结果。应使用滚动窗口或扩展窗口的方式进行拟合。
+4. **Pooling data**: For sound fitting decisions, pool data across multiple instruments. Only fit instruments separately when they are statistically significantly different.
 
-3. **规则选择的风险**：选择单一规则而忽视其他规则可能导致过度自信。通常需要大量历史数据才能区分不同规则的优劣。
+5. **Comparing like with like**: When comparing rules by Sharpe ratio (SR), beware of the difference between positive-skew and negative-skew rules — negative-skew rules tend to show inflated SRs.
 
-4. **数据池化**：为了做出良好的拟合决策，最好将多个工具的数据池化在一起。只有在统计上显著不同的情况下，才应该分别拟合不同的工具。
+6. **The future will differ from the past**: Focus on returns relative to a benchmark rather than absolute returns. Much of the high absolute return of the past 40 years came from the large fall in inflation, which will not repeat.
 
-5. **比较相似的规则**：用夏普比率（SR）比较规则时，需注意正偏和负偏规则之间的差异，因为负偏规则往往会有虚高的SR。
+### Rules for Effective Fitting
 
-6. **未来与过去不同**：应关注相对于基准的回报，而不是绝对回报，因为过去40年的高回报主要归因于通货膨胀的大幅下降，这种情况不会再重复。
+If you do decide to fit, follow these guidelines:
 
-#### 有效拟合的规则
+1. **Keep it simple**: Avoid sophisticated fitting methods.
+2. **Limit the candidate set**: Reduce the number of trading rules and variations under consideration, unless you have many years of data.
+3. **Ban time machines**: Fit with rolling or expanding windows, and avoid windows that are too short.
+4. **Don't discard rules lightly**: Before selecting one rule or variation and dropping the rest, carefully consider their correlations and performance differences.
+5. **Pool your data**: Combine data across instruments to make fitting decisions more reliable.
+6. **Compare like with like**: When using Sharpe ratios to compare rules, account for skew differences.
+7. **The future will differ from the past**: Judge by benchmark-relative returns; do not rely on historical absolute returns.
 
-如果你决定进行拟合，请遵循以下建议：
+### Carver's Own Approach to Rule Selection
 
-1. **保持简单**：避免使用复杂的拟合法。
+Carver prefers to avoid fitting almost entirely, choosing rules and variations *without looking at their actual performance*:
 
-2. **减少备选方案**：减少考虑的交易规则和变体的数量，除非有足够多年的数据。
+1. **Propose a small number of trading rules** based on how markets are believed to behave.
+2. **Choose a few variations of each rule** — at this stage based not on performance but on trading speed and correlation with other variations.
+3. **Assign forecast weights** based on the uncertainty of Sharpe ratio estimates. Poor rules get lower weight but are rarely excluded entirely.
 
-3. **禁止时间机器**：使用滚动或扩展窗口进行拟合，不要使用太短的窗口。
+Under this approach, the actual historical performance data is reserved for setting forecast weights, which avoids over-fitting.
 
-4. **不要轻易丢弃规则**：在选择单一规则或变体并丢弃其他规则之前，仔细考虑它们之间的相关性和表现差异。
+### The Time-Machine Trap: Testing Schemes
 
-5. **数据池化**：合并多个工具的数据，以增加拟合决策的可靠性。
+- **In-sample testing**: Fitting and testing on the entire dataset — produces over-optimistic results.
+- **Out-of-sample testing**: Splitting the data, fitting on the first half and testing on the second — valid, but wastes data.
+- **Expanding window**: Refit as each new data point is added, always using all history to date.
+- **Rolling window**: Refit periodically, discarding old data and using only the most recent window.
 
-6. **比较相似规则**：使用夏普比率进行规则比较时，要注意正偏和负偏规则之间的差异。
+### Key Takeaways
 
-7. **未来与过去不同**：注意相对于基准的回报，不要依赖过去的绝对回报。
+- Avoid over-fitting; use ample historical data.
+- Keep the number of rules and variations small; avoid complexity.
+- Pool data to make fitting decisions more reliable.
+- Do not select rules on historical performance alone — factor in trading costs and correlations.
 
-#### 作者的规则选择方法
+The chapter's core message: simplicity and data pooling are what make trading rules hold up in live use.
 
-作者倾向于几乎完全避免拟合，而是选择交易规则和变体而不看实际表现：
+## Portfolio Allocation
 
-1. **提出少量交易规则**：根据市场行为提出少量的交易规则。
+This chapter covers how to allocate trading capital across instruments or trading rules — essential for systematic investors and traders, especially systems traders running multiple rules.
 
-2. **为每个规则选择几个变体**：此阶段不看表现，而是看交易速度和与其他变体的相关性。
+### Portfolio Optimization
 
-3. **分配预测权重**：根据夏普比率的不确定性分配预测权重。差的规则权重较低，但很少完全排除。
+Portfolio optimization seeks the combination of asset weights that delivers the best expected risk-adjusted return, usually measured by the Sharpe ratio. The method dates back to Harry Markowitz in the 1950s. Mathematically elegant, but applied naively it produces extreme portfolio weights.
 
-通过这种方法，实际历史表现数据保留用于确定预测权重，从而避免过度拟合。
+### Limitations of Optimization
 
-**时间机器的陷阱**：
+1. **Extreme weights:**
+   - Classical Markowitz optimization produces extreme portfolio weights that are likely to fail in practice.
+   - Extreme portfolios concentrate most capital in a few assets and ignore the potential value of the rest.
 
-* **In-Sample测试**：使用整个数据集进行拟合和测试，会导致过于乐观的结果。
-* **Out-of-Sample测试**：分割数据集，将前一半用于拟合，后一半用于测试，但这种方法浪费了数据。
-* **Expanding Window**：使用扩展窗口方法，每次增加一个新的数据点进行拟合和测试。
-* **Rolling Window**：使用滚动窗口方法，定期丢弃旧数据，只使用最新的数据进行拟合和测试。
+2. **Unstable weights:**
+   - Example: allocating across NASDAQ, the S&P 500, and 20-year US Treasuries with single-period optimization yields highly unstable weights, sometimes excluding assets entirely.
 
-#### 关键总结
+### Fixing the Optimization Problem
 
-* 避免过度拟合，使用充足的历史数据。
-* 保持规则和变体的数量较少，避免复杂性。
-* 通过数据池化增加拟合决策的可靠性。
-* 不要仅依据历史表现选择规则，而是结合交易成本和相关性等因素进行决策。
+Two methods improve the process:
 
-本章为系统化交易提供了有效拟合的方法和原则，强调了简化和数据池化的重要性，以确保交易规则在实际应用中的有效性。
+1. **Bootstrapping:**
+   - Repeat the optimization many times over resampled data and average the results, avoiding extreme weights.
+   - Even with noisy data, the averaged result reflects the underlying reality.
 
+2. **Handcrafting:**
+   - Construct weights by hand, combining historical data with judgment-based estimates, to ensure the portfolio is stable and sensible.
 
+### Handcrafting
 
-### 投资组合分配
+Handcrafting builds the portfolio bottom-up: allocate weights within small groups first, then across groups. The method relies on asset correlations and expected Sharpe ratios.
 
-本章讨论了如何在不同的工具或交易规则之间分配交易资金。这对于系统化投资者和交易者来说非常重要，特别是那些运行多种交易规则的系统交易者。
+**Steps:**
 
-#### 投资组合分配的优化
+1. **Form asset groups**: Group assets by correlation — high correlation within groups, low correlation between groups.
+2. **Allocate within groups**: Assign intra-group weights using the reference table (Table 8 in the book).
+3. **Allocate across groups**: Assign inter-group weights based on cross-group correlations.
+4. **Compute total weights**: Each asset's final weight is its intra-group weight multiplied by its group's weight.
 
-投资组合优化旨在找到资产权重的最佳组合，以实现预期的风险调整回报，通常以夏普比率（Sharpe Ratio）来衡量。这种方法最早由哈里·马科维茨在20世纪50年代提出，尽管数学优美，但盲目使用会导致极端的投资组合权重。
+**Worked example:** For a three-asset portfolio (US Treasuries, S&P 500, NASDAQ), handcrafting produces far more stable weights than direct optimization and avoids extreme values.
 
-#### 优化的局限
+**More complex portfolios:** For portfolios spanning multiple countries and sectors across equities and bonds, use hierarchical grouping and build weights bottom-up. This is more flexible and robust in practice.
 
-经典的优化方法会产生极端的投资组合权重，这在实际操作中可能会失败。这种极端组合通常将大部分资金分配到少数资产上，而忽视了其他资产的潜在价值。
+### Summary
 
-#### 如何修正优化问题
+The chapter presents practical defenses against over-fitting in allocation: bootstrapping and handcrafting both preserve diversification and stability, avoiding the extreme weights of classical optimization. These methods apply equally to allocating across trading rules and across actual assets.
 
-有两种方法可以改善优化过程：
+## The Framework: Components
 
-1. **引导法（Bootstrapping）**：通过重复优化，平均多次优化结果，避免极端权重。
-2. **手工权重分配法（Handcrafting）**：手工构建权重，结合历史数据和经验估计，确保投资组合的稳定性和合理性。
+Using the book's Table 15 example, a small trading system contains two trading rules (A and B), each with variations (A1, A2, B1), and two instruments (X and Y). The system decomposes into these components:
 
-### 手工权重分配法
+1. **Trading rules and variations:**
+   - Each rule variation generates a price forecast for a specific instrument — e.g. A1's forecast for instrument X, A2's forecast for X, B1's forecast for X, and so on.
 
-手工权重分配法通过自下而上地构建投资组合，首先在小组内分配权重，然后在组间分配。这种方法依赖于资产的相关性和预期的夏普比率。
+2. **Forecasts:**
+   - Each forecast expresses the expected price move for that instrument.
 
-#### 手工分配步骤
+3. **Combined forecast:**
+   - Multiple forecasts are merged into a single forecast per instrument, via weighted averaging.
 
-1. **确定资产组**：根据资产的相关性将其分组。组内资产相关性高，组间相关性低。
-2. **分配组内权重**：根据表格（见表8），分配组内权重。
-3. **分配组间权重**：根据组间相关性，分配组间权重。
-4. **计算总权重**：每个资产的总权重是组内权重乘以组间权重。
+4. **Volatility target:**
+   - Set the level of risk you are willing to take (e.g. average daily loss). This keeps risk controlled and consistent with the overall strategy.
 
-#### 实例分析
+5. **Position sizing:**
+   - Compute the position size for each instrument from the combined forecast and the volatility target.
 
-通过实例分析，例如三资产组合（美国国债、标普500指数、纳斯达克指数），使用手工分配法可以得到更稳定的权重分配，避免极端值。
+6. **Subsystem positions:**
+   - For each instrument, determine its position within its own trading subsystem.
 
-#### 更复杂的实例
+7. **Instrument weights:**
+   - Allocate capital to each trading subsystem (each instrument) according to a weighting scheme.
 
-对于更复杂的组合，例如包含多个国家和行业的股票和债券组合，可以使用分层分组的方法，自下而上地构建权重。这种方法在实践中更为灵活和稳健。
+8. **Portfolio weighted positions:**
+   - Combine the subsystem positions into the overall portfolio position.
 
-#### 优化的挑战
+**Example rule specification (semi-automatic style):**
 
-1. **优化的局限性**：
-   
-   * 经典的马科维茨优化方法会产生极端的投资组合权重，这在实际操作中可能导致失败。
-   * 极端组合通常将大部分资金分配到少数资产上，忽视了其他资产的潜在价值。
+| Item | Rule |
+| ---- | ---- |
+| Entry | Buy when the 20-day moving average crosses above the 40-day moving average, and vice versa. |
+| Exit | Reverse when the entry condition breaks: if long, sell and go short when the 20-day MA crosses below the 40-day MA. |
+| Position size | No more than 10 Eurodollar futures contracts, 1 FTSE 100 futures contract, or a £10-per-point CFD per trade. |
+| Money management | Risk no more than 3% of total capital per trade. |
+| Stop loss | Trailing stop; close the position when the loss reaches 3% of total capital. If stops trigger too frequently, widen them. |
 
-2. **不稳定的权重**：
-   
-   * 例如，将资金分配在纳斯达克、标普500指数和美国20年期国债上，使用单期优化方法会导致权重极不稳定，甚至可能完全排除某些资产。
+## Forecasts
 
-#### 修正优化问题的方法
+Forecasts are the foundation of a trading system. This chapter examines how to generate and use forecasts to drive the system — essential whether you are a staunch systems trader, a semi-automatic trader, or an asset allocating investor.
 
-1. **引导法（Bootstrapping）**：
-   
-   * 通过重复优化，平均多次优化结果，避免极端权重。
-   * 优点在于即使数据噪声较大，平均结果仍能反映实际情况。
+### 1. What Makes a Good Forecast
 
-2. **手工权重分配法（Handcrafting）**：
-   
-   * 手工构建权重，结合历史数据和经验估计，确保投资组合的稳定性和合理性。
-   * 步骤包括确定资产组、分配组内权重、分配组间权重，并计算总权重。
+**A forecast is a number.**
+A forecast is an estimate of an asset's coming price move. Positive means you expect the price to rise; negative means you expect it to fall. Forecasts should not be binary (buy/sell) but scalar: values near zero indicate a small expected move, larger absolute values a larger expected move.
 
-### 总结
+**Forecasts should be proportional to risk-adjusted expected return.**
+Example: if the Bund has an expected annual return of 2% with 8% annualized standard deviation, and the Schatz has an expected return of 1% with only 2% standard deviation, then on a risk-adjusted basis the Schatz (1% ÷ 2% = 0.5) is twice as attractive as the Bund (2% ÷ 8% = 0.25) — so the Schatz forecast should be twice the Bund forecast.
 
-本章提出了避免过度拟合和优化的有效方法，通过手工权重分配法和引导法，确保投资组合的多样性和稳定性，避免了经典优化方法可能带来的极端权重问题。这些方法不仅适用于交易规则的分配，也适用于实际资产的分配，为系统化交易者提供了实用的工具和策略。
+**Forecasts should be consistently scaled.**
+Scale forecasts so their expected absolute value is 10. Then +10 means an average-strength buy and -10 an average-strength sell; values near zero indicate weak signals, while +20 or -20 indicate very strong ones. Semi-automatic traders must quantify the strength of their conviction on this scale; asset allocating investors use a fixed forecast value.
 
+**Forecasts should be capped.**
+Cap forecasts at a maximum absolute value — Carver recommends ±20. Reasons:
 
+- **Risk control**: Limits the risk taken by any single trading rule.
+- **Limited data**: Very large forecast values are rare in historical data, so their reliability is low.
+- **Extremes are different**: Market behavior in extreme conditions may not resemble normal conditions.
+- **Higher realized volatility**: A large forecast may promise a large return, but often comes with higher volatility too.
+- **Limited downside**: Since most forecasts are small anyway, capping has little impact on total returns.
 
+Systems traders should clip all out-of-range forecasts to the [-20, +20] range. Semi-automatic traders should keep all their forecasts within ±20. Asset allocating investors use a fixed forecast of +10.
 
+### 2. Example Trading Rules
 
-#### 框架的组成部分
+Two simple systematic rule examples:
 
-根据表15的例子，一个小型交易系统包含两种交易规则（A和B），每种规则有多个变体（A1、A2、B1），以及两个交易工具（X和Y）。整个系统可以分为以下几个组件：
+1. **Trend-following rule**
+   - Use a set of moving average crossovers to identify trends.
+   - E.g. generate a positive forecast when the short MA is above the long MA.
 
-1. **交易规则和变体**：
-   
-   * 每个交易规则及其变体会生成一个特定工具的价格预测。例如，A1对工具X的预测，A2对工具X的预测，B1对工具X的预测，等等。
+2. **Value rule**
+   - Generate forecasts from valuation metrics such as P/E.
+   - E.g. generate a positive forecast when a stock's P/E is below its historical average.
 
-2. **预测**：
-   
-   * 每个交易规则生成的预测表示该工具预期的价格变动。
+### 3. Other People's Trading Rules
 
-3. **综合预测**：
-   
-   * 将多个预测合并为每个工具的单一预测。这可以通过加权平均法进行。
+You can use publicly available trading rules or invent your own. Either way, standardize them so the forecasts they produce share a consistent scale.
 
-4. **波动率目标**：
-   
-   * 确定你愿意接受的风险水平（例如，平均每日损失）。这个步骤确保风险得到控制并与整体交易策略保持一致。
+### 4. Selecting Trading Rules and Variations
 
-5. **头寸大小**：
-   
-   * 基于综合预测和波动率目标，计算每个工具的头寸大小。
+Apply the selection process from the earlier chapters, making sure the rules you choose work across different markets and time frames.
 
-6. **子系统头寸**：
-   
-   * 对于每个工具，确定其在各自交易子系统内的头寸大小。
+### Summary
 
-7. **工具权重**：
-   
-   * 根据权重方案分配资本给每个交易子系统（每个工具）。
-
-8. **组合加权头寸**：
-   
-   * 将每个工具的子系统头寸合并为整体组合头寸。
-
-
-
-| 项目   | 规则                                              |
-| ---- | ----------------------------------------------- |
-| 入场规则 | 当20日移动平均线上穿40日移动平均线时买入，反之亦然。                    |
-| 出场规则 | 当入场规则被打破时反向操作：如果持有多头，当20日移动平均线下穿40日移动平均线时卖出并做空。 |
-| 仓位大小 | 每次交易不超过10手欧元美元期货合约，1手富时100指数合约或每点£10的差价合约。      |
-| 资金管理 | 每次交易风险不超过总资本的3%。                                |
-| 止损规则 | 设置跟踪止损，当损失达到总资本的3%时平仓。如果止损触发频率过高，则扩大止损范围。       |
-
-### 预测
-
-#### 交易系统的基础：预测
-
-在这章中，我们将详细探讨如何生成和使用预测来驱动交易系统。无论你是坚定的系统交易者、半自动交易者还是资产配置投资者，理解和利用预测对于成功的交易策略至关重要。
-
-#### 1. 什么是一个好的预测
-
-**预测是一个数值**
-
-预测表示对某一资产价格变动的估计。正值预测意味着你预计价格会上涨，负值预测则表示你预计价格会下跌。预测不应该是二元的（买或卖），而应该是标量的。靠近零的预测表示价格变动较小，而绝对值较大的预测则表示你预计价格变动较大。
-
-**预测应与风险调整回报成比例**
-
-好的预测应与风险调整后的预期回报成比例。例如，如果德债（Bund）的预期年回报为2%，年化标准差为8%，而德国短期国债（Schatz）的预期年回报为1%，但年化标准差仅为2%，那么风险调整后Schatz的预期回报（1% ÷ 2% = 0.5）应比Bund的预期回报（2% ÷ 8% = 0.25）高出两倍。因此，Schatz的预测应是Bund的两倍。
-
-**预测应具有一致的尺度**
-
-预测的预期绝对值应为10。这样，+10表示一般的买入，-10表示一般的卖出。预测值接近零表示较小的变动，而+20或-20则表示很强的预测。对于半自动交易者，需要量化你的信心强度；资产配置投资者则使用固定的预测值。
-
-**预测值的上限**
-
-预测值应限制在一个最大绝对值内，我建议限制在20以内。原因包括：
-
-- **风险控制**：限制单个交易规则的风险。
-- **数据有限**：大预测值在历史数据中很少见，因此可靠性较低。
-- **极端情况不同**：市场在极端情况下的行为可能与平时不同。
-- **更高的实际波动性**：高预测值可能意味着预期回报大，但也可能伴随更高的波动性。
-- **有限的下行风险**：由于大多数预测值较小，限制预测值对总回报的影响较小。
-
-系统交易者应将所有超出范围的预测值调整到-20至+20之间。对于半自动交易者，所有的预测值都应在-20至+20之间。资产配置投资者则使用固定的+10预测值。
-
-#### 2. 交易规则的示例
-
-以下是两个简单的系统交易规则示例：
-
-1. **趋势跟踪规则**
-   
-   - 使用一组移动平均线交叉来识别趋势。
-   - 例如，当短期均线超过长期均线时，生成正向预测。
-
-2. **价值投资规则**
-   
-   - 基于估值指标如市盈率（P/E）来生成预测。
-   - 例如，当某一股票的P/E比率低于历史平均水平时，生成正向预测。
-
-#### 3. 其他人的交易规则
-
-你可以使用公共可用的交易规则，或自己发明交易规则。重要的是要对这些规则进行标准化处理，使其生成的预测具有一致的尺度。
-
-#### 4. 选择交易规则和变体
-
-回顾前面章节提到的选择规则和变体的过程，确保你选择的交易规则能够适应不同的市场和时间框架。
-
-### 总结
-
-生成和使用预测是构建交易系统的核心。无论是系统交易者、半自动交易者还是资产配置投资者，理解预测的生成和应用至关重要。通过标准化和调整预测值，确保交易系统能够在不同的市场条件下有效运作。
-
-
+Generating and using forecasts is the core of building a trading system. Whether you are a systems trader, semi-automatic trader, or asset allocating investor, standardizing and capping forecast values is what allows the system to operate consistently across market conditions.

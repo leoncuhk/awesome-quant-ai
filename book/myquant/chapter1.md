@@ -1,34 +1,35 @@
+# Chapter 1: Trend Following Strategies
 
-## 一、趋势跟踪策略体系
+Trend following is the oldest and most widely deployed family of systematic strategies: instead of predicting turning points, it identifies an established price trend and rides it until the evidence reverses. This chapter builds the classic toolkit step by step — moving-average crossovers (SMA, EMA, KAMA), channel breakouts (Donchian, Bollinger Bands), and momentum indicators (RSI, MACD) — each with a self-contained Python implementation. Throughout the chapter, `signal`/`position` columns use held-state semantics — the column holds +1 while a long position is on and -1 while a short is on (0 when flat), rather than emitting one-bar impulses — and every backtest lags the signal by one bar to avoid look-ahead bias. All demos run on synthetic price data for illustration only; none of the printed numbers are empirical performance claims.
 
-### 1.1 移动平均线策略族
+## 1.1 Moving Average Strategy Family
 
-#### 1.1.1 简单移动平均线(SMA)策略
+### 1.1.1 Simple Moving Average (SMA) Strategy
 
-**策略原理**：
-SMA是最基础的趋势跟踪指标，通过计算过去N个周期的算术平均值来平滑价格波动，识别趋势方向。
+**Strategy rationale**:
+The SMA is the most basic trend-following indicator. It smooths price fluctuations by taking the arithmetic mean of the last N periods, revealing the direction of the underlying trend.
 
-**数学模型**：
+**Mathematical model**:
 ```
 SMA(n) = (P₁ + P₂ + ... + Pₙ) / n
 ```
 
-**核心特点**：
-- 延迟性：SMA对价格变化反应较慢，适合过滤市场噪音
-- 平滑性：能有效减少价格波动的干扰
-- 趋势跟踪：当价格突破SMA时产生趋势信号
+**Key characteristics**:
+- Lag: the SMA reacts slowly to price changes, which makes it good at filtering market noise
+- Smoothness: it effectively dampens the impact of short-term price swings
+- Trend following: a price crossing of the SMA generates a trend signal
 
-**实现细节**：
-- **参数选择**：
-  - 短期SMA: 5-20日，适用于短线交易
-  - 中期SMA: 20-60日，适用于中期趋势跟踪
-  - 长期SMA: 100-200日，适用于长期投资
-- **信号生成**：
-  - 金叉：短期SMA向上突破长期SMA，产生买入信号
-  - 死叉：短期SMA向下跌破长期SMA，产生卖出信号
-- **趋势确认**：SMA斜率判断趋势强度
+**Implementation details**:
+- **Parameter selection**:
+  - Short-term SMA: 5-20 days, suited to short-term trading
+  - Medium-term SMA: 20-60 days, suited to medium-term trend following
+  - Long-term SMA: 100-200 days, suited to long-term investing
+- **Signal generation**:
+  - Golden cross: the short SMA crosses above the long SMA — buy signal
+  - Death cross: the short SMA crosses below the long SMA — sell signal
+- **Trend confirmation**: the slope of the SMA gauges trend strength
 
-**策略代码实现**：
+**Strategy implementation**:
 ```python
 import pandas as pd
 import numpy as np
@@ -36,108 +37,109 @@ import matplotlib.pyplot as plt
 from typing import Dict, Tuple
 
 class SMAStrategy:
-    """简单移动平均线策略"""
-    
+    """Simple moving average crossover strategy."""
+
     def __init__(self, short_window: int = 20, long_window: int = 50):
         """
-        初始化SMA策略
-        
+        Initialize the SMA strategy.
+
         Args:
-            short_window: 短期移动平均线周期
-            long_window: 长期移动平均线周期
+            short_window: lookback of the short moving average
+            long_window: lookback of the long moving average
         """
         self.short_window = short_window
         self.long_window = long_window
         self.signals = None
-    
+
     def calculate_sma(self, data: pd.DataFrame) -> pd.DataFrame:
-        """计算移动平均线"""
+        """Compute the moving averages."""
         data = data.copy()
         data['SMA_short'] = data['close'].rolling(window=self.short_window).mean()
         data['SMA_long'] = data['close'].rolling(window=self.long_window).mean()
         return data
-    
+
     def generate_signals(self, data: pd.DataFrame) -> pd.DataFrame:
-        """生成交易信号"""
+        """Generate trading signals from the SMA crossover."""
         data = self.calculate_sma(data)
-        
-        # 初始化信号列
+
+        # 1: long, -1: short, 0: flat (while the long SMA is still warming up)
         data['signal'] = 0
-        data['position'] = 0
-        
-        # 生成交易信号
-        # 1: 买入/做多，-1: 卖出/做空，0: 持有
-        data['signal'][self.short_window:] = np.where(
-            data['SMA_short'][self.short_window:] > data['SMA_long'][self.short_window:], 1, -1
+        valid = data['SMA_long'].notna()
+        data.loc[valid, 'signal'] = np.where(
+            data.loc[valid, 'SMA_short'] > data.loc[valid, 'SMA_long'], 1, -1
         )
-        
-        # 计算仓位变化
+
+        # Position changes
         data['positions'] = data['signal'].diff()
-        
-        # 识别买入和卖出点
-        data['buy_signal'] = (data['positions'] == 2)  # 从-1变为1
-        data['sell_signal'] = (data['positions'] == -2)  # 从1变为-1
-        
+
+        # Mark entry points: any transition into the long (+1) or short (-1)
+        # state, including the first entry out of the 0 warm-up state
+        prev_signal = data['signal'].shift(1, fill_value=0)
+        data['buy_signal'] = (data['signal'] == 1) & (prev_signal != 1)
+        data['sell_signal'] = (data['signal'] == -1) & (prev_signal != -1)
+
         return data
-    
+
     def calculate_returns(self, data: pd.DataFrame) -> pd.DataFrame:
-        """计算策略收益"""
+        """Compute strategy returns."""
         data = data.copy()
-        
-        # 计算日收益率
+
+        # Daily returns
         data['market_returns'] = data['close'].pct_change()
-        
-        # 计算策略收益（信号滞后一期）
+
+        # Strategy returns: lag the signal by one bar so that a signal
+        # observed at the close of day t only earns the return of day t+1
+        # (no look-ahead bias)
         data['strategy_returns'] = data['signal'].shift(1) * data['market_returns']
-        
-        # 计算累积收益
+
+        # Cumulative returns
         data['cumulative_market_returns'] = (1 + data['market_returns']).cumprod()
         data['cumulative_strategy_returns'] = (1 + data['strategy_returns']).cumprod()
-        
+
         return data
-    
+
     def backtest(self, data: pd.DataFrame) -> Dict:
-        """策略回测"""
+        """Run the backtest."""
         signals = self.generate_signals(data)
         signals = self.calculate_returns(signals)
-        
-        # 计算策略指标
+
+        # Performance metrics
         strategy_returns = signals['strategy_returns'].dropna()
         market_returns = signals['market_returns'].dropna()
-        
+
         metrics = self.calculate_performance_metrics(strategy_returns, market_returns)
-        
+
         self.signals = signals
         return {
             'signals': signals,
             'metrics': metrics
         }
-    
-    def calculate_performance_metrics(self, strategy_returns: pd.Series, 
+
+    def calculate_performance_metrics(self, strategy_returns: pd.Series,
                                     market_returns: pd.Series) -> Dict:
-        """计算业绩指标"""
-        # 年化收益率
+        """Compute performance metrics."""
+        # Annualized return
         strategy_annual_return = strategy_returns.mean() * 252
         market_annual_return = market_returns.mean() * 252
-        
-        # 年化波动率
+
+        # Annualized volatility
         strategy_volatility = strategy_returns.std() * np.sqrt(252)
         market_volatility = market_returns.std() * np.sqrt(252)
-        
-        # 夏普比率
-        risk_free_rate = 0.03  # 假设无风险利率3%
+
+        # Sharpe ratio
+        risk_free_rate = 0.03  # assume a 3% risk-free rate
         strategy_sharpe = (strategy_annual_return - risk_free_rate) / strategy_volatility
         market_sharpe = (market_annual_return - risk_free_rate) / market_volatility
-        
-        # 最大回撤
+
+        # Maximum drawdown
         cumulative_returns = (1 + strategy_returns).cumprod()
         rolling_max = cumulative_returns.expanding().max()
         drawdown = (cumulative_returns - rolling_max) / rolling_max
         max_drawdown = drawdown.min()
-        
-        # 胜率
+
+        # Win rate
         win_rate = (strategy_returns > 0).mean()
-        
+
         return {
             'strategy_annual_return': strategy_annual_return,
             'market_annual_return': market_annual_return,
@@ -149,365 +151,363 @@ class SMAStrategy:
             'win_rate': win_rate,
             'excess_return': strategy_annual_return - market_annual_return
         }
-    
+
     def plot_strategy(self, figsize: Tuple[int, int] = (15, 10)):
-        """绘制策略图表"""
+        """Plot the strategy results."""
         if self.signals is None:
-            raise ValueError("请先运行backtest方法")
-        
+            raise ValueError("Run backtest() first")
+
         fig, axes = plt.subplots(3, 1, figsize=figsize)
-        
-        # 第一个子图：价格和移动平均线
-        axes[0].plot(self.signals.index, self.signals['close'], label='价格', linewidth=1)
-        axes[0].plot(self.signals.index, self.signals['SMA_short'], 
+
+        # Panel 1: price and moving averages
+        axes[0].plot(self.signals.index, self.signals['close'], label='Price', linewidth=1)
+        axes[0].plot(self.signals.index, self.signals['SMA_short'],
                     label=f'SMA{self.short_window}', alpha=0.8)
-        axes[0].plot(self.signals.index, self.signals['SMA_long'], 
+        axes[0].plot(self.signals.index, self.signals['SMA_long'],
                     label=f'SMA{self.long_window}', alpha=0.8)
-        
-        # 标记买卖点
+
+        # Mark entries and exits
         buy_points = self.signals[self.signals['buy_signal']]
         sell_points = self.signals[self.signals['sell_signal']]
-        
+
         if not buy_points.empty:
-            axes[0].scatter(buy_points.index, buy_points['close'], 
-                          color='green', marker='^', s=100, label='买入')
+            axes[0].scatter(buy_points.index, buy_points['close'],
+                          color='green', marker='^', s=100, label='Buy')
         if not sell_points.empty:
-            axes[0].scatter(sell_points.index, sell_points['close'], 
-                          color='red', marker='v', s=100, label='卖出')
-        
-        axes[0].set_title('SMA策略 - 价格与信号')
+            axes[0].scatter(sell_points.index, sell_points['close'],
+                          color='red', marker='v', s=100, label='Sell')
+
+        axes[0].set_title('SMA Strategy - Price and Signals')
         axes[0].legend()
         axes[0].grid(True, alpha=0.3)
-        
-        # 第二个子图：累积收益对比
-        axes[1].plot(self.signals.index, self.signals['cumulative_market_returns'], 
-                    label='市场收益', linewidth=1.5)
-        axes[1].plot(self.signals.index, self.signals['cumulative_strategy_returns'], 
-                    label='策略收益', linewidth=1.5)
-        axes[1].set_title('累积收益对比')
+
+        # Panel 2: cumulative return comparison
+        axes[1].plot(self.signals.index, self.signals['cumulative_market_returns'],
+                    label='Market return', linewidth=1.5)
+        axes[1].plot(self.signals.index, self.signals['cumulative_strategy_returns'],
+                    label='Strategy return', linewidth=1.5)
+        axes[1].set_title('Cumulative Returns')
         axes[1].legend()
         axes[1].grid(True, alpha=0.3)
-        
-        # 第三个子图：策略仓位
-        axes[2].plot(self.signals.index, self.signals['signal'], 
-                    label='仓位信号', linewidth=1)
-        axes[2].set_title('策略仓位')
-        axes[2].set_ylabel('仓位 (1:多头, -1:空头, 0:空仓)')
+
+        # Panel 3: strategy position
+        axes[2].plot(self.signals.index, self.signals['signal'],
+                    label='Position signal', linewidth=1)
+        axes[2].set_title('Strategy Position')
+        axes[2].set_ylabel('Position (1: long, -1: short, 0: flat)')
         axes[2].legend()
         axes[2].grid(True, alpha=0.3)
-        
+
         plt.tight_layout()
         plt.show()
 
-# 使用示例
+# Usage example
 def demo_sma_strategy():
-    """SMA策略演示"""
-    # 创建模拟数据
+    """SMA strategy demo (synthetic data for illustration)."""
     np.random.seed(42)
     dates = pd.date_range('2020-01-01', periods=500, freq='D')
-    
-    # 生成带趋势的价格数据
+
+    # Generate a price series with an upward drift
     returns = np.random.normal(0.0005, 0.02, 500)
-    trend = np.linspace(0, 0.3, 500)  # 添加上升趋势
+    trend = np.linspace(0, 0.3, 500)  # add an upward trend
     prices = 100 * np.exp(np.cumsum(returns + trend/500))
-    
+
     data = pd.DataFrame({
         'close': prices,
         'high': prices * (1 + np.abs(np.random.normal(0, 0.01, 500))),
         'low': prices * (1 - np.abs(np.random.normal(0, 0.01, 500))),
         'volume': np.random.randint(1000000, 10000000, 500)
     }, index=dates)
-    
-    # 运行策略
+
+    # Run the strategy
     strategy = SMAStrategy(short_window=10, long_window=30)
     results = strategy.backtest(data)
-    
-    # 打印结果
-    print("SMA策略回测结果:")
+
+    # Print results
+    print("SMA strategy backtest results:")
     for key, value in results['metrics'].items():
         print(f"{key}: {value:.4f}")
-    
-    # 绘制图表
+
+    # Plot
     strategy.plot_strategy()
-    
+
     return results
 
-# 运行演示
+# Run the demo
 if __name__ == "__main__":
     demo_sma_strategy()
 ```
 
-### 1.1.2 指数移动平均线(EMA)策略
+### 1.1.2 Exponential Moving Average (EMA) Strategy
 
-**策略原理**：
-EMA给予近期价格更高权重，对价格变化更敏感，能更快捕捉趋势转变。
+**Strategy rationale**:
+The EMA weights recent prices more heavily, making it more responsive to price changes and quicker to catch trend reversals.
 
-**数学模型**：
+**Mathematical model**:
 ```
 EMA(t) = α × P(t) + (1-α) × EMA(t-1)
-其中：α = 2/(n+1)，n为周期数
+where α = 2/(n+1) and n is the period length
 ```
 
-**核心特点**：
-- 响应性：对价格变化反应更快，减少滞后性
-- 权重递减：近期价格权重更大，远期价格权重递减
-- 趋势敏感：能更早识别趋势转换点
+**Key characteristics**:
+- Responsiveness: reacts faster to price changes, reducing lag
+- Decaying weights: recent prices carry more weight, older prices progressively less
+- Trend sensitivity: identifies trend turning points earlier
 
-**实现细节**：
+**Implementation details**:
 ```python
+import pandas as pd
+import numpy as np
+
 class EMAStrategy:
-    """指数移动平均线策略"""
-    
-    def __init__(self, fast_period=12, slow_period=26, signal_period=9):
+    """Exponential moving average dual-crossover strategy."""
+
+    def __init__(self, fast_period=12, slow_period=26):
         """
-        初始化EMA策略
-        
+        Initialize the EMA strategy.
+
         Args:
-            fast_period: 快速EMA周期
-            slow_period: 慢速EMA周期  
-            signal_period: 信号线周期
+            fast_period: fast EMA lookback
+            slow_period: slow EMA lookback
         """
         self.fast_period = fast_period
         self.slow_period = slow_period
-        self.signal_period = signal_period
-    
+
     def calculate_ema(self, data: pd.Series, period: int) -> pd.Series:
-        """计算指数移动平均线"""
+        """Compute an exponential moving average."""
         return data.ewm(span=period, adjust=False).mean()
-    
-    def calculate_macd(self, data: pd.DataFrame) -> pd.DataFrame:
-        """计算MACD指标"""
+
+    def generate_signals(self, data: pd.DataFrame) -> pd.DataFrame:
+        """Generate trading signals from the EMA crossover."""
         data = data.copy()
-        
-        # 计算快慢EMA
+
+        # Fast and slow EMAs
         data['EMA_fast'] = self.calculate_ema(data['close'], self.fast_period)
         data['EMA_slow'] = self.calculate_ema(data['close'], self.slow_period)
-        
-        # 计算MACD线
-        data['MACD'] = data['EMA_fast'] - data['EMA_slow']
-        
-        # 计算信号线
-        data['Signal'] = self.calculate_ema(data['MACD'], self.signal_period)
-        
-        # 计算MACD柱状图
-        data['Histogram'] = data['MACD'] - data['Signal']
-        
+
+        # Held-state signal, same semantics as the SMA strategy:
+        # +1 while the fast EMA is above the slow EMA, -1 while below
+        data['signal'] = np.where(data['EMA_fast'] > data['EMA_slow'], 1, -1)
+
+        # Stay flat until the slow EMA has seen a full lookback of data
+        # (with adjust=False the EMA is defined from bar 0, but its early
+        # values are dominated by the seed price)
+        data.loc[data.index[:self.slow_period], 'signal'] = 0
+
+        # Crossover markers (any transition into the long or short state)
+        prev_signal = data['signal'].shift(1, fill_value=0)
+        data['golden_cross'] = (data['signal'] == 1) & (prev_signal != 1)
+        data['death_cross'] = (data['signal'] == -1) & (prev_signal != -1)
+
         return data
-    
-    def generate_signals(self, data: pd.DataFrame) -> pd.DataFrame:
-        """生成交易信号"""
-        data = self.calculate_macd(data)
-        
-        # 初始化信号
-        data['signal'] = 0
-        
-        # MACD金叉死叉信号
-        data['golden_cross'] = (data['MACD'] > data['Signal']) & (data['MACD'].shift(1) <= data['Signal'].shift(1))
-        data['death_cross'] = (data['MACD'] < data['Signal']) & (data['MACD'].shift(1) >= data['Signal'].shift(1))
-        
-        # 生成交易信号
-        data.loc[data['golden_cross'], 'signal'] = 1  # 买入信号
-        data.loc[data['death_cross'], 'signal'] = -1  # 卖出信号
-        
-        # 零轴突破信号
-        data['zero_cross_up'] = (data['MACD'] > 0) & (data['MACD'].shift(1) <= 0)
-        data['zero_cross_down'] = (data['MACD'] < 0) & (data['MACD'].shift(1) >= 0)
-        
-        return data
-    
-    def backtest(self, data: pd.DataFrame) -> Dict:
-        """策略回测"""
+
+    def backtest(self, data: pd.DataFrame) -> pd.DataFrame:
+        """Run the backtest."""
         signals = self.generate_signals(data)
-        
-        # 计算收益
-        signals['returns'] = data['close'].pct_change()
+
+        # Returns: lag the signal one bar to avoid look-ahead bias
+        signals['returns'] = signals['close'].pct_change()
         signals['strategy_returns'] = signals['signal'].shift(1) * signals['returns']
         signals['cumulative_returns'] = (1 + signals['strategy_returns']).cumprod()
-        
+
         return signals
 
-# 使用示例
+# Usage example
 def demo_ema_strategy():
-    """EMA策略演示"""
-    # 模拟数据
+    """EMA strategy demo (synthetic data for illustration)."""
     dates = pd.date_range('2020-01-01', periods=500, freq='D')
     np.random.seed(42)
-    
-    # 生成价格数据
+
+    # Generate a price series
     returns = np.random.normal(0.001, 0.02, 500)
     prices = 100 * np.exp(np.cumsum(returns))
-    
+
     data = pd.DataFrame({
         'close': prices,
         'high': prices * 1.01,
         'low': prices * 0.99,
         'volume': np.random.randint(1000000, 5000000, 500)
     }, index=dates)
-    
-    # 运行策略
-    strategy = EMAStrategy(fast_period=12, slow_period=26, signal_period=9)
+
+    # Run the strategy
+    strategy = EMAStrategy(fast_period=12, slow_period=26)
     results = strategy.backtest(data)
-    
-    print("EMA策略回测完成")
+
+    final_return = results['cumulative_returns'].iloc[-1] - 1
+    print(f"EMA strategy backtest complete, cumulative return: {final_return:.2%}")
     return results
+
+if __name__ == "__main__":
+    demo_ema_strategy()
 ```
 
-**EMA vs SMA对比**：
+**EMA vs. SMA comparison**:
 
-| 特征 | EMA | SMA |
+| Feature | EMA | SMA |
 |------|-----|-----|
-| 响应速度 | 快 | 慢 |
-| 滞后性 | 较小 | 较大 |
-| 噪音过滤 | 较弱 | 较强 |
-| 趋势跟踪 | 敏感 | 稳定 |
-| 假信号 | 较多 | 较少 |
+| Response speed | Fast | Slow |
+| Lag | Smaller | Larger |
+| Noise filtering | Weaker | Stronger |
+| Trend tracking | Sensitive | Stable |
+| False signals | More | Fewer |
 
-#### 1.1.3 自适应移动平均线(AMA, KAMA)策略
+### 1.1.3 Adaptive Moving Average (AMA / KAMA) Strategy
 
-**策略原理**：
-AMA根据市场波动性自动调整平滑常数，在趋势市场中快速响应，在震荡市场中减少噪音。
+**Strategy rationale**:
+The AMA adjusts its smoothing constant automatically based on market volatility: it responds quickly in trending markets and filters noise in choppy markets.
 
-**KAMA算法实现**：
+**KAMA implementation**:
 ```python
+import pandas as pd
+import numpy as np
+
 class KAMAStrategy:
-    """考夫曼自适应移动平均线策略"""
-    
+    """Kaufman Adaptive Moving Average strategy."""
+
     def __init__(self, period=20, fast_sc=2, slow_sc=30):
         """
-        初始化KAMA策略
-        
+        Initialize the KAMA strategy.
+
         Args:
-            period: 效率比率计算周期
-            fast_sc: 快速平滑常数
-            slow_sc: 慢速平滑常数
+            period: efficiency ratio lookback
+            fast_sc: fast smoothing constant period
+            slow_sc: slow smoothing constant period
         """
         self.period = period
         self.fast_sc = fast_sc
         self.slow_sc = slow_sc
-    
+
     def calculate_kama(self, data: pd.DataFrame) -> pd.DataFrame:
-        """计算KAMA指标"""
+        """Compute the KAMA indicator."""
         data = data.copy()
-        
-        # 计算方向性(Direction)
+
+        # Direction: net price move over the lookback
         data['Direction'] = data['close'].diff(self.period).abs()
-        
-        # 计算波动性(Volatility)
+
+        # Volatility: sum of absolute one-bar moves over the lookback
         data['Volatility'] = data['close'].diff().abs().rolling(self.period).sum()
-        
-        # 计算效率比率(Efficiency Ratio)
+
+        # Efficiency Ratio
         data['ER'] = data['Direction'] / data['Volatility']
         data['ER'] = data['ER'].fillna(0)
-        
-        # 计算平滑常数(Smoothing Constant)
+
+        # Smoothing Constant
         fast_alpha = 2 / (self.fast_sc + 1)
         slow_alpha = 2 / (self.slow_sc + 1)
         data['SC'] = (data['ER'] * (fast_alpha - slow_alpha) + slow_alpha) ** 2
-        
-        # 计算KAMA
-        kama_values = [data['close'].iloc[0]]  # 初始值
-        
+
+        # KAMA is recursive, so we compute it with an explicit loop
+        # (SC is never NaN here because ER is fillna(0), so slow_alpha**2
+        # is used during the warm-up bars)
+        kama_values = [data['close'].iloc[0]]  # seed value
+
         for i in range(1, len(data)):
-            if pd.isna(data['SC'].iloc[i]):
-                kama_values.append(kama_values[-1])
-            else:
-                kama_new = kama_values[-1] + data['SC'].iloc[i] * (data['close'].iloc[i] - kama_values[-1])
-                kama_values.append(kama_new)
-        
+            kama_new = kama_values[-1] + data['SC'].iloc[i] * (data['close'].iloc[i] - kama_values[-1])
+            kama_values.append(kama_new)
+
         data['KAMA'] = kama_values
-        
+
         return data
-    
+
     def generate_signals(self, data: pd.DataFrame) -> pd.DataFrame:
-        """生成交易信号"""
+        """Generate trading signals."""
         data = self.calculate_kama(data)
-        
-        # 价格与KAMA的关系
+
+        # Price relative to KAMA
         data['price_above_kama'] = data['close'] > data['KAMA']
         data['price_below_kama'] = data['close'] < data['KAMA']
-        
-        # 信号生成
+
+        # Crossover events (fill_value keeps the shifted column boolean)
         data['signal'] = 0
-        data.loc[data['price_above_kama'] & ~data['price_above_kama'].shift(1), 'signal'] = 1
-        data.loc[data['price_below_kama'] & ~data['price_below_kama'].shift(1), 'signal'] = -1
-        
-        # KAMA斜率信号
+        data.loc[data['price_above_kama'] & ~data['price_above_kama'].shift(1, fill_value=False), 'signal'] = 1
+        data.loc[data['price_below_kama'] & ~data['price_below_kama'].shift(1, fill_value=False), 'signal'] = -1
+
+        # Hold each state until the opposite crossover (held-state semantics,
+        # consistent with the rest of the chapter)
+        data['signal'] = data['signal'].where(data['signal'] != 0).ffill().fillna(0).astype(int)
+
+        # KAMA slope signals
         data['kama_slope'] = data['KAMA'].diff()
         data['kama_rising'] = data['kama_slope'] > 0
         data['kama_falling'] = data['kama_slope'] < 0
-        
+
         return data
 ```
 
-**KAMA优势**：
-- 自适应性：根据市场效率自动调整
-- 减少假信号：在震荡市场中更稳定
-- 趋势敏感：在趋势市场中响应迅速
+**KAMA advantages**:
+- Adaptivity: adjusts automatically to market efficiency
+- Fewer false signals: more stable in choppy markets
+- Trend sensitivity: responds quickly in trending markets
 
-### 1.2 突破策略族
+## 1.2 Breakout Strategy Family
 
-#### 1.2.1 唐奇安通道突破策略
+### 1.2.1 Donchian Channel Breakout Strategy
 
-**策略原理**：
-基于价格突破过去N天的最高价(上轨)或最低价(下轨)来判断趋势突破，是经典的趋势跟踪策略。
+**Strategy rationale**:
+Detects trend breakouts when price exceeds the highest high (upper band) or lowest low (lower band) of the past N days — a classic trend-following approach.
 
-**核心概念**：
-- 上轨：过去N天最高价
-- 下轨：过去N天最低价
-- 突破：价格超越通道边界
+**Core concepts**:
+- Upper band: the highest high of the past N days
+- Lower band: the lowest low of the past N days
+- Breakout: price moving beyond a channel boundary
 
-**实现细节**：
+**Implementation details**:
 ```python
+import pandas as pd
+import numpy as np
+
 class DonchianChannelStrategy:
-    """唐奇安通道突破策略"""
-    
+    """Donchian channel breakout strategy."""
+
     def __init__(self, entry_period=20, exit_period=10):
         """
-        初始化策略参数
-        
+        Initialize strategy parameters.
+
         Args:
-            entry_period: 入场通道周期
-            exit_period: 出场通道周期
+            entry_period: entry channel lookback
+            exit_period: exit channel lookback
         """
         self.entry_period = entry_period
         self.exit_period = exit_period
-        self.position = 0  # 当前仓位：1多头，-1空头，0空仓
-    
+        self.position = 0  # current position: 1 long, -1 short, 0 flat
+
     def calculate_channels(self, data: pd.DataFrame) -> pd.DataFrame:
-        """计算唐奇安通道"""
+        """Compute the Donchian channels."""
         data = data.copy()
-        
-        # 入场通道
+
+        # Entry channel
         data['upper_channel'] = data['high'].rolling(window=self.entry_period).max()
         data['lower_channel'] = data['low'].rolling(window=self.entry_period).min()
         data['middle_channel'] = (data['upper_channel'] + data['lower_channel']) / 2
-        
-        # 出场通道
+
+        # Exit channel
         data['exit_upper'] = data['high'].rolling(window=self.exit_period).max()
         data['exit_lower'] = data['low'].rolling(window=self.exit_period).min()
-        
-        # 通道宽度
+
+        # Channel width
         data['channel_width'] = data['upper_channel'] - data['lower_channel']
         data['channel_width_pct'] = data['channel_width'] / data['middle_channel']
-        
+
         return data
-    
+
     def generate_signals(self, data: pd.DataFrame) -> pd.DataFrame:
-        """生成交易信号"""
+        """Generate trading signals."""
         data = self.calculate_channels(data)
-        
-        # 入场信号
+
+        # Entry signals: compare today's close with yesterday's channel so the
+        # breakout level is fully known before the bar being tested
         data['long_entry'] = data['close'] > data['upper_channel'].shift(1)
         data['short_entry'] = data['close'] < data['lower_channel'].shift(1)
-        
-        # 出场信号
+
+        # Exit signals
         data['long_exit'] = data['close'] < data['exit_lower'].shift(1)
         data['short_exit'] = data['close'] > data['exit_upper'].shift(1)
-        
-        # 生成仓位信号
-        data['position'] = 0
+
+        # Build the position path (stateful, so we use a loop over a
+        # NumPy array and assign the column once at the end)
+        positions = np.zeros(len(data), dtype=int)
         current_position = 0
-        
+
         for i in range(len(data)):
             if data['long_entry'].iloc[i] and current_position <= 0:
                 current_position = 1
@@ -517,26 +517,28 @@ class DonchianChannelStrategy:
                 current_position = 0
             elif data['short_exit'].iloc[i] and current_position < 0:
                 current_position = 0
-            
-            data['position'].iloc[i] = current_position
-        
-        # 计算信号变化
+
+            positions[i] = current_position
+
+        data['position'] = positions
+
+        # Position changes
         data['signal'] = data['position'].diff()
-        
+
         return data
-    
+
     def add_filters(self, data: pd.DataFrame) -> pd.DataFrame:
-        """添加过滤条件"""
+        """Add entry filters."""
         data = data.copy()
-        
-        # 成交量过滤
+
+        # Volume filter
         if 'volume' in data.columns:
             data['volume_ma'] = data['volume'].rolling(20).mean()
             data['volume_filter'] = data['volume'] > data['volume_ma'] * 1.5
         else:
             data['volume_filter'] = True
-        
-        # ATR过滤（避免在低波动期交易）
+
+        # ATR filter (avoid trading in low-volatility regimes)
         data['tr'] = np.maximum(
             data['high'] - data['low'],
             np.maximum(
@@ -546,478 +548,521 @@ class DonchianChannelStrategy:
         )
         data['atr'] = data['tr'].rolling(14).mean()
         data['atr_filter'] = data['atr'] > data['atr'].rolling(50).quantile(0.3)
-        
-        # 应用过滤条件
+
+        # Apply the filters (provided for extension; the basic backtest
+        # below uses the unfiltered entries)
         data['filtered_long_entry'] = data['long_entry'] & data['volume_filter'] & data['atr_filter']
         data['filtered_short_entry'] = data['short_entry'] & data['volume_filter'] & data['atr_filter']
-        
+
         return data
-    
+
     def backtest_with_stops(self, data: pd.DataFrame, stop_loss_pct=0.02) -> pd.DataFrame:
-        """带止损的回测"""
+        """Backtest with a stop-loss overlay."""
         data = self.generate_signals(data)
         data = self.add_filters(data)
-        
-        # 计算收益
+
+        # Returns: lag the position one bar to avoid look-ahead bias
         data['returns'] = data['close'].pct_change()
         data['strategy_returns'] = data['position'].shift(1) * data['returns']
-        
-        # 止损逻辑
-        data['stop_loss'] = False
+
+        # Stop-loss logic (stateful loop; assign the column once at the end)
+        stop_flags = np.zeros(len(data), dtype=bool)
         current_position = 0
-        entry_price = 0
-        
+        entry_price = np.nan
+
         for i in range(1, len(data)):
             if data['position'].iloc[i] != current_position:
                 current_position = data['position'].iloc[i]
                 entry_price = data['close'].iloc[i]
-            
-            # 检查止损
-            if current_position > 0:  # 多头仓位
+
+            # Check the stop
+            if current_position > 0:  # long position
                 if data['close'].iloc[i] < entry_price * (1 - stop_loss_pct):
-                    data['stop_loss'].iloc[i] = True
+                    stop_flags[i] = True
                     current_position = 0
-            elif current_position < 0:  # 空头仓位
+            elif current_position < 0:  # short position
                 if data['close'].iloc[i] > entry_price * (1 + stop_loss_pct):
-                    data['stop_loss'].iloc[i] = True
+                    stop_flags[i] = True
                     current_position = 0
-        
+
+        # For pedagogical simplicity the stop flags are diagnostic only;
+        # a production backtest would flatten the position (and its returns)
+        # on the bar after each stop fires.
+        data['stop_loss'] = stop_flags
+
         return data
 
-# 使用示例
+# Usage example
 def demo_donchian_strategy():
-    """唐奇安通道策略演示"""
-    # 创建测试数据
+    """Donchian channel strategy demo (synthetic data for illustration)."""
     np.random.seed(42)
     dates = pd.date_range('2020-01-01', periods=500, freq='D')
-    
-    # 生成趋势性价格数据
+
+    # Generate a trending price series
     returns = np.random.normal(0.0008, 0.025, 500)
-    trend = np.sin(np.linspace(0, 4*np.pi, 500)) * 0.001  # 添加周期性趋势
+    trend = np.sin(np.linspace(0, 4*np.pi, 500)) * 0.001  # add a cyclical trend
     prices = 100 * np.exp(np.cumsum(returns + trend))
-    
+
     data = pd.DataFrame({
         'close': prices,
         'high': prices * (1 + np.abs(np.random.normal(0, 0.01, 500))),
         'low': prices * (1 - np.abs(np.random.normal(0, 0.01, 500))),
         'volume': np.random.randint(1000000, 10000000, 500)
     }, index=dates)
-    
-    # 运行策略
+
+    # Run the strategy
     strategy = DonchianChannelStrategy(entry_period=20, exit_period=10)
     results = strategy.backtest_with_stops(data, stop_loss_pct=0.03)
-    
-    # 计算业绩指标
+
+    # Performance metrics
     total_return = (1 + results['strategy_returns']).prod() - 1
     annual_return = results['strategy_returns'].mean() * 252
     volatility = results['strategy_returns'].std() * np.sqrt(252)
     sharpe = annual_return / volatility if volatility > 0 else 0
-    
-    print(f"唐奇安通道策略回测结果:")
-    print(f"总收益率: {total_return:.2%}")
-    print(f"年化收益率: {annual_return:.2%}")
-    print(f"年化波动率: {volatility:.2%}")
-    print(f"夏普比率: {sharpe:.2f}")
-    
+
+    print("Donchian channel strategy backtest results:")
+    print(f"Total return: {total_return:.2%}")
+    print(f"Annualized return: {annual_return:.2%}")
+    print(f"Annualized volatility: {volatility:.2%}")
+    print(f"Sharpe ratio: {sharpe:.2f}")
+
     return results
 ```
 
-**参数优化建议**：
-- 入场周期：10-40天，常用20天
-- 出场周期：入场周期的1/2，常用10天
-- 过滤条件：成交量放大、ATR高于历史分位数
+**Parameter tuning guidelines**:
+- Entry period: 10-40 days, commonly 20
+- Exit period: half the entry period, commonly 10
+- Filters: volume expansion, ATR above a historical quantile
 
-**适用市场**：
-- 趋势性强的市场
-- 波动率适中的品种
-- 流动性好的标的
+**Suitable markets**:
+- Markets with strong trends
+- Instruments with moderate volatility
+- Liquid instruments
 
-#### 1.2.2 布林带突破策略
+### 1.2.2 Bollinger Bands Breakout Strategy
 
-**策略原理**：
-基于价格突破布林带上下轨来识别趋势突破，结合均值回归特性。布林带由中轨(移动平均线)、上轨(中轨+N倍标准差)和下轨(中轨-N倍标准差)组成。
+**Strategy rationale**:
+Identifies trend breakouts when price crosses the Bollinger Bands, while also exploiting mean-reversion behavior. The bands consist of a middle band (moving average), an upper band (middle + N standard deviations), and a lower band (middle - N standard deviations).
 
-**核心概念**：
-- 中轨：通常为20日简单移动平均线
-- 上下轨：中轨±2倍标准差
-- 带宽：反映市场波动性
-- 带位：价格在布林带中的相对位置
+**Core concepts**:
+- Middle band: typically a 20-day simple moving average
+- Upper/lower bands: middle band ± 2 standard deviations
+- Bandwidth: a gauge of market volatility
+- %B: where price sits within the bands
 
 ```python
+import pandas as pd
+import numpy as np
+
 class BollingerBandsStrategy:
-    """布林带突破策略"""
-    
+    """Bollinger Bands breakout strategy."""
+
     def __init__(self, period=20, std_dev=2, volume_factor=1.5):
         """
-        初始化布林带策略
-        
+        Initialize the Bollinger Bands strategy.
+
         Args:
-            period: 移动平均线周期
-            std_dev: 标准差倍数
-            volume_factor: 成交量放大倍数
+            period: moving average lookback
+            std_dev: standard deviation multiplier
+            volume_factor: volume surge multiplier
         """
         self.period = period
         self.std_dev = std_dev
         self.volume_factor = volume_factor
-    
+
     def calculate_bands(self, data: pd.DataFrame) -> pd.DataFrame:
-        """计算布林带指标"""
+        """Compute the Bollinger Bands."""
         data = data.copy()
-        
-        # 计算中轨(移动平均线)
+
+        # Middle band (moving average)
         data['BB_middle'] = data['close'].rolling(window=self.period).mean()
-        
-        # 计算标准差
+
+        # Rolling standard deviation
         rolling_std = data['close'].rolling(window=self.period).std()
-        
-        # 计算上下轨
+
+        # Upper and lower bands
         data['BB_upper'] = data['BB_middle'] + (rolling_std * self.std_dev)
         data['BB_lower'] = data['BB_middle'] - (rolling_std * self.std_dev)
-        
-        # 计算布林带宽度
+
+        # Bandwidth
         data['BB_width'] = (data['BB_upper'] - data['BB_lower']) / data['BB_middle']
-        
-        # 计算价格在布林带中的位置(%B)
+
+        # Position of price within the bands (%B)
         data['BB_position'] = (data['close'] - data['BB_lower']) / (data['BB_upper'] - data['BB_lower'])
-        
-        # 计算带宽的历史分位数
+
+        # Trailing percentile rank of the bandwidth
         data['BB_width_percentile'] = data['BB_width'].rolling(252).rank(pct=True)
-        
+
         return data
-    
+
     def generate_signals(self, data: pd.DataFrame) -> pd.DataFrame:
-        """生成交易信号"""
+        """Generate trading signals."""
         data = self.calculate_bands(data)
-        
-        # 成交量过滤
+
+        # Volume filter
         if 'volume' in data.columns:
             data['volume_ma'] = data['volume'].rolling(20).mean()
             data['volume_surge'] = data['volume'] > data['volume_ma'] * self.volume_factor
         else:
             data['volume_surge'] = True
-        
-        # 突破信号(高波动期)
+
+        # Breakout signals (high-volatility regime)
         high_volatility = data['BB_width_percentile'] > 0.7
         data['breakout_long'] = (
-            (data['close'] > data['BB_upper']) & 
-            high_volatility & 
+            (data['close'] > data['BB_upper']) &
+            high_volatility &
             data['volume_surge']
         )
         data['breakout_short'] = (
-            (data['close'] < data['BB_lower']) & 
-            high_volatility & 
+            (data['close'] < data['BB_lower']) &
+            high_volatility &
             data['volume_surge']
         )
-        
-        # 均值回归信号(低波动期)
+
+        # Mean-reversion signals (low-volatility regime)
         low_volatility = data['BB_width_percentile'] < 0.3
         data['mean_revert_long'] = (
-            (data['close'] < data['BB_lower']) & 
+            (data['close'] < data['BB_lower']) &
             low_volatility
         )
         data['mean_revert_short'] = (
-            (data['close'] > data['BB_upper']) & 
+            (data['close'] > data['BB_upper']) &
             low_volatility
         )
-        
-        # 挤压信号(布林带收缩后的扩张)
+
+        # Squeeze signal (expansion after a band contraction)
         data['squeeze'] = data['BB_width'] < data['BB_width'].rolling(50).quantile(0.2)
         data['squeeze_breakout'] = (
-            data['squeeze'].shift(1) & 
-            ~data['squeeze'] & 
+            data['squeeze'].shift(1, fill_value=False) &
+            ~data['squeeze'] &
             data['volume_surge']
         )
-        
+
         return data
-    
+
     def backtest_dual_strategy(self, data: pd.DataFrame) -> pd.DataFrame:
-        """双重策略回测(突破+均值回归)"""
+        """Backtest the dual strategy (breakout + mean reversion)."""
         data = self.generate_signals(data)
-        
-        # 策略权重分配
-        data['trend_weight'] = data['BB_width_percentile']  # 高波动期权重更大
+
+        # Regime-based weights: breakout gets more weight when volatility is high
+        data['trend_weight'] = data['BB_width_percentile']
         data['mean_revert_weight'] = 1 - data['trend_weight']
-        
-        # 突破策略信号
+
+        # Breakout signal
         data['breakout_signal'] = 0
         data.loc[data['breakout_long'], 'breakout_signal'] = 1
         data.loc[data['breakout_short'], 'breakout_signal'] = -1
-        
-        # 均值回归策略信号
+
+        # Mean-reversion signal
         data['mean_revert_signal'] = 0
         data.loc[data['mean_revert_long'], 'mean_revert_signal'] = 1
         data.loc[data['mean_revert_short'], 'mean_revert_signal'] = -1
-        
-        # 组合信号
+
+        # Combined signal
         data['combined_signal'] = (
-            data['breakout_signal'] * data['trend_weight'] + 
+            data['breakout_signal'] * data['trend_weight'] +
             data['mean_revert_signal'] * data['mean_revert_weight']
         )
-        
-        # 计算收益
+
+        # Returns: lag the signal one bar to avoid look-ahead bias
         data['returns'] = data['close'].pct_change()
         data['strategy_returns'] = data['combined_signal'].shift(1) * data['returns']
         data['cumulative_returns'] = (1 + data['strategy_returns']).cumprod()
-        
+
         return data
 
-# 使用示例
+# Usage example
 def demo_bollinger_strategy():
-    """布林带策略演示"""
-    # 创建测试数据
+    """Bollinger Bands strategy demo (synthetic data for illustration)."""
     np.random.seed(42)
     dates = pd.date_range('2020-01-01', periods=500, freq='D')
-    
-    # 生成具有周期性波动的价格数据
+
+    # Generate a price series with cyclical volatility
+    # (amplitude kept below the base level so the std dev stays positive)
     base_trend = np.linspace(0, 0.2, 500)
-    volatility_cycle = 0.01 + 0.015 * np.sin(np.linspace(0, 8*np.pi, 500))
+    volatility_cycle = 0.015 + 0.01 * np.sin(np.linspace(0, 8*np.pi, 500))
     returns = np.random.normal(base_trend/500, volatility_cycle)
     prices = 100 * np.exp(np.cumsum(returns))
-    
+
     data = pd.DataFrame({
         'close': prices,
         'high': prices * (1 + np.abs(np.random.normal(0, 0.005, 500))),
         'low': prices * (1 - np.abs(np.random.normal(0, 0.005, 500))),
         'volume': np.random.randint(500000, 5000000, 500)
     }, index=dates)
-    
-    # 运行策略
+
+    # Run the strategy
     strategy = BollingerBandsStrategy(period=20, std_dev=2)
     results = strategy.backtest_dual_strategy(data)
-    
-    print("布林带策略回测完成")
+
+    print("Bollinger Bands strategy backtest complete")
     return results
 ```
 
-### 1.3 动量策略族
+## 1.3 Momentum Strategy Family
 
-#### 1.3.1 RSI动量策略
+### 1.3.1 RSI Momentum Strategy
 
-**策略原理**：
-RSI(相对强弱指数)测量价格变动的速度和幅度，识别超买超卖条件和动量转换点。RSI值在0-100之间波动，通常70以上为超买，30以下为超卖。
+**Strategy rationale**:
+The RSI (Relative Strength Index) measures the speed and magnitude of price moves, identifying overbought/oversold conditions and momentum turning points. RSI oscillates between 0 and 100; readings above 70 are conventionally overbought and below 30 oversold.
 
-**核心特点**：
-- 震荡指标：在0-100区间内波动
-- 超买超卖：识别价格极端位置
-- 背离信号：价格与RSI走势不一致
+**Key characteristics**:
+- Oscillator: bounded between 0 and 100
+- Overbought/oversold: flags price extremes
+- Divergence: price and RSI moving in opposite directions
 
 ```python
+import pandas as pd
+import numpy as np
+
 class RSIStrategy:
-    """RSI动量策略"""
-    
+    """RSI momentum strategy."""
+
     def __init__(self, period=14, overbought=70, oversold=30, rsi_ma_period=5):
         """
-        初始化RSI策略
-        
+        Initialize the RSI strategy.
+
         Args:
-            period: RSI计算周期
-            overbought: 超买阈值
-            oversold: 超卖阈值
-            rsi_ma_period: RSI移动平均周期
+            period: RSI lookback
+            overbought: overbought threshold
+            oversold: oversold threshold
+            rsi_ma_period: RSI moving average lookback
         """
         self.period = period
         self.overbought = overbought
         self.oversold = oversold
         self.rsi_ma_period = rsi_ma_period
-    
+
     def calculate_rsi(self, data: pd.DataFrame) -> pd.DataFrame:
-        """计算RSI指标"""
+        """Compute the RSI (Cutler's variant, using simple moving averages)."""
         data = data.copy()
-        
-        # 计算价格变化
+
+        # Price changes
         delta = data['close'].diff()
-        
-        # 分离上涨和下跌
+
+        # Separate gains and losses
         gain = (delta.where(delta > 0, 0)).rolling(window=self.period).mean()
         loss = (-delta.where(delta < 0, 0)).rolling(window=self.period).mean()
-        
-        # 计算相对强度和RSI
+
+        # Relative strength and RSI
         rs = gain / loss
         data['RSI'] = 100 - (100 / (1 + rs))
-        
-        # RSI移动平均线
+
+        # RSI moving average
         data['RSI_MA'] = data['RSI'].rolling(window=self.rsi_ma_period).mean()
-        
-        # RSI动量
+
+        # RSI momentum
         data['RSI_momentum'] = data['RSI'].diff(3)
-        
+
         return data
-    
-    def detect_divergence(self, data: pd.DataFrame, lookback=10) -> pd.DataFrame:
-        """检测价格与RSI背离"""
+
+    def detect_divergence(self, data: pd.DataFrame, lookback: int = 10,
+                          max_pivot_gap: int = 50) -> pd.DataFrame:
+        """Detect price/RSI divergences from confirmed swing points.
+
+        A bar j is a swing high (low) when its close is the extreme of the
+        window [j - lookback, j + lookback]. The pivot is only *confirmed*
+        at bar i = j + lookback, once the right side of the window has been
+        observed, and divergence signals are stamped on the confirmation
+        bar — so no future data is used at signal time.
+        """
         data = data.copy()
-        
-        # 寻找局部高点和低点
-        data['price_high'] = data['close'].rolling(window=lookback, center=True).max() == data['close']
-        data['price_low'] = data['close'].rolling(window=lookback, center=True).min() == data['close']
-        data['rsi_high'] = data['RSI'].rolling(window=lookback, center=True).max() == data['RSI']
-        data['rsi_low'] = data['RSI'].rolling(window=lookback, center=True).min() == data['RSI']
-        
-        # 初始化背离信号
-        data['bullish_divergence'] = False
-        data['bearish_divergence'] = False
-        
-        # 检测背离(简化版本)
-        for i in range(lookback, len(data) - lookback):
-            # 寻找前面的高点/低点
-            recent_price_highs = data['close'][data['price_high']][max(0, i-50):i]
-            recent_rsi_highs = data['RSI'][data['rsi_high']][max(0, i-50):i]
-            
-            if len(recent_price_highs) >= 2 and len(recent_rsi_highs) >= 2:
-                if (recent_price_highs.iloc[-1] > recent_price_highs.iloc[-2] and 
-                    recent_rsi_highs.iloc[-1] < recent_rsi_highs.iloc[-2]):
-                    data.loc[data.index[i], 'bearish_divergence'] = True
-            
-            recent_price_lows = data['close'][data['price_low']][max(0, i-50):i]
-            recent_rsi_lows = data['RSI'][data['rsi_low']][max(0, i-50):i]
-            
-            if len(recent_price_lows) >= 2 and len(recent_rsi_lows) >= 2:
-                if (recent_price_lows.iloc[-1] < recent_price_lows.iloc[-2] and 
-                    recent_rsi_lows.iloc[-1] > recent_rsi_lows.iloc[-2]):
-                    data.loc[data.index[i], 'bullish_divergence'] = True
-        
+        n = len(data)
+        close = data['close'].to_numpy()
+        rsi = data['RSI'].to_numpy()
+
+        bullish = np.zeros(n, dtype=bool)
+        bearish = np.zeros(n, dtype=bool)
+
+        swing_highs = []  # bar positions of confirmed swing highs
+        swing_lows = []   # bar positions of confirmed swing lows
+
+        for i in range(2 * lookback, n):
+            j = i - lookback                       # candidate pivot bar
+            if np.isnan(rsi[j]):
+                continue
+            window = close[j - lookback : i + 1]   # ends at the current bar i
+
+            # Confirmed swing high at bar j
+            if close[j] == window.max():
+                swing_highs.append(j)
+                if len(swing_highs) >= 2:
+                    prev, curr = swing_highs[-2], swing_highs[-1]
+                    # Higher high in price, lower high in RSI -> bearish divergence
+                    if (curr - prev <= max_pivot_gap and
+                            close[curr] > close[prev] and rsi[curr] < rsi[prev]):
+                        bearish[i] = True
+
+            # Confirmed swing low at bar j
+            if close[j] == window.min():
+                swing_lows.append(j)
+                if len(swing_lows) >= 2:
+                    prev, curr = swing_lows[-2], swing_lows[-1]
+                    # Lower low in price, higher low in RSI -> bullish divergence
+                    if (curr - prev <= max_pivot_gap and
+                            close[curr] < close[prev] and rsi[curr] > rsi[prev]):
+                        bullish[i] = True
+
+        data['bullish_divergence'] = bullish
+        data['bearish_divergence'] = bearish
+
         return data
-    
+
     def generate_signals(self, data: pd.DataFrame) -> pd.DataFrame:
-        """生成交易信号"""
+        """Generate trading signals."""
         data = self.calculate_rsi(data)
         data = self.detect_divergence(data)
-        
-        # 传统超买超卖信号
+
+        # Classic overbought/oversold signals (fire on entering the zone)
         data['oversold_signal'] = (data['RSI'] < self.oversold) & (data['RSI'].shift(1) >= self.oversold)
         data['overbought_signal'] = (data['RSI'] > self.overbought) & (data['RSI'].shift(1) <= self.overbought)
-        
-        # RSI中线突破信号
+
+        # RSI midline crossings
         data['rsi_bull_cross'] = (data['RSI'] > 50) & (data['RSI'].shift(1) <= 50)
         data['rsi_bear_cross'] = (data['RSI'] < 50) & (data['RSI'].shift(1) >= 50)
-        
-        # RSI与其移动平均线的关系
+
+        # RSI relative to its moving average
         data['rsi_above_ma'] = data['RSI'] > data['RSI_MA']
         data['rsi_below_ma'] = data['RSI'] < data['RSI_MA']
-        
-        # 组合信号
+
+        # Combined signals
         data['signal'] = 0
-        
-        # 买入信号
+
+        # Buy signals
         buy_conditions = (
             data['oversold_signal'] |
             data['bullish_divergence'] |
             (data['rsi_bull_cross'] & data['rsi_above_ma'])
         )
         data.loc[buy_conditions, 'signal'] = 1
-        
-        # 卖出信号
+
+        # Sell signals
         sell_conditions = (
             data['overbought_signal'] |
             data['bearish_divergence'] |
             (data['rsi_bear_cross'] & data['rsi_below_ma'])
         )
         data.loc[sell_conditions, 'signal'] = -1
-        
+
+        # Hold each state until the opposite trigger fires (held-state
+        # semantics, consistent with the rest of the chapter)
+        data['signal'] = data['signal'].where(data['signal'] != 0).ffill().fillna(0).astype(int)
+
         return data
 
-# RSI策略使用示例
+# RSI strategy usage example
 def demo_rsi_strategy():
-    """RSI策略演示"""
+    """RSI strategy demo (synthetic data for illustration)."""
     np.random.seed(42)
     dates = pd.date_range('2020-01-01', periods=500, freq='D')
-    
-    # 生成有趋势的价格数据
+
+    # Generate a trending price series
     trend = np.cumsum(np.random.normal(0.001, 0.02, 500))
     noise = np.random.normal(0, 0.015, 500)
     prices = 100 * np.exp(trend + noise)
-    
+
     data = pd.DataFrame({
         'close': prices,
         'high': prices * 1.01,
         'low': prices * 0.99,
         'volume': np.random.randint(1000000, 5000000, 500)
     }, index=dates)
-    
+
     strategy = RSIStrategy(period=14, overbought=70, oversold=30)
     results = strategy.generate_signals(data)
-    
-    print("RSI策略回测完成")
+
+    print("RSI strategy signal generation complete")
     return results
 ```
 
-#### 1.3.2 MACD动量策略
+### 1.3.2 MACD Momentum Strategy
 
-**策略原理**：
-MACD通过快慢EMA差值识别动量变化，MACD柱状图显示动量强弱变化趋势。
+**Strategy rationale**:
+MACD detects momentum shifts through the spread between fast and slow EMAs; the MACD histogram shows how momentum strength is evolving.
 
 ```python
+import pandas as pd
+import numpy as np
+
 class MACDStrategy:
-    """MACD动量策略"""
-    
+    """MACD momentum strategy."""
+
     def __init__(self, fast=12, slow=26, signal=9):
         """
-        初始化MACD策略
-        
+        Initialize the MACD strategy.
+
         Args:
-            fast: 快速EMA周期
-            slow: 慢速EMA周期
-            signal: 信号线EMA周期
+            fast: fast EMA lookback
+            slow: slow EMA lookback
+            signal: signal line EMA lookback
         """
         self.fast = fast
         self.slow = slow
         self.signal = signal
-    
+
     def calculate_macd(self, data: pd.DataFrame) -> pd.DataFrame:
-        """计算MACD指标"""
+        """Compute the MACD indicator."""
         data = data.copy()
-        
-        # 计算快慢EMA
-        data['EMA_fast'] = data['close'].ewm(span=self.fast).mean()
-        data['EMA_slow'] = data['close'].ewm(span=self.slow).mean()
-        
-        # 计算MACD线
+
+        # Fast and slow EMAs
+        data['EMA_fast'] = data['close'].ewm(span=self.fast, adjust=False).mean()
+        data['EMA_slow'] = data['close'].ewm(span=self.slow, adjust=False).mean()
+
+        # MACD line
         data['MACD'] = data['EMA_fast'] - data['EMA_slow']
-        
-        # 计算信号线
-        data['MACD_signal'] = data['MACD'].ewm(span=self.signal).mean()
-        
-        # 计算MACD柱状图
+
+        # Signal line
+        data['MACD_signal'] = data['MACD'].ewm(span=self.signal, adjust=False).mean()
+
+        # MACD histogram
         data['MACD_histogram'] = data['MACD'] - data['MACD_signal']
-        
+
         return data
-    
+
     def generate_signals(self, data: pd.DataFrame) -> pd.DataFrame:
-        """生成交易信号"""
+        """Generate trading signals."""
         data = self.calculate_macd(data)
-        
-        # MACD金叉死叉
+
+        # MACD golden/death crosses
         data['golden_cross'] = (data['MACD'] > data['MACD_signal']) & (data['MACD'].shift(1) <= data['MACD_signal'].shift(1))
         data['death_cross'] = (data['MACD'] < data['MACD_signal']) & (data['MACD'].shift(1) >= data['MACD_signal'].shift(1))
-        
-        # MACD零轴突破
+
+        # MACD zero-line crossings
         data['zero_cross_up'] = (data['MACD'] > 0) & (data['MACD'].shift(1) <= 0)
         data['zero_cross_down'] = (data['MACD'] < 0) & (data['MACD'].shift(1) >= 0)
-        
-        # MACD柱状图信号
-        data['histogram_increasing'] = data['MACD_histogram'] > data['MACD_histogram'].shift(1)
-        data['histogram_decreasing'] = data['MACD_histogram'] < data['MACD_histogram'].shift(1)
-        data['histogram_turning_up'] = (data['MACD_histogram'] > 0) & (data['MACD_histogram'].shift(1) <= 0)
-        data['histogram_turning_down'] = (data['MACD_histogram'] < 0) & (data['MACD_histogram'].shift(1) >= 0)
-        
-        # 组合信号
+
+        # Histogram slope signals. Note: the histogram crossing zero is the
+        # same event as a golden/death cross, so the "turning" signals test
+        # a slope reversal instead — momentum decelerating and then
+        # re-accelerating — which is a genuinely distinct, earlier trigger.
+        hist_slope = data['MACD_histogram'].diff()
+        data['histogram_increasing'] = hist_slope > 0
+        data['histogram_decreasing'] = hist_slope < 0
+        data['histogram_turning_up'] = (hist_slope > 0) & (hist_slope.shift(1) <= 0)
+        data['histogram_turning_down'] = (hist_slope < 0) & (hist_slope.shift(1) >= 0)
+
+        # Combined signals
         data['signal'] = 0
-        
-        # 买入信号
+
+        # Buy signals
         buy_conditions = (
             data['golden_cross'] |
             data['zero_cross_up'] |
             data['histogram_turning_up']
         )
         data.loc[buy_conditions, 'signal'] = 1
-        
-        # 卖出信号
+
+        # Sell signals
         sell_conditions = (
             data['death_cross'] |
             data['zero_cross_down'] |
             data['histogram_turning_down']
         )
         data.loc[sell_conditions, 'signal'] = -1
-        
+
+        # Hold each state until the opposite trigger fires (held-state
+        # semantics, consistent with the rest of the chapter)
+        data['signal'] = data['signal'].where(data['signal'] != 0).ffill().fillna(0).astype(int)
+
         return data
 ```
