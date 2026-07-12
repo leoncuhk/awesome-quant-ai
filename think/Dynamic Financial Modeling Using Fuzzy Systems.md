@@ -358,9 +358,9 @@ The instability of equilibriums suggests that the price series will not settle a
 
 #### Chaotic vs. Random 
 
-- **Chaos** : Small changes in initial conditions lead to predictable short-term behavior.
+- **Chaos** : Extreme sensitivity to initial conditions — nearby trajectories diverge exponentially — yet short-term behavior remains structured and predictable.
 
-- **Random** : Immediate transition to steady-state behavior.
+- **Random** : Immediate transition to steady-state behavior, with no exploitable short-term structure.
 
 #### Monte Carlo Simulations 
 
@@ -377,6 +377,7 @@ where $$S$$ is the number of simulations.
 #### Definition 
 Quantifies sensitivity to initial conditions:
 $$L = \lim_{t \to \infty} \frac{1}{t} \log \left( \frac{d(t)}{d(0)} \right)$$
+where $$d(t)$$ is the distance at time $$t$$ between two trajectories that start a small distance $$d(0)$$ apart.
 #### Calculation 
 
 Wang's Figures 8 and 9 plot the volatilities in log-t scale and for different $$a_1$$ values, from which the Lyapunov exponent is estimated.

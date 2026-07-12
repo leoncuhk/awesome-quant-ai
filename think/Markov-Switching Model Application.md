@@ -286,7 +286,7 @@ To ensure the proposed methods were both novel and likely to succeed, Chapter 2 
 
 **Chapter 5** tackled the third research objective by addressing the contributions and limitations of Chapter 4. Using the model predictive control (MPC) algorithm, it was shown that the generated signals from Chapter 4 could be successfully exploited in portfolio construction, incorporating various real-world factors such as risk, transaction, and liquidity constraints. The constructed portfolio outperformed its benchmarks without allowing shorting positions, which could potentially enhance performance but were restricted due to institutional constraints.
 
-The combined contributions of Chapters 3, 4, and 5 achieved the ultimate objective of this research, demonstrating practical applications for a quantitative trading system as outlined in Section 2.1.3.
+The combined contributions of Chapters 3, 4, and 5 achieved the ultimate objective of this research, demonstrating practical applications for a quantitative trading system as outlined in the thesis's Section 2.1.3.
 
 
 
