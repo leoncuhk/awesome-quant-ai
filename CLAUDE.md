@@ -13,7 +13,7 @@ Curated awesome-list for AI/ML applications in quantitative finance.
 
 ## Conventions
 - All awesome-list entries follow: `- [Name](url) - Description ending with period.`
-- book/ content is English-primary (toc.md keeps parenthetical Chinese terms); think/ essays remain bilingual
+- book/ and think/ content is English (toc.md keeps parenthetical Chinese terms)
 - Code in book/myquant/ uses Python with pandas (2.x-safe), numpy, sklearn, scipy; examples must be standalone-runnable with no look-ahead bias
 - Git commits use the maintainer's identity (leon / leoncuhk@gmail.com)
 - No AI attribution in commits or PRs

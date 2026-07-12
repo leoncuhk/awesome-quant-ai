@@ -1,18 +1,16 @@
-## Markov-Switching Regression Model in Regime Switching
+# Markov-Switching Model Application
 
+*Markov-switching regression models in regime detection and portfolio construction*
 
+> **Note:** These are chapter-by-chapter reading notes on the PhD thesis [*Construction of Effective Regime-Switching Portfolios Using a Combination of Machine Learning and Traditional Approaches*](https://discovery.ucl.ac.uk/id/eprint/10192012/) by Piotr Pomorski (UCL, 2024) — a summary of the thesis's arguments and results, not original research.
 
-Study the Thesis: Construction of Effective Regime-Switching Portfolios Using a Combination of Machine Learning and Traditional Approaches, by Piotr Pomorski
-
-
-
-###Introduction
+## Introduction
 
 **Research Question**
 The thesis investigates the detection and prediction of market states (also referred to as financial regimes or market conditions). Specifically, it focuses on using various statistical and machine learning methods to identify and forecast different market states (such as bull markets, bear markets, and transitional states) to improve asset allocation and investment decisions.
 
 **Importance of the Research**
-Studying the detection and prediction of market states is crucial for investors and asset managers because different market states require different investment strategies. Accurately identifying and forecasting market state changes can help investors optimize their portfolios, reduce risk, and enhance returns. Additionally, understanding market state changes can aid in formulating more scientific macroeconomic policies and preventing financial crises.
+Studying the detection and prediction of market states is crucial for investors and asset managers because different market states require different investment strategies. Accurately identifying and forecasting market state changes can help investors optimize their portfolios, reduce risk, and enhance returns. Additionally, understanding market state changes can inform macroeconomic policy and help anticipate financial crises.
 
 **Main Research Methods**
 The thesis explores a range of traditional statistical and machine learning methods for market state detection and prediction, including:
@@ -59,79 +57,17 @@ Through this comparative analysis, the thesis ultimately selects Random Forest a
 
 
 
-### Background and Related Work
+## Background and Related Work
 
-**Financial Background**
-- Overview of asset allocation and the significance of diversification.
-- Introduction to Modern Portfolio Theory (MPT) and its limitations in dynamic market conditions.
-
-**Asset Allocation**
-- Examination of traditional methods and the necessity for dynamic approaches.
-- Review of the portfolio construction process, including the application of technical analysis.
-
-**Modern Portfolio Theory (MPT) and Its Extensions**
-- Explanation of MPT's core concepts.
-- Discussion on extensions to MPT to address its limitations, such as incorporating alternative assets and dynamic strategies.
-
-**Portfolio Construction Process**
-- Steps involved in constructing a robust investment portfolio.
-- Importance of asset selection, risk management, and periodic rebalancing.
-
-**Technical Analysis**
-- Historical context and basic principles of technical analysis.
-- Common technical indicators and their application in market prediction.
-
-**Regime Switches**
-
-- Definition and significance of regime switches in financial markets.
-- Impact of regime changes on asset returns and risk profiles.
-
-**Technical Background**
-
-**Markov-switching Regression Model**
-- Detailed explanation of the Markov-switching regression model (MSR).
-- Application of MSR in detecting regime changes in financial time series.
-
-**Kaufman’s Adaptive Moving Average (KAMA)**
-- Introduction to KAMA and its advantages over traditional moving averages.
-- Explanation of how KAMA adapts to market conditions by incorporating trend and volatility factors.
-
-**Limitations of the Markov-switching Model**
-- Discussion on the challenges and limitations of using MSR for real-time regime detection.
-- Issues related to lag in detection and the need for predictive capabilities.
-
-**Machine Learning Models for Regime Prediction**
-- Overview of machine learning models used for predicting market regimes.
-- Focus on Hidden Markov Model (HMM) and Random Forest (RF) as primary methods.
-- Comparison of these models with traditional approaches.
-
-**Related Work**
-
-**Regime Detection Methods**
-- Examination of various methods used for detecting market regimes.
-- In-depth analysis of Markov-switching models, GARCH models, and change point detection techniques.
-
-**Regime Prediction Methods**
-- Review of traditional and machine learning methods for predicting market regimes.
-- Discussion on Probit/Logit models, Kalman filters, and advanced machine learning techniques like SVM and ANN.
-
-**Portfolio Allocation Methods Related to Regime Switching**
-- Exploration of how regime detection and prediction can enhance portfolio allocation.
-- Application of MSR, HMM, and GARCH models in constructing regime-switching portfolios.
-- Analysis of multi-period optimization and model predictive control for dynamic asset allocation.
-
-**Value of Technical Analysis in Building Portfolios**
-- Historical debate on the efficacy of technical analysis in portfolio management.
-- Modern perspectives showing the added value of technical analysis, particularly with machine learning integration.
-- Discussion on the use of technical indicators like moving averages and their limitations.
+The Markov-switching regression model (MSR) is a Hamilton-style regime-switching regression in which model parameters switch between a small number of latent states governed by a Markov chain, making it a natural tool for detecting bull/bear or low-/high-volatility regimes in financial time series. The thesis surveys the main alternatives: GARCH models and their extensions (including MS-GARCH), which estimate volatility but struggle with structural breaks; change-point detection methods, which pinpoint when breaks occur but handle gradual transitions less flexibly than MSR; and machine learning classifiers (HMM, Random Forest, SVM, ANN), which often predict regimes more accurately but demand more data and computation. It also reviews the portfolio context — asset allocation, Modern Portfolio Theory and its limits under changing market conditions, and the long-running debate over technical analysis, where indicators such as moving averages (including Kaufman's Adaptive Moving Average, KAMA) have shown renewed value when combined with machine learning. MSR is chosen as the detection backbone because it is well validated across markets and asset classes and yields interpretable regime labels; its main weakness — lag and lack of predictive power in real time — motivates augmenting it with KAMA for smoother detection (Chapter 3) and pairing it with machine learning models for ex-ante regime prediction (Chapter 4). Finally, the review covers regime-aware portfolio construction, including multi-period optimization and model predictive control, which underpin Chapter 5.
 
 
 
 
 
-### Improving on the Markov-switching Regression Model by the Use of an Adaptive Moving Average
+## Improving on the Markov-switching Regression Model by the Use of an Adaptive Moving Average
 
-#### Background
+### Background
 
 **Problem with Two-State Markov-Switching Regression Models:**
 - The two-state Markov-switching regression model is commonly used in financial applications for regime detection. However, it has limitations:
@@ -152,7 +88,7 @@ Through this comparative analysis, the thesis ultimately selects Random Forest a
 
 
 
-#### Data and Methodology
+### Data and Methodology
 
 **Data:**
 - Daily closing prices for 56 assets across four classes: equities (24), exchange rates (13), commodities (12), and fixed income (7).
@@ -177,13 +113,11 @@ Through this comparative analysis, the thesis ultimately selects Random Forest a
    - Models include two-state MSR, three-state MSR, three-state MSR turned into two states, three-state KNS, and three-state KNS turned into two states.
 
 4. **Trading Strategy:**
-   - Weights are assigned to two assets (selected asset vs. USD Cash 3-Month Rebalancing).
+   - Weights are assigned to two assets (the selected asset vs. the 3-month USD cash rate, with rebalancing).
    - Optimization involves calculating returns and adjusted Sharpe ratio (ASR) for each segment.
    - Trading costs are considered for each asset class.
-   
-   
 
-#### Results and Discussion
+### Results and Discussion
 
 **Phase 1: In-Sample Testing:**
 - The proposed KAMA+MSR model showed strong performance across different asset classes.
@@ -221,9 +155,9 @@ Through this comparative analysis, the thesis ultimately selects Random Forest a
 
 
 
-### Predicting Financial Regimes by the Use of the Random Forest-KAMA+MSR Framework
+## Predicting Financial Regimes by the Use of the Random Forest-KAMA+MSR Framework
 
-#### Background
+### Background
 
 **Fractional Differencing**:
 - Traditional methods to convert non-stationary time series data to stationary data (like differencing) erase the memory of the time series.
@@ -242,7 +176,7 @@ Through this comparative analysis, the thesis ultimately selects Random Forest a
 
 
 
-#### Data and Methodology
+### Data and Methodology
 
 **Data**:
 - The data covers three major asset classes: equities, commodities, and foreign exchange pairs.
@@ -265,7 +199,7 @@ Through this comparative analysis, the thesis ultimately selects Random Forest a
 
 
 
-#### Results and Discussion
+### Results and Discussion
 
 **Optimal Hyperparameters**:
 - The best hyperparameters for each asset class model are identified, showing similarities and differences in their configurations.
@@ -289,7 +223,7 @@ Through this comparative analysis, the thesis ultimately selects Random Forest a
 
 
 
-#### Conclusions
+### Conclusions
 
 - The chapter successfully demonstrates the use of Random Forest models to predict financial regimes ex ante.
 - The models provide signals best interpreted as contrarian, generating substantial profits by accurately predicting market downturns and upswings.
@@ -298,13 +232,13 @@ Through this comparative analysis, the thesis ultimately selects Random Forest a
 
 
 
-### Combining Regime Switching Predictive Framework with Model Predictive Control for Multi-period Portfolio Optimisation
+## Combining Regime Switching Predictive Framework with Model Predictive Control for Multi-period Portfolio Optimisation
 
-#### Background
+### Background
 
 Chapter 5 introduces a novel approach by integrating multi-period portfolio optimization (MPO) with model predictive control (MPC), leveraging the Random Forest models developed in Chapter 4 for market regime prediction. This method aims to address the limitations identified in Chapter 4, such as frequent shorting and fixed cost assumptions, by employing a dynamic weight allocation strategy and a more sophisticated cost model. The chapter discusses the theoretical background and related work, including the concept of multi-period optimization, and explains how MPC can optimize portfolios by considering future returns, risk constraints, and transaction costs over multiple periods.
 
-#### Data and Methodology
+### Data and Methodology
 
 **Data** 
 The data used includes the same equity and commodity assets from Chapter 4, along with daily returns, volatility, and trading volumes. The period of analysis is from April 2, 2018, to April 29, 2022. The methodology involves transforming the classification predictions from Chapter 4 into return estimates, applying the Kalman filter for accuracy improvement, estimating the covariance matrix, and defining the transaction cost function. The MPC parameters are then optimized using a training and holdout sample to ensure robust performance without overfitting.
@@ -314,9 +248,9 @@ The data used includes the same equity and commodity assets from Chapter 4, alon
 2. **Applying the Kalman Filter**: The Kalman filter is employed to enhance the accuracy of the estimated returns by correcting for prediction errors.
 3. **Covariance Matrix Estimation**: A rolling covariance matrix over 504 days is used to capture the risk relationships between assets.
 4. **Transaction Cost Function**: The cost function is estimated using asset price, volatility, and trading volume, incorporating a bid-ask spread and other potential explicit costs.
-5. **MPC Parameter Optimization**: Parameters \(\gamma_{\sigma}\) and \(\gamma_{\text{trade}}\) are optimized to maximize the Sortino ratio using the Optuna package, balancing the trade-off between risk and turnover. The investment horizon \(H\) is set to 2, based on initial experiments showing superior performance with this value.
+5. **MPC Parameter Optimization**: Parameters $\gamma_{\sigma}$ and $\gamma_{\text{trade}}$ are optimized to maximize the Sortino ratio using the Optuna package, balancing the trade-off between risk and turnover. The investment horizon $H$ is set to 2, based on initial experiments showing superior performance with this value.
 
-#### Results and Discussion
+### Results and Discussion
 
 The implementation of MPC demonstrated significant outperformance of the benchmarks, including 1/N and buy-and-hold portfolios, in terms of financial metrics like the Sortino ratio and adjusted Sharpe ratio. The dynamic adjustment of asset weights allowed the MPC model to capture market changes effectively, providing robust trading signals. The results confirmed that multi-period optimization offers a superior framework for handling non-stationary financial time series, enabling better risk management and return maximization compared to single-period optimization.
 
@@ -326,17 +260,17 @@ The Equity and Commodity Random Forest models performed exceptionally well, dyna
 **Advantages of Multi-period Optimization**  
 Multi-period optimization proved advantageous over single-period techniques by incorporating future estimates and adjusting for short-term and long-term benefits. This approach aligns better with the non-stationary nature of financial markets, providing a more resilient investment strategy.
 
-#### Conclusions
+### Conclusions
 
 This chapter successfully demonstrated the integration of multi-period optimization with a regime-switching predictive framework using MPC. By dynamically adjusting asset weights and incorporating a realistic cost model, the proposed method achieved superior financial performance compared to traditional strategies. The study addressed the limitations of frequent shorting and fixed costs, showcasing the potential of MPC in building robust, dynamic investment portfolios. Future research can explore the inclusion of more diverse asset classes and advanced risk management strategies to further enhance the effectiveness of the MPC model.
 
 
 
-### Conclusions and Future Work
+## Conclusions and Future Work
 
 In this final chapter, the work of this thesis is summarized and discussed, prior to outlining proposed extensions of the work in terms of detecting and predicting financial regimes in order to construct portfolios capable of withstanding turbulent times in the markets, as well as benefiting from price rallies.
 
-#### Summary and Discussion
+### Summary and Discussion
 
 The ultimate objective of this thesis was to propose and test a detection-prediction-optimization regime-switching framework that would also be efficient in a real-world environment, and thus practical for asset managers. This problem was split into three research objectives, each becoming a focus of a single chapter, each chapter building upon preceding work:
 
@@ -356,7 +290,7 @@ The combined contributions of Chapters 3, 4, and 5 achieved the ultimate objecti
 
 
 
-#### Future Work
+### Future Work
 
 Several extensions to this work could be suggested, as described below:
 
@@ -373,18 +307,9 @@ In summary, these future directions could lead to the development of more compre
 
 
 
-Reference:
+## References
 
-- Introduction to Markov-Switching Models
-
-  https://www.aptech.com/blog/introduction-to-markov-switching-models/
-
-- Markov Switching Dynamic Regression Model
-
-  https://medium.com/@NNGCap/markov-switching-dynamic-regression-model-2a558251c293
-
-- KAMA: The Adaptive Moving Average
-
-  https://medium.com/@NNGCap/kama-the-adaptive-moving-average-23a2a75540be
-
-- 
+- [Construction of Effective Regime-Switching Portfolios Using a Combination of Machine Learning and Traditional Approaches](https://discovery.ucl.ac.uk/id/eprint/10192012/) — Piotr Pomorski, PhD thesis, UCL, 2024 (the source of these notes)
+- [Introduction to Markov-Switching Models](https://www.aptech.com/blog/introduction-to-markov-switching-models/)
+- [Markov Switching Dynamic Regression Model](https://medium.com/@NNGCap/markov-switching-dynamic-regression-model-2a558251c293)
+- [KAMA: The Adaptive Moving Average](https://medium.com/@NNGCap/kama-the-adaptive-moving-average-23a2a75540be)

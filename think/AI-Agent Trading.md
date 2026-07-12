@@ -1,50 +1,67 @@
-| 特征 | 传统量化交易 | 基于算法的量化交易 | 基于Agent的交易 |
-|------|--------------|-------------------|-----------------|
-| **决策过程** | 基于数学模型和历史数据的静态规则 | 预定义的算法逻辑，可能包含优化机制 | 自主学习和决策的智能体，可适应环境变化 |
-| **适应性** | 低，需要人工调整参数和规则 | 中等，可通过参数优化自适应 | 高，可实时学习和适应市场条件变化 |
-| **市场理解** | 有限，仅限于预先编程的规则范围 | 中等，可捕捉一些复杂模式 | 较全面，可以理解和适应复杂的市场结构 |
-| **学习能力** | 无或有限 | 基于监督学习或参数优化 | 具备自主学习和探索能力，可通过强化学习改进策略 |
-| **灵活性** | 低，规则固定 | 中等，算法可调整但框架固定 | 高，可自主调整策略和目标 |
-| **透明度** | 高，规则明确可解释 | 中等，算法复杂度较高但可追踪 | 较低，决策过程可能是"黑盒" |
-| **风险管理** | 基于固定规则的风险控制 | 算法内置风险控制机制 | 动态风险评估和自适应风险管理 |
-| **复杂性** | 低至中等 | 中等至高 | 高，涉及复杂的AI/ML模型和架构 |
-| **计算需求** | 较低 | 中等 | 高，特别是在训练阶段 |
-| **数据依赖性** | 对特定类型的历史数据依赖 | 对多种数据源有较强依赖 | 可处理多维度、非结构化数据，包括实时反馈 |
-| **维护成本** | 较低，规则简单稳定 | 中等，需要定期调整和优化 | 高，需要持续监控和可能的重新训练 |
-| **创新空间** | 有限，受限于预设规则 | 中等，可通过算法优化实现 | 高，可发现新的交易策略和机会 |
-| **典型应用** | 趋势跟踪、均值回归、基本面量化 | 统计套利、高频交易、因子模型 | 自适应交易系统、混合策略优化、多目标决策 |
-| **最新发展** | 整合更多数据源 | 引入机器学习优化算法参数 | 多智能体协作、元学习、迁移学习应用 |
+# AI-Agent Trading: LLM-Based Multi-Agent Frameworks
 
-## 研究总结
+Survey notes on LLM-based (multi-)agent trading systems — what the main frameworks actually do, how they differ, and what remains unsolved. Updated 2026-07.
 
-### TradingAgents: 多智能体LLM金融交易框架
+## From Rules to Agents
 
-Xiao等人(2024)提出了一种基于大语言模型(LLM)的多智能体金融交易框架，该框架模拟了真实交易公司的协作动态。TradingAgents框架包含多种专业角色的智能体，包括：
-- 基本面分析师
-- 情感分析师
-- 技术分析师
-- 不同风险偏好的交易员
-- 看多(Bull)和看空(Bear)研究员
-- 风险管理团队
+Quantitative trading systems can be roughly ordered by decision autonomy:
 
-该框架的核心优势在于智能体间的协作与辩论机制，交易员可以综合各类分析师的见解以及历史数据，形成更加全面和平衡的决策。实验结果表明，与基准模型相比，该框架在累积收益率、夏普比率和最大回撤等指标上均有显著改善，证明了多智能体LLM框架在金融交易领域的潜力。
+| Dimension | Traditional quant | Algorithmic / ML-optimized | LLM agent-based |
+|---|---|---|---|
+| Decision process | Static rules from models and historical data | Predefined logic with parameter optimization | Autonomous agents reasoning over heterogeneous inputs |
+| Adaptivity | Low; manual re-tuning | Medium; periodic re-optimization | High in principle; memory and reflection loops, but unproven out of regime |
+| Data handled | Structured prices/fundamentals | Multiple structured sources | Unstructured text, news, filings; sometimes charts (multimodal) |
+| Transparency | High; explicit rules | Medium; traceable but complex | Natural-language rationales, yet underlying decisions remain hard to audit |
+| Cost profile | Low | Medium | High per decision (API calls, multi-round debate) |
 
-### FinAgent: 多模态基础交易智能体
+The LLM-agent column is the newest and least validated. Four frameworks define the current design space.
 
-Zhang等人(2024)提出了FinAgent，这是一个工具增强型多模态基础交易智能体。FinAgent具有处理多模态市场数据的能力，可以同时分析数值、文本和视觉信息，从而更全面地理解金融市场。其主要特点包括：
+## Framework Survey
 
-- 市场智能模块：处理多样化的数据类型
-- 双层次反思模块：使智能体能够快速适应市场动态
-- 多样化记忆检索系统：加强智能体从历史数据中学习的能力
-- 基于推理的行动决策：增强决策的可信度
-- 整合已建立的交易策略和专家见解
+### TradingAgents (Xiao et al., 2024)
 
-在6个金融数据集(包括股票和加密货币)的实验中，FinAgent在6项金融指标上显著优于9个最先进的基准模型，平均收益提高36%以上。在某一数据集上，甚至实现了92.27%的回报率(相对改善84.39%)。值得注意的是，FinAgent是第一个为金融交易任务设计的高级多模态基础智能体。
+TradingAgents organizes LLM agents into the role structure of a trading firm: fundamental, sentiment, and technical analysts; bull and bear researchers who debate each thesis; traders with different risk appetites; and a risk-management layer that gates final decisions. The core mechanism is structured communication — analysts produce reports, researchers argue both sides, and the trader synthesizes the debate into an action. The authors report improvements in cumulative return, Sharpe ratio, and maximum drawdown over baselines; the design bet is that adversarial debate reduces confident, one-sided reasoning by a single model.
 
-## 参考文献
+### FinAgent (Zhang et al., 2024)
+
+FinAgent is a tool-augmented, multimodal single-agent design rather than a role-playing ensemble. It ingests numerical, textual, and visual market data (including price charts) through a market-intelligence module, and adds a dual-level reflection module for adapting to market dynamics, a diversified memory-retrieval system, and tool augmentation that lets the agent invoke established trading strategies and expert insight rather than generate every decision from scratch. Evaluated on six datasets spanning stocks and cryptocurrency, the authors report an average profit improvement of over 36% against nine baselines. Its distinctive claim is being the first multimodal foundation agent designed specifically for trading.
+
+### FinMem (Yu et al., 2023)
+
+FinMem is the memory-centric design in this group. It gives a single trading agent a human-inspired layered memory — working memory plus long-term layers whose retention decays at different rates depending on the time-sensitivity of the information — together with an explicit character design (professional background and risk inclination) that conditions how the agent weighs evidence. The layered structure lets the agent prioritize recent critical news while retaining slower-moving fundamental context, improving single-stock trading over unstructured-memory baselines. FinMem established the memory-and-profile template that later systems, including FinCon, build on.
+
+### FinCon (Yu et al., 2024)
+
+FinCon, from the FinMem group, scales the idea to a synthesized multi-agent system with a manager-analyst hierarchy modeled on real investment firms: analyst agents distill unimodal market information, and a single manager agent consolidates their input, makes trading decisions, and carries an explicit risk-control component that monitors episodic risk. Its main methodological contribution is conceptual verbal reinforcement — a self-critique mechanism that updates the manager's investment beliefs in natural language across episodes, selectively propagating only revised beliefs to the agents that need them to cut communication cost. It is evaluated on both single-stock trading and portfolio management, making it the broadest in task scope of the four.
+
+## Framework Comparison
+
+| | TradingAgents | FinAgent | FinMem | FinCon |
+|---|---|---|---|---|
+| Architecture | Multi-agent, firm role structure | Single agent, tool-augmented | Single agent | Multi-agent, manager-analyst hierarchy |
+| Key mechanism | Bull/bear debate, role specialization | Multimodal perception, dual-level reflection | Layered memory with decay, character design | Conceptual verbal reinforcement, belief updates |
+| Modality | Text, numerical | Text, numerical, visual (charts) | Text, numerical | Text, numerical |
+| Risk control | Dedicated risk-management agents | Implicit (reflection) | Risk-inclination profile | Explicit risk-control component (episodic monitoring) |
+| Tasks evaluated | Stock trading | Stock and crypto trading | Single-stock trading | Stock trading and portfolio management |
+| Reference | [arXiv:2412.20138](https://arxiv.org/abs/2412.20138) | [arXiv:2402.18485](https://arxiv.org/abs/2402.18485) | [arXiv:2311.13743](https://arxiv.org/abs/2311.13743) | [arXiv:2407.06567](https://arxiv.org/abs/2407.06567) |
+
+For engineering rather than research, the adjacent open-source stack includes [FinRL](https://github.com/AI4Finance-Foundation/FinRL) (RL agents), [FinGPT](https://github.com/AI4Finance-Foundation/FinGPT) (financial LLM fine-tuning), and [RD-Agent](https://github.com/microsoft/RD-Agent) (autonomous factor/model R&D on Qlib), plus the open-source [TradingAgents](https://github.com/TauricResearch/TradingAgents) implementation itself.
+
+## Open Problems
+
+The reported results above should be read with caution. Several validity issues are common to all four papers and largely unresolved:
+
+- **Pretraining data leakage.** Backtests run over periods inside the LLM's training window are contaminated: the model may have memorized how specific stocks, earnings, and macro events played out. A "prediction" about 2022 from a model trained through 2023 is not out-of-sample. Truly clean evaluation requires post-cutoff live or paper trading, which few papers report at meaningful length.
+- **Lookahead in news corpora.** Retrieved news and analyst text often carry timestamps that are approximate, revised, or aggregated, so information can leak backward into the decision point even when prices are handled correctly.
+- **Cost and latency.** Multi-agent debate multiplies API calls per decision. This is tolerable for daily rebalancing on a handful of tickers but scales poorly to broad universes or intraday horizons, and per-decision cost is rarely reported alongside returns.
+- **Non-stationarity.** Memory and verbal-reinforcement loops adapt beliefs to the evaluated regime; there is no evidence yet that these adaptations survive regime shifts rather than encode them.
+- **Weak evaluation standards.** Typical evaluations use small stock universes, short windows, and baselines like buy-and-hold or vanilla RL. LLM output is stochastic and prompt-sensitive, yet results are seldom reported across seeds or prompt variants. The field lacks a shared benchmark with enforced information-availability constraints.
+
+Until these are addressed, the honest reading is that LLM agent frameworks are promising architectures for research, not validated sources of alpha.
+
+## References
 
 1. Xiao, Y., Sun, E., Luo, D., & Wang, W. (2024). TradingAgents: Multi-Agents LLM Financial Trading Framework. *arXiv preprint arXiv:2412.20138*. [https://arxiv.org/abs/2412.20138](https://arxiv.org/abs/2412.20138)
-
 2. Zhang, W., Zhao, L., Xia, H., Sun, S., Sun, J., Qin, M., Li, X., Zhao, Y., Zhao, Y., Cai, X., Zheng, L., Wang, X., & An, B. (2024). A Multimodal Foundation Agent for Financial Trading: Tool-Augmented, Diversified, and Generalist. *arXiv preprint arXiv:2402.18485*. [https://arxiv.org/abs/2402.18485](https://arxiv.org/abs/2402.18485)
-
-
+3. Yu, Y., et al. (2023). FinMem: A Performance-Enhanced LLM Trading Agent with Layered Memory and Character Design. *arXiv preprint arXiv:2311.13743*. [https://arxiv.org/abs/2311.13743](https://arxiv.org/abs/2311.13743)
+4. Yu, Y., et al. (2024). FinCon: A Synthesized LLM Multi-Agent System with Conceptual Verbal Reinforcement for Enhanced Financial Decision Making. *arXiv preprint arXiv:2407.06567*. [https://arxiv.org/abs/2407.06567](https://arxiv.org/abs/2407.06567)

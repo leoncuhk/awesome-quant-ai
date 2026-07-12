@@ -14,7 +14,7 @@ A curated list of awesome resources for quantitative investment and trading stra
 
 *Your edge: which layer do you understand better than consensus?*
 
-⭐ Beyond curated links, this project includes an [original 11-chapter strategy guide](#original-research-and-notes) with runnable Python implementations and [research notes](#research-essays-think) on regime detection and AI-agent trading.
+⭐ Beyond curated links, this project includes an [original 11-chapter strategy guide](#original-research-and-notes) with runnable Python implementations and [research notes](#research-notes-think) on regime detection and AI-agent trading.
 
 </div>
 
@@ -483,12 +483,12 @@ An 11-chapter quantitative trading strategy guide with runnable Python implement
 - [Chapter 11: Performance Evaluation and Attribution](book/myquant/chapter11.md) - Strategy evaluation framework and performance metrics.
 - [Full Strategy Taxonomy (TOC)](book/myquant/toc.md) - Complete knowledge framework for quantitative trading strategies (EN/CN).
 
-### Research Essays (think/)
+### Research Notes (think/)
 
 - [HMM Quantitative Trading Strategy: An Overview](think/HMM%20Quantitative%20Trading%20Strategy%20An%20Overview.md) - Hidden Markov Models for regime detection and dynamic risk allocation, inspired by Renaissance Technologies.
-- [Markov-Switching Model Application](think/Markov-Switching%20Model%20Application.md) - Regime-switching regression models combining traditional statistics and machine learning for market state prediction.
-- [Dynamic Financial Modeling Using Fuzzy Systems](think/Dynamic%20Financial%20Modeling%20Using%20Fuzzy%20Systems.md) - Fuzzy systems theory applied to transform technical trading rules into price dynamics models.
-- [AI-Agent Trading](think/AI-Agent%20Trading.md) - Survey of LLM-based multi-agent trading frameworks (TradingAgents, FinAgent).
+- [Markov-Switching Model Application](think/Markov-Switching%20Model%20Application.md) - Notes on Pomorski's UCL thesis: regime-switching regression combined with machine learning for market state prediction.
+- [Dynamic Financial Modeling Using Fuzzy Systems](think/Dynamic%20Financial%20Modeling%20Using%20Fuzzy%20Systems.md) - Notes on Wang's fuzzy-systems series: transforming technical trading rules into price dynamics models, with commentary.
+- [AI-Agent Trading](think/AI-Agent%20Trading.md) - Survey of LLM-based multi-agent trading frameworks (TradingAgents, FinAgent, FinMem, FinCon) with a comparison table and open problems.
 
 ### Book Notes
 

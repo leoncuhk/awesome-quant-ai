@@ -1,14 +1,18 @@
+# Dynamic Financial Modeling Using Fuzzy Systems
+
+> **Note:** These are reading notes summarizing Li-Xin Wang's three-part paper series *Dynamical Models of Stock Prices Based on Technical Trading Rules* — [Part I: The Models (arXiv:1401.1888)](https://arxiv.org/abs/1401.1888), [Part II: Analysis of the Models (arXiv:1401.1891)](https://arxiv.org/abs/1401.1891), and [Part III: Application to Hong Kong Stocks (arXiv:1401.1892)](https://arxiv.org/abs/1401.1892) — followed by original evaluation commentary in the Comments section at the end. All figure numbers refer to figures in Wang's papers; the figures themselves are not reproduced here. Equation and demand-function numbering (e.g. $$D_1$$, $$D_2$$, $$D_4$$, ...) also follows Wang's papers, so the indices have gaps where intermediate functions are not covered in these notes.
+
+---
+
+## Dynamical Models of Stock Prices Based on Technical Trading Rules Part I
 
 
-# Dynamical Models of Stock Prices Based on Technical Trading Rules Part I
 
-
-
-## Introduction 
+### Introduction 
 
 Understanding the dynamics of stock prices is a significant challenge, approached through random walk models, agent-based models, and technical analysis. This paper leverages fuzzy systems theory to transform technical trading rules into excess demand functions, driving price dynamics.
 
-### Key Concepts 
+#### Key Concepts 
 
 - **Fuzzy Systems Theory** : Used to model technical trading rules expressed in natural language.
 
@@ -16,22 +20,22 @@ Understanding the dynamics of stock prices is a significant challenge, approache
 
 - **Price Dynamics** : Explores how various technical trading heuristics create complex and chaotic price movements.
 
-### Price Dynamics Equation 
+#### Price Dynamics Equation 
 The general form of the price dynamics model is given by:
 $$P_{t+1} = P_t + \sum_{i=1}^M a_i D_i(\mathbf{X}_t)$$
 where $$P_t$$ is the stock price at time $$t$$, $$M$$ is the number of trader groups, $$a_i$$ represents the strength of traders in group $$i$$, $$D_i$$ is the excess demand function, and $$\mathbf{X}_t$$ includes variables computed from past prices and other information.
 
 
 
-## Moving Average Rules 
+### Moving Average Rules 
 
-### Heuristic 
+#### Heuristic 
 
 - **Buy Signal** : When a shorter moving average crosses a longer moving average from below.
 
 - **Sell Signal** : When a shorter moving average crosses a longer moving average from above.
 
-### Fuzzy Sets and Rules 
+#### Fuzzy Sets and Rules 
 
 - **Fuzzy Sets** : Define linguistic terms like "Positive Small (PS)," "Positive Medium (PM)," etc.
 
@@ -50,32 +54,32 @@ where $$P_t$$ is the stock price at time $$t$$, $$M$$ is the number of trader gr
 
   - Rule 7: IF $$\Delta MA$$ is AZ, THEN demand is Neutral (N).
 
-### Price Dynamics Model 
+#### Price Dynamics Model 
 The fuzzy system combining the rules is given by:
 $$D_1 = \frac{\sum_{j=1}^7 \mu_j(\Delta MA) c_j}{\sum_{j=1}^7 \mu_j(\Delta MA)}$$
 where $$\mu_j$$ are the membership functions, and $$c_j$$ are the centers of the fuzzy sets.
-### Simulation Results 
+#### Simulation Results 
 The price dynamic equation incorporating the moving average rules is:
 $$P_{t+1} = P_t + a_1 D_1$$
 Simulation results show complex and chaotic price behavior driven by the moving average rules.
 
 
 
-## Support and Resistance Rules 
+### Support and Resistance Rules 
 
-### Heuristic 
+#### Heuristic 
 
 - **Buy Signal** : When the current price breaks above a resistance point.
 
 - **Sell Signal** : When the current price breaks below a support point.
 
-### Definitions 
+#### Definitions 
 
 - **Resistance Point**  $$R_t$$: Highest peak in the interval $$[t-n, t-1]$$.
 
 - **Support Point**  $$S_t$$: Lowest trough in the interval $$[t-n, t-1]$$.
 
-### Fuzzy Sets and Rules 
+#### Fuzzy Sets and Rules 
 
 - **Fuzzy Sets** : Define terms for price changes relative to support and resistance points.
 
@@ -92,32 +96,32 @@ Simulation results show complex and chaotic price behavior driven by the moving 
 
   - Rule 6: IF $$\Delta S$$ is NL, THEN demand is Buy Medium (BM).
 
-### Price Dynamics Model 
+#### Price Dynamics Model 
 The fuzzy system for support and resistance rules is:
 $$D_2 = \frac{\sum_{j=1}^6 \mu_j(\Delta R, \Delta S) c_j}{\sum_{j=1}^6 \mu_j(\Delta R, \Delta S)}$$
 where $$\mu_j$$ are the membership functions, and $$c_j$$ are the centers of the fuzzy sets.
-### Simulation Results 
+#### Simulation Results 
 The price dynamic equation incorporating support and resistance rules is:
 $$P_{t+1} = P_t + a_2 D_2$$
 Simulations illustrate price jumps when crossing support or resistance lines.
 
 
 
-## Trend Line Rules 
+### Trend Line Rules 
 
-### Heuristic 
+#### Heuristic 
 
 - **Uptrend Line** : Buy if the price approaches from above.
 
 - **Downtrend Line** : Sell if the price approaches from below.
 
-### Definitions 
+#### Definitions 
 
 - **Uptrend Line**  $$U_t$$: Line connecting two lowest troughs.
 
 - **Downtrend Line**  $$D_t$$: Line connecting two highest peaks.
 
-### Fuzzy Sets and Rules 
+#### Fuzzy Sets and Rules 
 
 - **Fuzzy Sets** : Define terms for price relative to trend lines.
 
@@ -126,20 +130,20 @@ Simulations illustrate price jumps when crossing support or resistance lines.
 
   - Rule 2: IF $$\Delta D$$ is NS, THEN demand is Sell Medium (SM).
 
-### Price Dynamics Model 
+#### Price Dynamics Model 
 The fuzzy system for trend line rules is:
 $$D_4 = \frac{\sum_{j=1}^2 \mu_j(\Delta U, \Delta D) c_j}{\sum_{j=1}^2 \mu_j(\Delta U, \Delta D)}$$
 where $$\mu_j$$ are the membership functions, and $$c_j$$ are the centers of the fuzzy sets.
-### Simulation Results 
+#### Simulation Results 
 The price dynamic equation incorporating trend line rules is:
 $$P_{t+1} = P_t + a_4 D_4$$
 Simulations show self-fulfilling trends and reversals.
 
 
 
-## Big Buyer, Big Seller, and Manipulator Rules 
+### Big Buyer, Big Seller, and Manipulator Rules 
 
-### Heuristics 
+#### Heuristics 
 
 - **Big Sellers** : Sell if the price is increasing.
 
@@ -147,7 +151,7 @@ Simulations show self-fulfilling trends and reversals.
 
 - **Manipulators** : Use strategies like pump-and-dump.
 
-### Fuzzy Sets and Rules 
+#### Fuzzy Sets and Rules 
 
 - **Fuzzy Sets** : For price changes and trading actions.
 
@@ -170,12 +174,12 @@ Simulations show self-fulfilling trends and reversals.
 
     - Rule 4: IF $$\Delta P$$ is AZ, THEN demand is Neutral (N).
 
-### Price Dynamics Model 
+#### Price Dynamics Model 
 The fuzzy systems for big buyers and sellers are:
 $$D_6 = \frac{\sum_{j=1}^4 \mu_j(\Delta P) c_j}{\sum_{j=1}^4 \mu_j(\Delta P)}$$
 $$D_7 = \frac{\sum_{j=1}^4 \mu_j(\Delta P) c_j}{\sum_{j=1}^4 \mu_j(\Delta P)}$$
 where $$\mu_j$$ are the membership functions, and $$c_j$$ are the centers of the fuzzy sets.
-### Simulation Results 
+#### Simulation Results 
 The price dynamic equations incorporating big buyers and sellers are:
 $$P_{t+1} = P_t + a_6 D_6$$
 $$P_{t+1} = P_t + a_7 D_7$$
@@ -183,15 +187,15 @@ Simulations illustrate the influence of large traders and manipulators.
 
 
 
-## Band and Stop Rules 
+### Band and Stop Rules 
 
-### Heuristic 
+#### Heuristic 
 
 - **Bands** : Buy or sell when the price breaks out of the band.
 
 - **Stops** : Use protective and trailing stops to manage risk.
 
-### Definitions 
+#### Definitions 
 
 - **Bollinger Bands** : Upper and lower boundaries around a moving average.
 
@@ -199,7 +203,7 @@ Simulations illustrate the influence of large traders and manipulators.
 
 - **Trailing Stop** : Protect profits from deteriorating.
 
-### Fuzzy Sets and Rules 
+#### Fuzzy Sets and Rules 
 
 - **Fuzzy Sets** : Define terms for price relative to bands and stops.
 
@@ -218,12 +222,12 @@ Simulations illustrate the influence of large traders and manipulators.
 
     - Rule 2: IF $$\Delta P$$ is P and $$\Delta P_{\text{max}}$$ is NL, THEN demand is Sell Big (SB).
 
-### Price Dynamics Model 
+#### Price Dynamics Model 
 The fuzzy systems for bands and stops are:
 $$D_9 = \frac{\sum_{j=1}^4 \mu_j(\Delta B) c_j}{\sum_{j=1}^4 \mu_j(\Delta B)}$$
 $$D_{10} = \frac{\sum_{j=1}^2 \mu_j(\Delta P, \Delta P_{\text{max}}) c_j}{\sum_{j=1}^2 \mu_j(\Delta P, \Delta P_{\text{max}})}$$
 where $$\mu_j$$ are the membership functions, and $$c_j$$ are the centers of the fuzzy sets.
-### Simulation Results 
+#### Simulation Results 
 The price dynamic equations incorporating band and stop rules are:
 $$P_{t+1} = P_t + a_9 D_9$$
 $$P_{t+1} = P_t + a_{10} D_{10}$$
@@ -231,21 +235,21 @@ Simulations show trends driven by band breakouts and risk management.
 
 
 
-## Volume and Strength Rules 
+### Volume and Strength Rules 
 
-### Heuristic 
+#### Heuristic 
 
 - **Volume** : Consider on-balance volume trends for trading decisions.
 
 - **Relative Strength** : Compare stock performance to the market.
 
-### Definitions 
+#### Definitions 
 
 - **On-Balance Volume (OBV)** : Accumulated volume indicator.
 
 - **Relative Strength (RS)** : Ratio of stock performance to market index.
 
-### Fuzzy Sets and Rules 
+#### Fuzzy Sets and Rules 
 
 - **Fuzzy Sets** : For volume and strength indicators.
 
@@ -260,18 +264,18 @@ Simulations show trends driven by band breakouts and risk management.
 
     - Rule 2: IF $$\Delta P$$ is PS and $$\Delta RS$$ is P, THEN demand is Buy Medium (BM).
 
-### Price Dynamics Model 
+#### Price Dynamics Model 
 The fuzzy systems for volume and strength are:
 $$D_{11} = \frac{\sum_{j=1}^2 \mu_j(\Delta P, \Delta OBV) c_j}{\sum_{j=1}^2 \mu_j(\Delta P, \Delta OBV)}$$
 $$D_{12} = \frac{\sum_{j=1}^2 \mu_j(\Delta P, \Delta RS) c_j}{\sum_{j=1}^2 \mu_j(\Delta P, \Delta RS)}$$
 where $$\mu_j$$ are the membership functions, and $$c_j$$ are the centers of the fuzzy sets.
-### Simulation Results 
+#### Simulation Results 
 
 Due to the lack of volume data, simulations for Rule 11 were not performed. For real stocks, these rules can be incorporated into the price dynamic model to study their effects.
 
 
 
-## Concluding Remarks 
+### Concluding Remarks 
 
 The paper builds a bridge between technical analysis and nonlinear dynamic equations through fuzzy systems theory. The resulting models demonstrate complex price dynamics driven by technical trading rules. Future work includes detailed analysis and trading strategy development based on these models.
 
@@ -281,15 +285,15 @@ These models provide a framework to detect hidden market operations and develop 
 
 ---
 
-# Dynamical Models of Stock Prices Based on Technical Trading Rules Part II
+## Dynamical Models of Stock Prices Based on Technical Trading Rules Part II
 
 
 
-## Introduction 
+### Introduction 
 
 Part II of the series extends the analysis of the price dynamical model based on moving average rules from Part I. This paper explores how the interplay between trend-following and contrarian actions generates price chaos. Key findings include the instability of all equilibrium points, short-term predictability of price volatility, and the derivation of the Lyapunov exponent. The study also examines return correlations and the fat-tailed distribution of returns.
 
-### Key Concepts 
+#### Key Concepts 
 
 - **Equilibrium** : Infinite and unstable equilibriums in the price dynamical model.
 
@@ -301,19 +305,19 @@ Part II of the series extends the analysis of the price dynamical model based on
 
 
 
-## Chaos Generation 
+### Chaos Generation 
 
-### Model Description 
+#### Model Description 
 The model is driven by Heuristic 1 (Rule-1-Group) from Part I:
 $$P_{t+1} = P_t + a_1 D_1(\mathbf{X}_t)$$
 where:
 $$\Delta MA = \log \left( \frac{MA_m}{MA_n} \right), \quad D_1 = f(\Delta MA)$$
 $$MA_m$$ and $$MA_n$$ are moving averages of lengths $$m$$ and $$n$$ respectively, with $$m < n$$.
-### Fuzzy System 
+#### Fuzzy System 
 The fuzzy system $$f$$ constructed from the seven fuzzy IF-THEN rules is:
 $$f(\Delta MA) = \sum_{i=1}^7 \mu_i(\Delta MA) c_i$$
 where $$\mu_i$$ are the membership functions and $$c_i$$ are the centers of the fuzzy sets.
-### Chaos Analysis 
+#### Chaos Analysis 
 The interplay between trend-followers and contrarians is analyzed by varying the strength parameter $$a_1$$: 
 - **Convergence** : Small $$a_1$$ leads to a convergent price series.
 
@@ -321,135 +325,123 @@ The interplay between trend-followers and contrarians is analyzed by varying the
 
 - **Oscillation** : Large $$a_1$$ causes oscillatory price movements.
 
-### Simulation Results 
+#### Simulation Results 
 
-- **Figure 1** : Excess demand function $$f(\Delta MA)$$.
-
-- **Figure 2** : Price trajectories for different $$a_1$$ values.
-
-- **Figure 3** : Parameter ranges for convergence, chaos, and oscillation.
+In the paper, Wang's Figure 1 plots the excess demand function $$f(\Delta MA)$$, Figure 2 shows price trajectories for different $$a_1$$ values, and Figure 3 maps the parameter ranges that produce convergence, chaos, and oscillation.
 
 
 
-## Equilibrium Analysis 
+### Equilibrium Analysis 
 
-### Definition 
+#### Definition 
 An equilibrium point $$\mathbf{y}^*$$ satisfies:
 $$\mathbf{y}_{t+1} = \mathbf{y}_t = \mathbf{y}^*$$
-### Theorems 
+#### Theorems 
 
 - **Theorem 1** : Infinite equilibriums $$\mathbf{y}^* = k \mathbf{1}$$ for any positive $$k$$.
 
 - **Theorem 2** : All equilibriums are unstable.
 
-### Proofs 
+#### Proofs 
 
 - **Proof of Theorem 1** : Derived from the fixed points of the fuzzy system.
 
 - **Proof of Theorem 2** : Using the Jacobian matrix and the Linearized Stability Theorem.
 
-### Implications 
+#### Implications 
 
 The instability of equilibriums suggests that the price series will not settle at a single point but may exhibit complex dynamics.
 
 
 
-## Short-term Predictability 
+### Short-term Predictability 
 
-### Chaotic vs. Random 
+#### Chaotic vs. Random 
 
 - **Chaos** : Small changes in initial conditions lead to predictable short-term behavior.
 
 - **Random** : Immediate transition to steady-state behavior.
 
-### Monte Carlo Simulations 
+#### Monte Carlo Simulations 
 
-- **Figure 6** : Return trajectories for different initial volatilities.
+Wang's Figures 6 and 7 show Monte Carlo return trajectories for different initial volatilities and the corresponding volatility paths, illustrating how chaotic dynamics retain short-term structure before diverging.
 
-- **Figure 7** : Corresponding volatilities.
-
-### Volatility Definition 
+#### Volatility Definition 
 $$v(t) = \sqrt{\frac{1}{S} \sum_{j=1}^S (r_j(t) - \overline{r(t)})^2}$$
 where $$S$$ is the number of simulations.
 
 
 
-## Lyapunov Exponent 
+### Lyapunov Exponent 
 
-### Definition 
+#### Definition 
 Quantifies sensitivity to initial conditions:
 $$L = \lim_{t \to \infty} \frac{1}{t} \log \left( \frac{d(t)}{d(0)} \right)$$
-### Calculation 
+#### Calculation 
 
-- **Figure 8** : Volatilities plotted in log-t scale.
+Wang's Figures 8 and 9 plot the volatilities in log-t scale and for different $$a_1$$ values, from which the Lyapunov exponent is estimated.
 
-- **Figure 9** : Volatilities for different $$a_1$$ values.
-
-### Lemma 1 
+#### Lemma 1 
 Approximate formula for Lyapunov exponent:
 $$L \approx \frac{1}{n} \log \left( 1 + a_1 \sum_{i=1}^n \left| c_i \right| \right)$$
 
 
 
-## Volatility Convergence 
+### Volatility Convergence 
 
-### Observation 
+#### Observation 
 
 Volatility converges to a constant dependent on model parameters.
 
-### Simulations 
+#### Simulations 
 
-- **Figure 10** : Converged volatility as a function of $$a_1$$.
+In Wang's simulations, the converged volatility is plotted as a function of $$a_1$$ (Figure 10) and as a function of $$w$$ (Figure 11).
 
-- **Figure 11** : Converged volatility as a function of $$w$$.
-
-### Result 1 
+#### Result 1 
 Approximate formula for converged volatility:
 $$\sigma^2 \approx A \sin(B a_1) + C$$
-### Lemma 2 
+#### Lemma 2 
 Formula for volatility in oscillation mode:
 $$\sigma = \sqrt{2} w a_1$$
 
 
 
-## Return Correlations 
+### Return Correlations 
 
-### Drift Definition 
-$$d(t) = \sqrt{\frac{1}{S} \sum_{j=1}^S (r_j(t) - \overline{r(t)})^2}$$
-### Simulations 
+#### Drift Definition 
+The drift over an interval of length $$n$$ is the signed average price change (in log-price terms):
+$$m(t) = \frac{1}{n} \sum_{i=1}^{n} \left( p_{t-i+1} - p_{t-i} \right) = \frac{p_t - p_{t-n}}{n}$$
+where $$p_t$$ is the log price. Note that, unlike the volatility $$v(t)$$ above, which measures the magnitude of price fluctuations (a root-mean-square quantity), the drift keeps the sign of the average price change. (It is written $$m(t)$$ here, rather than $$d(t)$$, to avoid colliding with the trajectory distance $$d(t)$$ used in the Lyapunov exponent definition above.)
+#### Simulations 
 
-- **Figure 12** : Drift for different $$a_1$$ values.
+Wang's Figure 12 shows the drift for different $$a_1$$ values, while Figures 13 and 14 plot the distance-to-uncorrelated as a function of $$a_1$$ and of $$w$$, respectively.
 
-- **Figure 13** : Distance-to-uncorrelated as a function of $$a_1$$.
-
-- **Figure 14** : Distance-to-uncorrelated as a function of $$w$$.
-
-### Result 2 
+#### Result 2 
 Linear relation for uncorrelated returns:
 $$a_1 \approx k w$$
-### Auto-correlations 
+#### Auto-correlations 
 
-- **Figure 15** : Auto-correlations for different $$a_1$$ values.
-
-
-
-## Strange Attractor and Fat-tailed Distribution 
-
-### Strange Attractor 
-
-- **Figure 16** : Phase portrait of returns.
-
-### Fat-tailed Distribution 
-
-- **Figure 17** : Return distribution compared to Gaussian.
+Wang's Figure 15 shows the return auto-correlations for different $$a_1$$ values.
 
 
 
-## Concluding Remarks 
+### Strange Attractor and Fat-tailed Distribution 
+
+#### Strange Attractor 
+
+Wang's Figure 16 shows the phase portrait of returns, revealing a strange attractor underlying the price dynamics.
+
+#### Fat-tailed Distribution 
+
+Wang's Figure 17 compares the simulated return distribution with a Gaussian, showing the fat tails characteristic of real financial returns.
+
+
+
+### Concluding Remarks 
 
 The deterministic price dynamical models reveal insights into equilibrium, volatility, and return predictability in financial markets. The findings challenge classical concepts and suggest new stability definitions for social systems.
 
-### Key Insights 
+#### Key Insights 
 
 1. **Equilibrium** : Unstable equilibriums and set-stability.
 
@@ -463,15 +455,15 @@ The deterministic price dynamical models reveal insights into equilibrium, volat
 
 ---
 
-# Dynamical Models of Stock Prices Based on Technical Trading Rules Part III
+## Dynamical Models of Stock Prices Based on Technical Trading Rules Part III
 
 
 
-## Introduction 
+### Introduction 
 
 Part III of this study applies the price dynamical model with big buyers and big sellers, developed in Part I, to the daily closing prices of the top 20 banking and real estate stocks listed on the Hong Kong Stock Exchange. The study estimates the strength parameters of the big buyers and sellers to devise buy/sell decisions, proposing two trading strategies: Follow-the-Big-Buyer (FollowBB) and Ride-the-Mood (RideMood). The results demonstrate significant improvements over the benchmark Buy-and-Hold strategy.
 
-### Key Concepts 
+#### Key Concepts 
 
 - **Big Buyers and Sellers** : Institutional investors who buy or sell stocks in large quantities.
 
@@ -479,9 +471,9 @@ Part III of this study applies the price dynamical model with big buyers and big
 
 
 
-## Price Dynamic Model and Trading Strategies 
+### Price Dynamic Model and Trading Strategies 
 
-### Price Dynamic Model 
+#### Price Dynamic Model 
 Using fuzzy systems theory, the Big Buyer and Big Seller Heuristics are transformed into a price dynamical model:
 $$P_{t+1} = P_t + \alpha (D_7 - D_6)$$
 where: 
@@ -491,21 +483,21 @@ where:
 
 - $$\alpha$$ is the price impact factor.
 
-### Excess Demand Functions 
+#### Excess Demand Functions 
 The excess demand functions $$D_6$$ and $$D_7$$ are derived from fuzzy systems:
 $$D_6 = f(\Delta MA)$$
 $$D_7 = g(\Delta MA)$$
 where $$\Delta MA$$ is the log-ratio of the price to its moving average:
 $$\Delta MA = \log \left( \frac{P_t}{MA_n} \right)$$
-### Trading Strategies 
+#### Trading Strategies 
 
-#### Follow-the-Big-Buyer (FollowBB) 
+##### Follow-the-Big-Buyer (FollowBB) 
 
 - **Buy** : When big buyer is detected ($$D_7 > 0$$) and no big seller is detected ($$D_6 \leq 0$$).
 
 - **Sell** : When the big buyer stops buying ($$D_7 \leq 0$$).
 
-#### Ride-the-Mood (RideMood) 
+##### Ride-the-Mood (RideMood) 
 
 - **Buy** : When the strength of big buyers surpasses that of big sellers ($$D_7 - D_6 > 0$$).
 
@@ -513,13 +505,13 @@ $$\Delta MA = \log \left( \frac{P_t}{MA_n} \right)$$
 
 
 
-## Parameter Estimation Algorithm 
+### Parameter Estimation Algorithm 
 
-### Recursive Least Squares Algorithm 
+#### Recursive Least Squares Algorithm 
 To estimate the strength parameters of big buyers and sellers, the Recursive Least Squares Algorithm with Exponential Forgetting is used:
 $$\hat{\theta}_{t+1} = \hat{\theta}_t + K_t (y_t - \phi_t^T \hat{\theta}_t)$$
-$$K_t = \frac{P_t \phi_t}{\lambda + \phi_t^T P_t \phi_t}$$
-$$P_{t+1} = \frac{1}{\lambda} (P_t - K_t \phi_t^T P_t)$$
+$$K_t = \frac{\Sigma_t \phi_t}{\lambda + \phi_t^T \Sigma_t \phi_t}$$
+$$\Sigma_{t+1} = \frac{1}{\lambda} (\Sigma_t - K_t \phi_t^T \Sigma_t)$$
 where: 
 - $$\hat{\theta}_t$$ are the parameter estimates.
 
@@ -527,81 +519,69 @@ where:
 
 - $$\phi_t$$ is the regressor vector.
 
+- $$\Sigma_t$$ is the error covariance matrix. (Wang writes it as $$P_t$$; it is renamed $$\Sigma_t$$ here to avoid colliding with the stock price $$P_t$$.)
+
 - $$\lambda$$ is the forgetting factor.
 
-### Simulation Results 
+#### Simulation Results 
 
 Simulations demonstrate the effectiveness of the parameter estimation algorithm under various noise conditions, indicating its robustness in detecting the strength of big buyers and sellers.
 
 
 
-## The Trading Strategies: FollowBB, RideMood, TrendFL, and Buy&Hold 
+### The Trading Strategies: FollowBB, RideMood, TrendFL, and Buy&Hold 
 
-### Follow-the-Big-Buyer (FollowBB) 
+#### Follow-the-Big-Buyer (FollowBB) and Ride-the-Mood (RideMood) 
 
-- **Algorithm** :
-  1. Detect big buyers.
+The buy/sell rules for FollowBB and RideMood are as given in the Trading Strategies subsection above.
 
-  2. Buy when $$D_7 > 0$$ and $$D_6 \leq 0$$.
-
-  3. Sell when $$D_7 \leq 0$$.
-
-### Ride-the-Mood (RideMood) 
-
-- **Algorithm** :
-  1. Compare the strength of big buyers and sellers.
-
-  2. Buy when $$D_7 - D_6 > 0$$.
-
-  3. Sell when $$D_7 - D_6 \leq 0$$.
-
-### Trend-Following (TrendFL) 
+#### Trend-Following (TrendFL) 
 
 - **Algorithm** :
   1. Buy when a shorter moving average crosses a longer moving average from below.
 
   2. Sell when the shorter moving average crosses the longer moving average from above.
 
-### Buy-and-Hold (Buy&Hold) 
+#### Buy-and-Hold (Buy&Hold) 
 
 - **Algorithm** :
   1. Buy the stock on the first day.
 
   2. Hold the stock until the last day.
-  
-  
 
-## Application to Hong Kong Stocks 
 
-### Data and Methodology 
+
+### Application to Hong Kong Stocks 
+
+#### Data and Methodology 
 
 The four trading strategies were applied to the top 20 banking and real estate stocks listed on the Hong Kong Stock Exchange over a seven-year period from July 3, 2007, to July 2, 2014. The daily closing prices were used for analysis.
 
-### Results 
+#### Results 
 
 The performance of each strategy was evaluated based on annual returns, standard deviations, and Sharpe ratios. The FollowBB and RideMood strategies significantly outperformed the Buy&Hold and TrendFL strategies.
 
 
 
-## Portfolio Performance 
+### Portfolio Performance 
 
-### Portfolio Scheme 
+#### Portfolio Scheme 
 
 A simple portfolio scheme was used, distributing initial money across the 20 stocks according to their weights in the Hang Seng Index (HSI). The trading strategies were applied independently to each stock.
 
-### Results 
+#### Results 
 
 The FollowBB and RideMood strategies showed superior performance compared to the TrendFL and Buy&Hold strategies. The portfolio with the RideMood strategy had the best overall performance, followed by FollowBB.
 
 
 
-## Details of Buy/Sell Cycles 
+### Details of Buy/Sell Cycles 
 
-### Analysis of Buy/Sell Points 
+#### Analysis of Buy/Sell Points 
 
 Detailed analysis of the buy/sell points for the FollowBB and RideMood strategies over a three-year period from January 3, 2011, to December 31, 2013, revealed that these strategies could effectively detect major trends and avoid significant losses.
 
-### Strengths and Weaknesses 
+#### Strengths and Weaknesses 
 
 - **Strengths** : Major up-trends were detected and followed, leading to significant profits.
 
@@ -609,11 +589,11 @@ Detailed analysis of the buy/sell points for the FollowBB and RideMood strategie
 
 
 
-## Concluding Remarks 
+### Concluding Remarks 
 
 The study demonstrates the effectiveness of the FollowBB and RideMood strategies in leveraging the strength of big buyers and sellers for profitable trading. These strategies outperformed traditional Buy&Hold and TrendFL strategies, providing a robust framework for trading in stock markets.
 
-### Key Insights 
+#### Key Insights 
 
 1. **Profitability** : FollowBB and RideMood strategies significantly increase net profits compared to Buy&Hold.
 
@@ -623,7 +603,9 @@ The study demonstrates the effectiveness of the FollowBB and RideMood strategies
 
 
 
-# Comments
+## Comments
+
+The following two sections are original evaluation commentary on Wang's methodology, not part of the paper summaries above.
 
 ### Evaluation of the Recursive Least Squares Algorithm for Parameter Estimation 
 
@@ -631,8 +613,8 @@ The study demonstrates the effectiveness of the FollowBB and RideMood strategies
 
 The Recursive Least Squares (RLS) algorithm is a well-established method in the field of system identification and control theory. It is particularly valued for its ability to recursively update parameter estimates as new data becomes available, making it suitable for online estimation in dynamic systems. The algorithm's foundational equations are:
 $$\hat{\theta}_{t+1} = \hat{\theta}_t + K_t (y_t - \phi_t^T \hat{\theta}_t)$$
-$$K_t = \frac{P_t \phi_t}{\lambda + \phi_t^T P_t \phi_t}$$
-$$P_{t+1} = \frac{1}{\lambda} (P_t - K_t \phi_t^T P_t)$$
+$$K_t = \frac{\Sigma_t \phi_t}{\lambda + \phi_t^T \Sigma_t \phi_t}$$
+$$\Sigma_{t+1} = \frac{1}{\lambda} (\Sigma_t - K_t \phi_t^T \Sigma_t)$$
 where:
 
 - $$\hat{\theta}_t$$ are the parameter estimates at time $$t$$.
@@ -643,7 +625,7 @@ where:
 
 - $$K_t$$ is the gain matrix.
 
-- $$P_t$$ is the error covariance matrix.
+- $$\Sigma_t$$ is the error covariance matrix (Wang's $$P_t$$, renamed here to avoid colliding with the stock price $$P_t$$).
 
 - $$\lambda$$ is the forgetting factor.
 
@@ -673,7 +655,7 @@ Despite its advantages, the RLS algorithm is not without limitations:
 
 1. **Sensitivity to Noise** : Financial data is often noisy, and while RLS is robust, extreme market events (e.g., crashes or surges) can still lead to significant estimation errors.
 
-2. **Parameter Selection** : The choice of the forgetting factor $$\lambda$$ and the initial values for $$P_t$$ and $$\hat{\theta}_t$$ can significantly impact the performance of the algorithm. Improper selection can lead to suboptimal parameter estimates.
+2. **Parameter Selection** : The choice of the forgetting factor $$\lambda$$ and the initial values for $$\Sigma_t$$ and $$\hat{\theta}_t$$ can significantly impact the performance of the algorithm. Improper selection can lead to suboptimal parameter estimates.
 
 3. **Model Assumptions** : The effectiveness of RLS relies on the underlying model being an adequate representation of the real system. If the model is misspecified, the parameter estimates and resulting trading decisions may be flawed.
 
@@ -721,7 +703,7 @@ The strategy's scientific basis lies in the hypothesis that institutional invest
 
 The strategy was tested on the top 20 banking and real estate stocks listed on the Hong Kong Stock Exchange over a seven-year period from July 3, 2007, to July 2, 2014. The evaluation criteria included annual returns, standard deviations, and Sharpe ratios.
 
-- **Annual Returns** : FollowBB consistently delivered higher annual returns compared to the Buy-and-Hold and Trend-Following strategies. For example, HSBC Holdings (HK0005) showed a 4.78% return with FollowBB compared to -1.82% with Buy-and-Hold.
+- **Annual Returns** : FollowBB consistently delivered higher annual returns compared to the Buy-and-Hold and Trend-Following strategies. For example, Wang reports that HSBC Holdings (HK0005) showed a 4.78% return with FollowBB compared to -1.82% with Buy-and-Hold.
 
 - **Standard Deviation** : The strategy demonstrated a manageable level of risk, with standard deviations comparable to or lower than other strategies.
 
@@ -755,6 +737,8 @@ Overall, FollowBB represents a valuable contribution to trading strategy develop
 
 
 
-References:
+## References
 
-- https://arxiv.org/abs/1401.1888
+- Li-Xin Wang, [Dynamical Models of Stock Prices Based on Technical Trading Rules Part I: The Models](https://arxiv.org/abs/1401.1888), arXiv:1401.1888.
+- Li-Xin Wang, [Dynamical Models of Stock Prices Based on Technical Trading Rules Part II: Analysis of the Models](https://arxiv.org/abs/1401.1891), arXiv:1401.1891.
+- Li-Xin Wang, [Dynamical Models of Stock Prices Based on Technical Trading Rules Part III: Application to Hong Kong Stocks](https://arxiv.org/abs/1401.1892), arXiv:1401.1892.
