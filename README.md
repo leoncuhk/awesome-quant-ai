@@ -286,6 +286,7 @@ List of software tools and platforms used in quantitative finance.
 | **Tool**              | **Strength**                          | **Notes** |
 |-----------------------|----------------------------------------|-----------|
 | **[Qlib](https://github.com/microsoft/qlib)** | AI-oriented quant research platform: factor library, model zoo, workflow automation | Microsoft; the reference open-source platform for ML-driven quant research |
+| **[ml-quant-trading](https://github.com/initial-d/ml-quant-trading)** | PyTorch multi-factor research stack: 213 mask-aware factors, ML baselines, portfolio optimization, and backtesting | MIT; paper-backed; synthetic/public-data validation, tests, and benchmark tooling |
 | **[OpenBB](https://github.com/OpenBB-finance/OpenBB)** | Open-source investment research terminal aggregating equity, macro, and crypto data | Free CLI + SDK; large active community |
 | **[LEAN](https://github.com/QuantConnect/Lean)** | Institution-grade backtesting and live-trading engine (equities, futures, options, crypto) | Open-source engine behind QuantConnect |
 | **[NautilusTrader](https://github.com/nautechsystems/nautilus_trader)** | High-performance event-driven backtesting and live trading | Rust core with Python API; nanosecond precision |
