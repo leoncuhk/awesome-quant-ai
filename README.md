@@ -296,6 +296,7 @@ List of software tools and platforms used in quantitative finance.
 | **[Riskfolio-Lib](https://github.com/dcajasn/Riskfolio-Lib)** | Portfolio optimization: mean-risk, risk parity, hierarchical clustering methods | 20+ risk measures; strong documentation |
 | **[skfolio](https://github.com/skfolio/skfolio)** | Portfolio optimization with a scikit-learn-compatible API | Cross-validation and hyperparameter tuning for allocation models |
 | **[Ray/RLlib](https://github.com/ray-project/ray)** | Distributed reinforcement learning for adaptive strategies | Industry-standard RL infrastructure |
+| **[ml-quant-trading](https://github.com/initial-d/ml-quant-trading)** | A-share multi-factor research stack: 213-dim tensor factor engine, bias correction, ML baselines, Markowitz optimization | Early-stage research codebase accompanying an [arXiv paper](https://arxiv.org/abs/2507.07107); notably transparent about validation status and non-goals |
 
 #### 2. **Data Providers**
 | **Provider**          | **Key Features**                        | **Use Cases**                          |
