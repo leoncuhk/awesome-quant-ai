@@ -280,6 +280,8 @@ Quantitative approaches to decentralized finance: MEV extraction, AMM liquidity 
 
 ## Tools and Platforms
 
+- [My AI Investment OS](https://ordinarymantrying.com/tools/ai-invest-os.html) - Free 5-question diagnostic identifying your investing school (Index/Value/Growth/Trend) with 8-AI committee verdict and personalized Prompt Library. Includes 6 companion tools: DCA Simulator, Recovery Navigator, Dividend Engine, Kelly Master, Pyramid Builder, Portfolio Clarity. No login required.
+
 List of software tools and platforms used in quantitative finance.
 
 #### 1. **Strategy Development Frameworks**
