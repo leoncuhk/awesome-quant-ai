@@ -310,7 +310,7 @@ List of software tools and platforms used in quantitative finance.
 | **[Bloomberg Terminal](https://www.bloomberg.com/professional/products/bloomberg-terminal/)** | Institutional-grade market data         | High-frequency trading, ESG analytics  |
 | **[CoinMetrics](https://coinmetrics.io/)** | Crypto-specific metrics                 | On-chain transaction analysis, MEV tracking |
 | **[CoinPaprika](https://api.coinpaprika.com)** | Free crypto market data (12K+ coins, 350+ exchanges) | Tickers, OHLCV, historical prices. No API key for free tier |
-| **[DexPaprika](https://api.dexpaprika.com)** | Free DEX data (34 chains, 30M+ pools, real-time streaming) | On-chain DEX analytics, pool data, token prices. No API key |
+| **[DexPaprika](https://api.dexpaprika.com)** | Free DEX data (36 chains, 36M+ pools, real-time streaming) | On-chain DEX analytics, pool data, token prices. No API key |
 | **[FinancialData.Net](https://financialdata.net/)** | Stock market and financial data         | Financial analysis, data integration   |
 | **[FXMacroData](https://fxmacrodata.com)** | Macroeconomic announcements, release calendars, FX, COT, commodities, and bond yields with a persistent free USD evaluation tier | Global macro research, event-driven strategies, FX workflow integration |
 | **[StockAInsights](https://stockainsights.com)** | Institutional-grade AI-extracted SEC financial statements (not XBRL) | Fundamental analysis, backtesting, screening |
