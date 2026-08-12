@@ -329,7 +329,8 @@ List of software tools and platforms used in quantitative finance.
 - [Databricks](https://www.databricks.com/) - Big-data processing for alternative data streams and large-scale backtesting.
 
 
-## Learning Resources
+## Learning
+- [SmartQuant](https://smartquanthq.com) - AI quant trading learning hub: 180 pages, 5 languages (ZH/EN/JA/KO/AR), free educational content on AI strategies, backtesting, and risk management. Resources
 
 Online courses, tutorials, and workshops focused on quantitative investing and machine learning in finance.
 
