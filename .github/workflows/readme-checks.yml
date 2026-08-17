@@ -37,5 +37,18 @@ jobs:
       - name: Run lychee
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --no-progress --timeout 30 --max-retries 3 --accept '100..=103,200..=299,403,429' README.md
+          # --user-agent: the default announces lychee, and several hosts answer a
+          #   bot string with 404 or a challenge page rather than the real status.
+          # --max-concurrency: the default of 128 is what turns a slow host into a
+          #   timeout, because we open far more sockets than it will serve at once.
+          # --retry-wait-time: back off instead of retrying three times immediately.
+          args: >-
+            --no-progress
+            --timeout 45
+            --max-retries 5
+            --retry-wait-time 3
+            --max-concurrency 16
+            --user-agent 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36'
+            --accept '100..=103,200..=299,403,429'
+            README.md
           fail: true
