@@ -306,6 +306,7 @@ List of software tools and platforms used in quantitative finance.
 | **[Alpha Vantage](https://www.alphavantage.co/)** | Free APIs for stock/crypto data         | Historical price/volume analysis       |
 | **[Nasdaq Data Link](https://data.nasdaq.com/)** | Premium and free structured datasets (formerly Quandl) | Macroeconomic/factor data integration  |
 | **[Databento](https://databento.com/)** | Institutional market data (equities, futures, options) with usage-based pricing | Tick-level and order-book data for microstructure research |
+| **[0xArchive](https://0xarchive.io/)** | Real-time and historical Hyperliquid and Lighter market data via REST and WebSocket APIs | Market microstructure research, backtesting, and agent/ML data pipelines |
 | **[akshare](https://github.com/akfamily/akshare)** | Free Python library for Chinese market data (A-shares, futures, funds, macro) | China market research; no account required |
 | **[Bloomberg Terminal](https://www.bloomberg.com/professional/products/bloomberg-terminal/)** | Institutional-grade market data         | High-frequency trading, ESG analytics  |
 | **[CoinMetrics](https://coinmetrics.io/)** | Crypto-specific metrics                 | On-chain transaction analysis, MEV tracking |
