@@ -313,11 +313,9 @@ List of software tools and platforms used in quantitative finance.
 | **[CoinPaprika](https://api.coinpaprika.com)** | Free crypto market data (12K+ coins, 350+ exchanges) | Tickers, OHLCV, historical prices. No API key for free tier |
 | **[DexPaprika](https://api.dexpaprika.com)** | Free DEX data (36 chains, 36M+ pools, real-time streaming) | On-chain DEX analytics, pool data, token prices. No API key |
 | **[0xArchive](https://0xarchive.io/)** | Real-time and historical Hyperliquid and Lighter perp-DEX market data (incl. order books) via REST and WebSocket | Microstructure research and backtesting. Free API key covers the most recent 30 days; full history is paid |
-| **[FinancialData.Net](https://financialdata.net/)** | Stock market and financial data         | Financial analysis, data integration   |
 | **[FXMacroData](https://fxmacrodata.com)** | Macroeconomic announcements, release calendars, FX, COT, commodities, and bond yields with a persistent free USD evaluation tier | Global macro research, event-driven strategies, FX workflow integration |
-| **[StockAInsights](https://stockainsights.com)** | Institutional-grade AI-extracted SEC financial statements (not XBRL) | Fundamental analysis, backtesting, screening |
-| **[Adanos](https://adanos.org)** | Multi-source market sentiment data for US stocks across Reddit, X, finance news, and Polymarket | Alternative data research, event-driven signal generation, sentiment factor modeling |
-| **[stock-analysis](https://github.com/AdvancingTitans/stock-analysis)** | Evidence-driven A/HK/US stock and fund recap CLI that emits JSON Evidence Packs | Multi-source public-data fallback for agent workflows, daily reports, and audit-ready market notes |
+| **[Adanos](https://adanos.org)** | Multi-source market sentiment data for US stocks across Reddit, X, finance news, and Polymarket | Alternative data research, sentiment factor modeling. Free tier: 250 requests/month, 30 days of history, non-commercial |
+| **[stock-analysis](https://github.com/AdvancingTitans/stock-analysis)** | Evidence-driven A/HK/US stock and fund recap CLI that emits JSON Evidence Packs | Multi-source public-data fallback for agent workflows and audit-ready market notes; open-source (MIT), early-stage |
 | **[EarningsCall](https://earningscall.biz)** | REST API and Python/JavaScript SDK for earnings call transcripts, audio files, and slide decks for 9,000+ public companies. Speaker-level data with Q&A segmentation | NLP/LLM fine-tuning on earnings calls, event-driven trading strategies, speaker-level transcript analysis |
 
 #### 3. **Execution & Deployment**
