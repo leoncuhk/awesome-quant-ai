@@ -297,6 +297,7 @@ List of software tools and platforms used in quantitative finance.
 | **[skfolio](https://github.com/skfolio/skfolio)** | Portfolio optimization with a scikit-learn-compatible API | Cross-validation and hyperparameter tuning for allocation models |
 | **[Ray/RLlib](https://github.com/ray-project/ray)** | Distributed reinforcement learning for adaptive strategies | Industry-standard RL infrastructure |
 | **[ml-quant-trading](https://github.com/initial-d/ml-quant-trading)** | A-share multi-factor research stack: 213-dim tensor factor engine, bias correction, ML baselines, Markowitz optimization | Early-stage research codebase accompanying an [arXiv paper](https://arxiv.org/abs/2507.07107); notably transparent about validation status and non-goals |
+| **[Planar.jl](https://github.com/BubbleParticles/Planar.jl)** | Julia trading bot framework with CCXT (100+ exchanges), Zarr OHLCV persistence, and unified sim/paper/live execution | Functional loop backtester with by-simulation, contiguity-checked feeds, margin/leverage, and built-in optimization (grid/evolution/Bayesian) |
 
 #### 2. **Data Providers**
 | **Provider**          | **Key Features**                        | **Use Cases**                          |
