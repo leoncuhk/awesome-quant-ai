@@ -12,7 +12,7 @@ A good addition usually has at least two of the following:
 - **Established traction** — meaningful star count, active maintenance, or visible adoption in research/industry
 - **Academic or research origin** — a paper, lab, or recognized research group behind it
 - **Genuine differentiation** — covers something existing entries don't, or does it materially better
-- **Free or open API** for data providers, not gated behind a sales call
+- **Free or open API** for data providers: a persistent free tier (a free API key is fine) that works without payment, a trial, or a sales call. Pay-per-call-only access doesn't count. Please state free-tier limits in the entry
 
 The existing entries are the bar. If your submission is in the same league as the projects already listed in that section, it's likely a fit.
 
@@ -41,6 +41,10 @@ PR description should briefly cover:
 - What the project is
 - Why it fits this list (and this specific section)
 - Any affiliation disclosure
+
+## What to expect
+
+Every submission gets a reply with the reason for the decision. The maintainer may lightly edit an entry before merging (placement, wording, or stating pricing and free-tier limits) to keep the list consistent. A decline is not permanent: if the project gains adoption, an open-source core, or a public methodology, please resubmit.
 
 ## Scope reminder
 
