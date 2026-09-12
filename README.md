@@ -306,12 +306,12 @@ List of software tools and platforms used in quantitative finance.
 | **[Alpha Vantage](https://www.alphavantage.co/)** | Free APIs for stock/crypto data         | Historical price/volume analysis       |
 | **[Nasdaq Data Link](https://data.nasdaq.com/)** | Premium and free structured datasets (formerly Quandl) | Macroeconomic/factor data integration  |
 | **[Databento](https://databento.com/)** | Institutional market data (equities, futures, options) with usage-based pricing | Tick-level and order-book data for microstructure research |
-| **[0xArchive](https://0xarchive.io/)** | Real-time and historical Hyperliquid and Lighter market data via REST and WebSocket APIs | Market microstructure research, backtesting, and agent/ML data pipelines |
 | **[akshare](https://github.com/akfamily/akshare)** | Free Python library for Chinese market data (A-shares, futures, funds, macro) | China market research; no account required |
 | **[Bloomberg Terminal](https://www.bloomberg.com/professional/products/bloomberg-terminal/)** | Institutional-grade market data         | High-frequency trading, ESG analytics  |
 | **[CoinMetrics](https://coinmetrics.io/)** | Crypto-specific metrics                 | On-chain transaction analysis, MEV tracking |
 | **[CoinPaprika](https://api.coinpaprika.com)** | Free crypto market data (12K+ coins, 350+ exchanges) | Tickers, OHLCV, historical prices. No API key for free tier |
 | **[DexPaprika](https://api.dexpaprika.com)** | Free DEX data (36 chains, 36M+ pools, real-time streaming) | On-chain DEX analytics, pool data, token prices. No API key |
+| **[0xArchive](https://0xarchive.io/)** | Real-time and historical Hyperliquid and Lighter perp-DEX market data (incl. order books) via REST and WebSocket | Microstructure research and backtesting. Free API key covers the most recent 30 days; full history is paid |
 | **[FinancialData.Net](https://financialdata.net/)** | Stock market and financial data         | Financial analysis, data integration   |
 | **[FXMacroData](https://fxmacrodata.com)** | Macroeconomic announcements, release calendars, FX, COT, commodities, and bond yields with a persistent free USD evaluation tier | Global macro research, event-driven strategies, FX workflow integration |
 | **[StockAInsights](https://stockainsights.com)** | Institutional-grade AI-extracted SEC financial statements (not XBRL) | Fundamental analysis, backtesting, screening |
