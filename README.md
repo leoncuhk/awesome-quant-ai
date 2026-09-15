@@ -141,6 +141,7 @@ A scientifically rational design for a quantitative trading system or strategy s
   * **Order Flow Prediction**: Anticipating and acting on order flow patterns.
 - **Key resources**:
   * [Hummingbot](https://github.com/hummingbot/hummingbot) - Open-source framework for running market-making and arbitrage bots on centralized and decentralized exchanges.
+- [HostDeFi](https://hostdefi.com) — free token-safety scanner grading tokens A+–F from on-chain checks (mint/freeze authority, liquidity, holder concentration) across Solana + 7 EVM chains. Keyless REST API, hosted MCP, x402 endpoints.
 
 ### 4. Trend Following
 
