@@ -497,6 +497,7 @@ An 11-chapter quantitative trading strategy guide with runnable Python implement
 - [Markov-Switching Model Application](think/Markov-Switching%20Model%20Application.md) - Notes on Pomorski's UCL thesis: regime-switching regression combined with machine learning for market state prediction.
 - [Dynamic Financial Modeling Using Fuzzy Systems](think/Dynamic%20Financial%20Modeling%20Using%20Fuzzy%20Systems.md) - Notes on Wang's fuzzy-systems series: transforming technical trading rules into price dynamics models, with commentary.
 - [AI-Agent Trading](think/AI-Agent%20Trading.md) - Survey of LLM-based multi-agent trading frameworks (TradingAgents, FinAgent, FinMem, FinCon) with a comparison table and open problems.
+- [Uncertainty-Driven Position Sizing](think/Uncertainty-Driven%20Position%20Sizing.md) - Design pattern where the predictor exports forecast uncertainty and the sizing layer consumes it directly; how it differs from volatility targeting, where calibrated uncertainty comes from, and how it fails.
 
 ### Book Notes
 
