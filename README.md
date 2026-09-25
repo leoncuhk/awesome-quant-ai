@@ -298,6 +298,7 @@ List of software tools and platforms used in quantitative finance.
 | **[Ray/RLlib](https://github.com/ray-project/ray)** | Distributed reinforcement learning for adaptive strategies | Industry-standard RL infrastructure |
 | **[ml-quant-trading](https://github.com/initial-d/ml-quant-trading)** | A-share multi-factor research stack: 213-dim tensor factor engine, bias correction, ML baselines, Markowitz optimization | Early-stage research codebase accompanying an [arXiv paper](https://arxiv.org/abs/2507.07107); notably transparent about validation status and non-goals |
 | **[Planar.jl](https://github.com/BubbleParticles/Planar.jl)** | Julia trading bot framework with CCXT (100+ exchanges), Zarr OHLCV persistence, and unified sim/paper/live execution | Apache-2.0; same strategy code across backtest and live, margin/leverage, built-in grid/evolutionary/Bayesian optimization; early-stage with a small community |
+| **[SmartMoney-Cub](https://github.com/myc0576/SmartMoney-Cub)** | Local-first, read-only trading journal and review harness with offline evidence packs, deterministic replay, and financial-agent evaluation benchmarks | MIT; designed for reproducible research and review without broker connections, order execution, or financial advice |
 
 #### 2. **Data Providers**
 | **Provider**          | **Key Features**                        | **Use Cases**                          |
