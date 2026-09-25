@@ -317,6 +317,7 @@ List of software tools and platforms used in quantitative finance.
 | **[Adanos](https://adanos.org)** | Multi-source market sentiment data for US stocks across Reddit, X, finance news, and Polymarket | Alternative data research, sentiment factor modeling. Free tier: 250 requests/month, 30 days of history, non-commercial |
 | **[stock-analysis](https://github.com/AdvancingTitans/stock-analysis)** | Evidence-driven A/HK/US stock and fund recap CLI that emits JSON Evidence Packs | Multi-source public-data fallback for agent workflows and audit-ready market notes; open-source (MIT), early-stage |
 | **[EarningsCall](https://earningscall.biz)** | REST API and Python/JavaScript SDK for earnings call transcripts, audio files, and slide decks for 9,000+ public companies. Speaker-level data with Q&A segmentation | NLP/LLM fine-tuning on earnings calls, event-driven trading strategies, speaker-level transcript analysis |
+| **[Eulerpool](https://eulerpool.com/financial-data-api)** | REST API with 400+ endpoints for global equities and fundamentals, ETFs, insider trades, 13F, macro series from FRED/ECB/IMF/World Bank/OECD/BIS, crypto, FX and commodities; SDKs for Python, TypeScript, Go, Java, R, PHP, Rust and C++ plus a hosted MCP server | Cross-asset feature engineering, fundamentals and macro factor research, LLM agents via MCP. Free tier: 100,000 requests/month, non-commercial, delayed quotes |
 
 #### 3. **Execution & Deployment**
 - [Interactive Brokers API](https://interactivebrokers.github.io/tws-api/) - Low-latency order execution for algorithmic trading.
