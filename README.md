@@ -334,6 +334,7 @@ List of software tools and platforms used in quantitative finance.
 - [Docker](https://www.docker.com/) / [Kubernetes](https://kubernetes.io/) - Containerization and orchestration for scalable trading systems.
 
 #### 4. **Research Environments**
+- [AxonX](https://github.com/FlowLLM-AI/AxonX) - Open-source quantitative research harness exposing plugin-based factor analysis, model training, and backtesting tasks through CLI, MCP, and web interfaces with tracked execution, artifacts, and task lineage.
 - [Jupyter Notebook](https://jupyter.org/) - Interactive strategy prototyping and data exploration.
 - [Databricks](https://www.databricks.com/) - Big-data processing for alternative data streams and large-scale backtesting.
 
