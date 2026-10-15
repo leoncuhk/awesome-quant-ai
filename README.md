@@ -546,6 +546,7 @@ Communities, forums, and conferences dedicated to quantitative finance and AI in
 - [awesome-deep-learning](https://github.com/ChristosChristofidis/awesome-deep-learning) - Curated list of deep learning tutorials, projects, and communities.
 - [pytrade.org](https://github.com/PFund-Software-Ltd/pytrade.org) - Directory of Python packages and resources for algo-trading.
 - [46 Awesome Books for Quant Finance](https://www.pyquantnews.com/the-pyquant-newsletter/46-books-quant-finance-algo-trading-market-data) - Comprehensive book list from PyQuant Newsletter.
+- [AI Quant Nav](https://aiquantnav.com/en) - Directory of open-source quant and AI trading tools, refreshed daily from GitHub, Hugging Face and awesome-quant, with star trends and maintenance status for each tool.
 
 
 ## Contributing
