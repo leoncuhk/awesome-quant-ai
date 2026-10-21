@@ -473,6 +473,7 @@ Seminal and recent research that advances the field of quantitative finance.
 - [FinAgent: A Multimodal Foundation Agent for Financial Trading](https://arxiv.org/abs/2402.18485) by Zhang et al. (2024) - Tool-augmented multimodal agent processing numerical, textual, and visual market data.
 - [FinMem: A Performance-Enhanced LLM Trading Agent with Layered Memory](https://arxiv.org/abs/2311.13743) by Yu et al. (2023) - Trading agent with human-inspired layered memory and character design for improved decision-making.
 - [FinCon: A Synthesized LLM Multi-Agent System with Conceptual Verbal Reinforcement](https://arxiv.org/abs/2407.06567) by Yu et al. (2024) - Manager-analyst agent hierarchy with risk control and self-critique, evaluated on trading and portfolio tasks.
+- [AgonAlpha: Autonomous Alpha Discovery via Prompt Economy and Scalable Agentic Search](https://arxiv.org/abs/2608.11250) by Ye et al. (2026) - Multi-agent alpha-mining system in which a fresh-context reviewer re-runs each candidate factor and can veto it; evaluated with 60 WorldQuant BRAIN submissions across 5 users and 6 model backends, NeurIPS 2026 Workshop (Agenthon), [code](https://github.com/AutoResearch-Factory/AgonAlpha).
 
 ### Forecasting and Trading Systems
 
