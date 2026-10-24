@@ -563,7 +563,10 @@ Quick version:
 - This list is **curated**, not comprehensive — additions should match the bar set by existing entries in that section.
 - Prefer **open-source projects, established research frameworks, or widely-used data APIs**. Commercial SaaS without traction or an open-source component is usually declined.
 - **Disclose affiliation** if you built it.
-- Format: `- [Name](url) - Brief description ending with a period.` — one PR per resource, added to the most relevant section.
+- **Support claims with primary sources** and state material free-tier and usage limits. Pricing, gifts, and reciprocal links do not determine inclusion.
+- Match the section's existing format (table row or `- [Name](url) - Brief description ending with a period.`) — one PR per resource.
+
+Suggest entries through a PR, or use an issue for fit questions. Email pitches follow the same [review criteria](CONTRIBUTING.md#evidence-for-a-useful-entry).
 
 For questions, suggestions, or collaboration inquiries:
 
