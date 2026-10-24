@@ -2,6 +2,8 @@
 
 This is a dated review, not a change to the project's admission criteria. Decisions below apply the existing [contribution guide](../../CONTRIBUTING.md). All responses are drafts; this review did not post comments, close requests, or merge changes.
 
+This preserves the pre-publication evidence and response drafts. Completed publication and response results are recorded in the [final curation record](2026-10-24-curation.md#execution-receipts).
+
 ## Verification boundary
 
 Reviewed the actual PR patches and current first-party repository files, documentation, licenses, and paper. No submitted software was executed, no account was created, and no trading or paid model calls were made. Source inspection establishes documented implementation and fit, not investment performance, reproducibility of proprietary evaluations, or production reliability. Repository popularity is only a dated supporting signal.

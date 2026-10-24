@@ -2,6 +2,8 @@
 
 This is a dated review of public primary sources, using the repository's existing [contribution criteria](../../CONTRIBUTING.md). Decisions below are recommendations; this file does not mean a PR was merged or a response sent. Service documentation establishes the advertised terms, not independent data-quality, point-in-time correctness, uptime, or investment-performance validation. No vendor software was installed, no accounts or keys were created, and no paid access was accepted.
 
+This preserves the pre-publication evidence and response drafts. Completed publication and response results are recorded in the [final curation record](2026-10-24-curation.md#execution-receipts).
+
 | Request | Reviewed PR head | Recommended disposition | Main reason |
 | --- | --- | --- | --- |
 | [#67 Aperiodic](https://github.com/leoncuhk/awesome-quant-ai/pull/67) | `245c5b53c64072ccb9b89c5546a29a61b9808fb0` | Hold for corrected access description | Fixed historical preview is distinct from the newly documented ongoing delayed public API; pricing in the PR is stale. |
