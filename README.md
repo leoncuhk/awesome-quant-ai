@@ -238,7 +238,7 @@ Multi-agent systems using large language models in specialized roles (analyst, t
 - [FinGPT](https://github.com/AI4Finance-Foundation/FinGPT) - Open-source financial LLM framework with data-centric design and LoRA fine-tuning; supports sentiment analysis, robo-advising, and algorithmic trading.
 - [FinRL](https://github.com/AI4Finance-Foundation/FinRL) - Financial reinforcement learning framework supporting A2C, DDPG, PPO, TD3, SAC agents; FinRL-X adds modular infrastructure for the LLM/agentic AI era.
 - [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) - HKUDS's natural-language multi-agent research framework: agent-swarm presets (investment committee, quant desk, risk committee), backtest engines for A-shares, US equities, crypto, futures, FX, and options, multi-source data fallback, and an MCP server; MIT.
-- [oracle3](https://github.com/YichengYang-Ethan/oracle3) - Autonomous prediction-market trading agent for Kalshi, Polymarket, and Solana DFlow using Wang Transform pricing, Greeks, Kelly sizing, and constraint-based arbitrage strategies; Apache-2.0 with methodology documented in a companion SSRN working paper.
+- [oracle3](https://github.com/YichengYang-Ethan/oracle3-prediction-market-agent) - Prediction-market research tools with MCP market access, fee-aware checks across related event contracts, a local paper ledger, and a separate Python engine for paper/live execution; Apache-2.0.
 
 ### Transformer Time-Series Foundation Models
 
@@ -306,6 +306,7 @@ List of software tools and platforms used in quantitative finance.
 | **[ml-quant-trading](https://github.com/initial-d/ml-quant-trading)** | A-share multi-factor research stack: 213-dim tensor factor engine, bias correction, ML baselines, Markowitz optimization | Early-stage research codebase accompanying an [arXiv paper](https://arxiv.org/abs/2507.07107); notably transparent about validation status and non-goals |
 | **[Planar.jl](https://github.com/BubbleParticles/Planar.jl)** | Julia trading bot framework with CCXT (100+ exchanges), Zarr OHLCV persistence, and unified sim/paper/live execution | Apache-2.0; same strategy code across backtest and live, margin/leverage, built-in grid/evolutionary/Bayesian optimization; early-stage with a small community |
 | **[SmartMoney-Cub](https://github.com/myc0576/SmartMoney-Cub)** | Local-first, read-only trading journal and review harness that freezes agent or CLI runs into evidence packs with deterministic replay and delayed D1/D3 outcome scoring | MIT; no broker connection or order execution; ships a 240-case synthetic finance-agent benchmark (`finance-jev-v1`); early-stage |
+| **[LumiBot](https://github.com/Lumiwealth/lumibot)** | Python backtesting and live-trading framework with a built-in LLM agent runtime and shared strategy lifecycle. | GPL-3.0; broker and data access depend on configuration; AI examples require a model API key. |
 
 #### 2. **Data Providers**
 | **Provider**          | **Key Features**                        | **Use Cases**                          |
@@ -326,7 +327,10 @@ List of software tools and platforms used in quantitative finance.
 | **[stock-analysis](https://github.com/AdvancingTitans/stock-analysis)** | Evidence-driven A/HK/US stock and fund recap CLI that emits JSON Evidence Packs | Multi-source public-data fallback for agent workflows and audit-ready market notes; open-source (MIT), early-stage |
 | **[EarningsCall](https://earningscall.biz)** | REST API and Python/JavaScript SDK for earnings call transcripts, audio files, and slide decks for 9,000+ public companies. Speaker-level data with Q&A segmentation | NLP/LLM fine-tuning on earnings calls, event-driven trading strategies, speaker-level transcript analysis |
 | **[Eulerpool](https://eulerpool.com/financial-data-api)** | REST API (360+ endpoints) for global equity prices and fundamentals, estimates, insider trades (US and EU), 13F, ETFs, crypto, FX, commodities, and macro series from FRED/ECB/IMF/World Bank/OECD/BIS; SDKs in eight languages and a hosted MCP server | Cross-asset feature engineering, fundamentals and macro factor research. Free API key: 100,000 requests/month, non-commercial, end-of-day and delayed quotes, attribution required; filings and transcripts are paid-only |
-| **[Aperiodic](https://aperiodic.io/)** | Point-in-time crypto microstructure, liquidity and order-flow metrics (220 metrics in 19 datasets, e.g. Kyle's lambda, Amihud illiquidity, flow toxicity, L2 imbalance) plus raw trades, quotes and derivatives data for perpetuals on venues including Binance, OKX and Hyperliquid, as parquet via CLI, REST API and Python SDK | Order-flow and liquidity feature research and backtesting. Permanent free preview with no API key or signup: one month of BTC perp data for every dataset; full history is paid (from $79/mo) |
+| **[Equibles](https://equibles.com)** | SEC filings, XBRL fundamentals, institutional holdings and insider trades via REST and MCP, with an AGPL-3.0 self-hostable data core | Source-linked filing and ownership research for LLM workflows. Hosted free tier: 100 requests/day shared across REST and MCP, no credit card; transcripts, live quotes and options are cloud-only. |
+| **[Tapetide MCP](https://github.com/Tapetide-hq/nse-bse-indian-stock-market-data-mcp)** | Hosted MCP access to NSE/BSE financials, shareholding, FII/DII flows, screening and company filings | Indian-market research for AI agents. MIT client; free account: 50 successful tool calls/day, no monthly cap; data freshness varies and index option chains are end-of-day. |
+| **[roic.ai](https://www.roic.ai/api)** | Global company financial statements, pre-calculated ratios, daily prices and earnings-call transcripts via REST and MCP | Fundamental factor and earnings-call NLP research. Free API key: 5 requests/minute, 2 years of annual financials, ratios and prices, 2 quarters of transcripts; quarterly financials require a paid plan. |
+| **[Aperiodic](https://aperiodic.io/)** | Point-in-time crypto microstructure, liquidity and order-flow metrics (220 metrics in 19 datasets, e.g. Kyle's lambda, Amihud illiquidity, flow toxicity, L2 imbalance) plus raw trades, quotes and derivatives data for perpetuals on venues including Binance, OKX and Hyperliquid, as parquet via CLI, REST API and Python SDK | Order-flow and liquidity feature research and backtesting. No-key access: a delayed public API (15 minutes behind, 5-minute bars, about one day of rolling history, every listed perpetual) and fixed historical preview slices (one month of BTC perp data per dataset); full history is paid |
 
 #### 3. **Execution & Deployment**
 - [Interactive Brokers API](https://interactivebrokers.github.io/tws-api/) - TWS API for automated order routing and market data across global exchanges; free paper-trading account.
@@ -474,6 +478,7 @@ Seminal and recent research that advances the field of quantitative finance.
 - [FinAgent: A Multimodal Foundation Agent for Financial Trading](https://arxiv.org/abs/2402.18485) by Zhang et al. (2024) - Tool-augmented multimodal agent processing numerical, textual, and visual market data.
 - [FinMem: A Performance-Enhanced LLM Trading Agent with Layered Memory](https://arxiv.org/abs/2311.13743) by Yu et al. (2023) - Trading agent with human-inspired layered memory and character design for improved decision-making.
 - [FinCon: A Synthesized LLM Multi-Agent System with Conceptual Verbal Reinforcement](https://arxiv.org/abs/2407.06567) by Yu et al. (2024) - Manager-analyst agent hierarchy with risk control and self-critique, evaluated on trading and portfolio tasks.
+- [AgonAlpha: Autonomous Alpha Discovery via Prompt Economy and Scalable Agentic Search](https://arxiv.org/abs/2608.11250) by Ye et al. (2026) - Preprint on alpha discovery with an MCTS scheduler and an adversarial reviewer that can re-evaluate candidates and reject unsupported results; includes [open-source orchestration](https://github.com/AutoResearch-Factory/AgonAlpha), with user-supplied data and evaluator.
 
 ### Forecasting and Trading Systems
 
@@ -547,6 +552,8 @@ Communities, forums, and conferences dedicated to quantitative finance and AI in
 - [awesome-deep-learning](https://github.com/ChristosChristofidis/awesome-deep-learning) - Curated list of deep learning tutorials, projects, and communities.
 - [pytrade.org](https://github.com/PFund-Software-Ltd/pytrade.org) - Directory of Python packages and resources for algo-trading.
 - [46 Awesome Books for Quant Finance](https://www.pyquantnews.com/the-pyquant-newsletter/46-books-quant-finance-algo-trading-market-data) - Comprehensive book list from PyQuant Newsletter.
+- [quant.observer](https://quant.observer/) - Curated quant tools and primary-source reading lists on ML, backtesting, factors, and market microstructure.
+- [AI Quant Nav](https://aiquantnav.com/en) - Directory of quant and AI trading tools with repository maintenance snapshots and comparisons; some outbound links are affiliate links.
 
 
 ## Contributing
@@ -557,7 +564,10 @@ Quick version:
 - This list is **curated**, not comprehensive — additions should match the bar set by existing entries in that section.
 - Prefer **open-source projects, established research frameworks, or widely-used data APIs**. Commercial SaaS without traction or an open-source component is usually declined.
 - **Disclose affiliation** if you built it.
-- Format: `- [Name](url) - Brief description ending with a period.` — one PR per resource, added to the most relevant section.
+- **Support claims with primary sources** and state material free-tier and usage limits. Pricing, gifts, and reciprocal links do not determine inclusion.
+- Match the section's existing format (table row or `- [Name](url) - Brief description ending with a period.`) — one PR per resource.
+
+Suggest entries through a PR, or use an issue for fit questions. Email pitches follow the same [review criteria](CONTRIBUTING.md#evidence-for-a-useful-entry).
 
 For questions, suggestions, or collaboration inquiries:
 
