@@ -266,6 +266,7 @@ Standardized benchmarks for measuring what LLMs actually know and can do in fina
 - [FinanceBench](https://arxiv.org/abs/2311.11944) - Open-book financial QA benchmark of 10,231 questions grounded in public filings; reveals high hallucination rates in frontier LLMs answering from 10-Ks.
 - [FinBen](https://arxiv.org/abs/2402.12659) - Holistic financial benchmark spanning 36 datasets across 24 tasks including information extraction, risk forecasting, and decision-making.
 - [PIXIU](https://github.com/The-FinAI/PIXIU) - Open-source financial LLM toolkit with the FLARE evaluation benchmark, instruction-tuning data, and the FinMA model family.
+- [LevelBench-100](https://github.com/levelcfo/levelbench-100) - Empirical AI accounting and financial close benchmark evaluating 38 LLMs, CLI agent harnesses, and browser agents across 100 multi-file accounting checks, 15 anonymized SMB close workbooks (.xlsx), and 30 financial agent failure modes ([Interactive Benchmark](https://levelcfo.com/benchmarks/agentic-accounting/) · [HF Dataset](https://huggingface.co/datasets/LevelCFO/levelbench-100)).
 
 ### Diffusion Models for Synthetic Financial Data
 
