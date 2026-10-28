@@ -585,3 +585,7 @@ For questions, suggestions, or collaboration inquiries:
 If you find this project useful, please consider giving it a star. It helps others discover these resources.
 
 </div>
+
+## Tools and Platforms
+
+- [DataSinking](https://datasink.ing) - Full-text financial reports (annual/quarterly filings across the US, UK, China, Japan, Korea and Taiwan) as clean, section-addressable Markdown for financial NLP and RAG pipelines; MIT Python client + hosted REST/MCP, free tier 3 req/s (~8,191 reports/7 days), $31/yr for higher limits.
