@@ -307,6 +307,7 @@ List of software tools and platforms used in quantitative finance.
 | **[Planar.jl](https://github.com/BubbleParticles/Planar.jl)** | Julia trading bot framework with CCXT (100+ exchanges), Zarr OHLCV persistence, and unified sim/paper/live execution | Apache-2.0; same strategy code across backtest and live, margin/leverage, built-in grid/evolutionary/Bayesian optimization; early-stage with a small community |
 | **[SmartMoney-Cub](https://github.com/myc0576/SmartMoney-Cub)** | Local-first, read-only trading journal and review harness that freezes agent or CLI runs into evidence packs with deterministic replay and delayed D1/D3 outcome scoring | MIT; no broker connection or order execution; ships a 240-case synthetic finance-agent benchmark (`finance-jev-v1`); early-stage |
 | **[LumiBot](https://github.com/Lumiwealth/lumibot)** | Python backtesting and live-trading framework with a built-in LLM agent runtime and shared strategy lifecycle. | GPL-3.0; broker and data access depend on configuration; AI examples require a model API key. |
+| **[PredixLab](https://github.com/predixlab/predixlab-signals)** | Open-source (Apache-2.0) US equities signal, backtest, API and dashboard stack with a multi-factor screener and options activity tools for S&P 500 and Nasdaq-100; market data not included. | Self-hosted research code + hosted dashboard; free plan has a 10-calendar-day delay; not investment advice |
 
 #### 2. **Data Providers**
 | **Provider**          | **Key Features**                        | **Use Cases**                          |
