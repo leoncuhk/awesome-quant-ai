@@ -266,6 +266,7 @@ Standardized benchmarks for measuring what LLMs actually know and can do in fina
 - [FinanceBench](https://arxiv.org/abs/2311.11944) - Open-book financial QA benchmark of 10,231 questions grounded in public filings; reveals high hallucination rates in frontier LLMs answering from 10-Ks.
 - [FinBen](https://arxiv.org/abs/2402.12659) - Holistic financial benchmark spanning 36 datasets across 24 tasks including information extraction, risk forecasting, and decision-making.
 - [PIXIU](https://github.com/The-FinAI/PIXIU) - Open-source financial LLM toolkit with the FLARE evaluation benchmark, instruction-tuning data, and the FinMA model family.
+- [TradingAgentStack AI Trading Leaderboard](https://tradingagentstack.com/ai-trading-leaderboard/) - Live track records of AI trading agents, bots and vaults recomputed daily from public venue data (return vs BTC, max drawdown, Sortino), with Alpha Arena re-scored per account; open data under CC BY 4.0.
 
 ### Diffusion Models for Synthetic Financial Data
 
