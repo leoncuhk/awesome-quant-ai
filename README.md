@@ -14,7 +14,7 @@ A curated list of awesome resources for quantitative investment and trading stra
 
 *Your edge: which layer do you understand better than consensus?*
 
-⭐ Beyond curated links: [Regime Research](https://leoncuhk.github.io/quant-regime/) — daily regime, volatility, and risk pages across 30 tickers.
+⭐ Beyond curated links: [Regime Research](https://leoncuhk.github.io/quant-regime/) — odds of uptrend, range or downtrend and next-day risk ranges for seven markets, with a public track record.
 
 </div>
 
@@ -487,12 +487,6 @@ Seminal and recent research that advances the field of quantitative finance.
 ## Original Research and Notes
 
 Original research and in-depth notes by this list's maintainer.
-
-### Regime Research (leoncuhk.github.io/quant-regime)
-
-- [State Identification](https://leoncuhk.github.io/quant-regime/states.html) - Days labeled Uptrend / Range / Downtrend from the full price path, then a strictly causal model is scored on how much it recovers in real time. Brier Skill Score positive for 7/7 tickers over the full period with the 90% interval excluding zero, negative for 6/7 inside turning-point windows — a trend is identifiable once formed, not while it is turning.
-- [Volatility Alert](https://leoncuhk.github.io/quant-regime/alert.html) - Turning points cluster on high-volatility days across 62 ETFs and 7 indices; an alert makes a turn within two weeks roughly 1.5-2x more likely, and says nothing about direction (the next leg is an uptrend 36% of the time, against 39% unconditionally).
-- [Risk Forecast](https://leoncuhk.github.io/quant-regime/risk.html) - Next-day prediction intervals and position caps rather than buy/sell calls; out-of-sample breach rates 5.1% / 1.1% against nominal 5% / 1%.
 
 ### Strategy Implementation (book/myquant/)
 
