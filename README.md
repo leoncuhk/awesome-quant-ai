@@ -340,6 +340,7 @@ List of software tools and platforms used in quantitative finance.
 #### 4. **Research Environments**
 - [Jupyter Notebook](https://jupyter.org/) - Interactive strategy prototyping and data exploration.
 - [Databricks](https://www.databricks.com/) - Big-data processing for alternative data streams and large-scale backtesting.
+- [DisconfirmAI](https://disconfirmai.com/en) - Investment research platform that looks for disconfirming evidence before you trust a thesis; Reading, Research, Radar, and investment framework tools (freemium; not a trading bot).
 
 
 ## Learning Resources
