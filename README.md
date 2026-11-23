@@ -465,6 +465,7 @@ Seminal and recent research that advances the field of quantitative finance.
 - [BloombergGPT: A Large Language Model for Finance](https://arxiv.org/abs/2303.17564) by Wu et al. - 50B-parameter LLM trained on Bloomberg's proprietary financial corpus; the reference point for domain-specific financial LLMs.
 - [Can ChatGPT Forecast Stock Price Movements?](https://arxiv.org/abs/2304.07619) by Alejandro López-Lira and Yuehua Tang - Shows LLM sentiment scores on news headlines predict next-day returns; widely replicated and debated.
 - [Financial Statement Analysis with Large Language Models](https://arxiv.org/abs/2407.17866) by Kim, Muhn, and Nikolaev - GPT-4 analyzing standardized anonymized financials matches or beats human analysts at predicting earnings direction.
+- [LLMs Meet Finance: Fine-Tuning Foundation Models for the Open FinLLM Leaderboard](https://arxiv.org/abs/2504.13125) by Rao et al. (2025) - Preprint that fine-tunes Qwen2.5 and DeepSeek-R1 in three stages (SFT, DPO, then RL on self-generated reasoning data) for Open FinLLM Leaderboard tasks; DPO cuts the over-length output ratio from 54.7% to 1.7%.
 
 ### Market Microstructure and Regime Detection
 
