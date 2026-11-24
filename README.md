@@ -315,6 +315,7 @@ List of software tools and platforms used in quantitative finance.
 | **[yfinance](https://github.com/ranaroussi/yfinance)** | Python wrapper for Yahoo Finance data | Free equity/ETF/FX/crypto prices for research and prototyping |
 | **[Alpha Vantage](https://www.alphavantage.co/)** | Stock, FX, crypto, fundamentals, and economic indicator APIs | Historical price/volume analysis. Free API key: 25 requests/day |
 | **[Nasdaq Data Link](https://data.nasdaq.com/)** | Premium and free structured datasets (formerly Quandl) | Macroeconomic/factor data integration  |
+| **[Tradytics API & MCP](https://tradytics.com/docs)** | US quotes, bars, options flow, ranked dark pools, dealer gamma/vanna/charm, fundamentals, SEC filings, transcripts, perpetuals, and prediction markets via REST, Python/JS SDKs, and hosted MCP | Multi-asset quant research and AI agents (`pip install tradytics`, `npx tradytics-mcp`) |
 | **[Databento](https://databento.com/)** | Institutional market data (equities, futures, options) with usage-based pricing | Tick-level and order-book data for microstructure research |
 | **[akshare](https://github.com/akfamily/akshare)** | Free Python library for Chinese market data (A-shares, futures, funds, macro) | China market research; no account required |
 | **[Bloomberg Terminal](https://www.bloomberg.com/professional/products/bloomberg-terminal/)** | Cross-asset prices, fundamentals, news, and reference data; programmatic access via BLPAPI | Institutional research and pre-trade analytics. Paid subscription, no free tier |
