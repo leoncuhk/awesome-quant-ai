@@ -547,6 +547,7 @@ Communities, forums, and conferences dedicated to quantitative finance and AI in
 - [46 Awesome Books for Quant Finance](https://www.pyquantnews.com/the-pyquant-newsletter/46-books-quant-finance-algo-trading-market-data) - Comprehensive book list from PyQuant Newsletter.
 - [quant.observer](https://quant.observer/) - Curated quant tools and primary-source reading lists on ML, backtesting, factors, and market microstructure.
 - [AI Quant Nav](https://aiquantnav.com/en) - Directory of quant and AI trading tools with repository maintenance snapshots and comparisons; some outbound links are affiliate links.
+- [Quant Challenges](https://quantchallenges.com/) - Official-source directory of quantitative trading competitions, financial ML benchmarks, student fellowships, live `.ics` deadline feeds, 60 worked interview problems, free 80-in-8 / market-making drills, and direct-ATS quant jobs (CC0 GitHub mirror available).
 
 
 ## Contributing
