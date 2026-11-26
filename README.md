@@ -300,6 +300,7 @@ List of software tools and platforms used in quantitative finance.
 | **[Backtrader](https://github.com/mementum/backtrader)** | Feature-rich event-driven backtesting | Mature and widely taught, though maintenance has slowed |
 | **[zipline-reloaded](https://github.com/stefan-jansen/zipline-reloaded)** | Community-maintained fork of Quantopian's Zipline | Original Zipline is unmaintained since Quantopian's 2020 shutdown |
 | **[pybroker](https://github.com/edtechre/pybroker)** | Backtesting framework designed for ML-driven strategies | Built-in walk-forward analysis and bootstrapped metrics |
+| **[vlab](https://github.com/aazh2026/vlab)** | Backtest **validity** toolkit: look-ahead guard, overfit gap, walk-forward validation | Zero dependencies (stdlib only); 77 regression tests pinning real engine defects; MIT |
 | **[Riskfolio-Lib](https://github.com/dcajasn/Riskfolio-Lib)** | Portfolio optimization: mean-risk, risk parity, hierarchical clustering methods | 20+ risk measures; strong documentation |
 | **[skfolio](https://github.com/skfolio/skfolio)** | Portfolio optimization with a scikit-learn-compatible API | Cross-validation and hyperparameter tuning for allocation models |
 | **[Ray/RLlib](https://github.com/ray-project/ray)** | Distributed reinforcement learning for adaptive strategies | Industry-standard RL infrastructure |
