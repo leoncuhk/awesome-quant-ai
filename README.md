@@ -312,6 +312,7 @@ List of software tools and platforms used in quantitative finance.
 | **Provider**          | **Key Features**                        | **Use Cases**                          |
 |-----------------------|-----------------------------------------|----------------------------------------|
 | **[FRED](https://fred.stlouisfed.org/)** | 800K+ US and international macro time series, free API | Macro research, regime models, rates and inflation data |
+| **[MacroDial MCP](https://macrodial.org/ai-resources)** | Hosted, anonymous read-only Streamable HTTP MCP; daily macro brief, 7 module breakdowns, source-dated explanations for 47 factors; no account/API key. Usage limits not documented. | Curated macro context for AI-assisted quantitative research; not a raw-series API or prediction signal. |
 | **[yfinance](https://github.com/ranaroussi/yfinance)** | Python wrapper for Yahoo Finance data | Free equity/ETF/FX/crypto prices for research and prototyping |
 | **[Alpha Vantage](https://www.alphavantage.co/)** | Stock, FX, crypto, fundamentals, and economic indicator APIs | Historical price/volume analysis. Free API key: 25 requests/day |
 | **[Nasdaq Data Link](https://data.nasdaq.com/)** | Premium and free structured datasets (formerly Quandl) | Macroeconomic/factor data integration  |
